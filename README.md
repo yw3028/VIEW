@@ -20,6 +20,10 @@ _description_
 * MongoDB
 
 ### APIs
+* [The Movie DB](http://www.omdbapi.com)
+* [Weather Stack](https://weatherstack.com)
+
+
 
 
 # TO-DO-List
