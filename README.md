@@ -23,7 +23,7 @@ _description_
 
 
 # TO-DO-List
-- [] come up with a name for the app
-- [] create a logo
-- [] modify the wording
-- [] look for APIs
+- [ ] come up with a name for the app
+- [ ] create a logo
+- [ ] modify the wording
+- [ ] look for APIs
