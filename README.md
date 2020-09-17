@@ -4,6 +4,8 @@ As a movie lover and a diary keeper, I have always wanted to have a personal app
 ## Prototype
 👉 [Demo](https://www.figma.com/proto/Ky6FFqNyeuF0g3CUaUMBqi/Solo-Project?node-id=12%3A217&viewport=3364%2C1777%2C0.9434778094291687&scaling=scale-down)
 
+![](SoloProject.png)
+
 ## Features
 * Browse through the popular movies at present
 * Add movie to the movie list that you have watched
@@ -34,4 +36,6 @@ _description_
 - [ ] come up with a name for the app
 - [ ] create a logo
 - [ ] modify the wording
-- [ ] look for APIs
+- [X] look for APIs
+- [ ] check how to use markdown for user input
+- [ ] check how to export file in PDF
