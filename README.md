@@ -1,6 +1,8 @@
 # Movie-Journal-App
 As a movie lover and a diary keeper, I have always wanted to have a personal app to keep track of the movies that I have watched and want to watch, which also allows me to scrawl or doodle something or write down some of my thoughts after watching the movie, like a diary book. Not like most of the movie apps, this app is absolutely personal, which means that no one can see any of the content that you put down unless you want to share them. 
 
+## Prototype
+
 ## Features
 * Browse through the popular movies at present
 * Add movie to the movie list that you have watched
