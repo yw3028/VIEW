@@ -4,8 +4,6 @@ As a movie lover and a diary keeper, I have always wanted to have a personal app
 ## Prototype
 👉 [Demo](https://www.figma.com/proto/Ky6FFqNyeuF0g3CUaUMBqi/Solo-Project?node-id=12%3A217&viewport=3364%2C1777%2C0.9434778094291687&scaling=scale-down)
 
-![](SoloProject.png)
-
 ## Features
 * Browse through the popular movies at present
 * Search for a particular movie
@@ -14,14 +12,16 @@ As a movie lover and a diary keeper, I have always wanted to have a personal app
 * Write a journal after watching a particular movie
 * Be able to rate the movie multiple times
 * Mark how many times you have watched the movie
+* Two users can check what's in common in their wish list
+* PWA: you can add the app to your desktop
 
 ## Getting Started
 _description_
 
 ## Tech Stack
 ### Frontend
-* React Native
-* Expo
+* React 
+
 
 ### Backend
 * Express
