@@ -16,7 +16,7 @@ app.use(cors());
 app.use(json());
 app.use(router);
 
-(async () =>{
+(async () => {
   try {
     await dbConfig.sequelize.sync();
     app.listen(PORT);
