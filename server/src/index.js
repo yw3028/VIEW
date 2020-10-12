@@ -19,9 +19,10 @@ app.use(router);
 (async () => {
   try {
     await dbConfig.sequelize.sync();
-    app.listen(PORT);
+    console.log('Connected to the database'); // eslint-disable-line no-console
+    await app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
   } catch (error) {
-    console.error('Error connecting to the database', error); // eslint-disable-line no-console
+    console.error(error); // eslint-disable-line no-console
   }
 })();
