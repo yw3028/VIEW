@@ -1,11 +1,11 @@
-import Express, { json } from 'express';
+const Express = require('express');
 
-import { config } from 'dotenv';
-import cors from 'cors';
+const { config } = require('dotenv');
+const cors = require('cors');
 
-import { dbConfig } from './models';
+const { db } = require('./models');
 
-import router from './router';
+const router = require('./routes/router');
 
 config();
 const { PORT } = process.env;
@@ -18,7 +18,7 @@ app.use(router);
 
 (async () => {
   try {
-    await dbConfig.sequelize.sync();
+    await db.sequelize.sync();
     app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
   } catch (error) {
