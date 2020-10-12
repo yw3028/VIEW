@@ -1,4 +1,4 @@
-'use strict';
+const db = require('./index');
 
 module.exports = (sequelize, type) => {
   const Genre = sequelize.define('Genre', {
@@ -12,7 +12,7 @@ module.exports = (sequelize, type) => {
     },
   });
   Genre.associate = function (db) {
-    Genre.belongsToMany(Movie, { through: db.GenreMovie });
+    Genre.belongsToMany(db.Movie, { through: db.GenreMovie });
   };
   return Genre;
 };

@@ -1,6 +1,3 @@
-'use strict';
-// The timestamp is added automatically by Sequelize
-
 module.exports = (sequelize, type) => {
   const Journal = sequelize.define('Journal', {
     title: {
@@ -23,8 +20,8 @@ module.exports = (sequelize, type) => {
     },
   });
   Journal.associate = function (db) {
-    Journal.belongsTo(User);
-    Journal.belongsTo(Movie);
+    Journal.belongsTo(db.User);
+    Journal.belongsTo(db.Movie);
   };
   return Journal;
 };

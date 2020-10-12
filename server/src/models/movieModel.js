@@ -1,6 +1,3 @@
-'use strict';
-// The timestamp is added automatically by Sequelize
-
 module.exports = (sequelize, type) => {
   const Movie = sequelize.define('Movie', {
     apiId: {
@@ -43,10 +40,10 @@ module.exports = (sequelize, type) => {
     },
   });
   Movie.associate = function (db) {
-    Movie.belongsToMany(User, { through: 'Wishlist' });
-    Movie.belongsToMany(User, { through: 'Watchedlist' });
-    Movie.hasMany(Journal);
-    Movie.belongsToMany(Genre, { through: db.GenreMovie });
+    Movie.belongsToMany(db.User, { through: 'Wishlist' });
+    Movie.belongsToMany(db.User, { through: 'Watchedlist' });
+    Movie.hasMany(db.Journal);
+    Movie.belongsToMany(db.Genre, { through: db.GenreMovie });
   };
   return Movie;
 };
