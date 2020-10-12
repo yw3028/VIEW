@@ -1,16 +1,18 @@
+const db = require('./index');
+
 module.exports = (sequelize, type) => {
   return sequelize.define('GenreMovie', {
     genreId: {
-      type: DataTypes.INTEGER,
+      type: type.INTEGER,
       references: {
-        model: Genre,
+        model: db.Genre,
         key: 'apiGenreId', // Needs confirmation we can use another foreign key to establish the relation
       },
     },
     movieId: {
-      type: DataTypes.INTEGER,
+      type: type.INTEGER,
       references: {
-        model: Movie,
+        model: db.Movie,
         key: 'id',
       },
     },
