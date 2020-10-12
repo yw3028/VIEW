@@ -3,7 +3,7 @@ import Express, { json } from 'express';
 import { config } from 'dotenv';
 import cors from 'cors';
 
-import { db } from './models';
+import { dbConfig } from './models';
 
 import router from './router';
 
@@ -18,10 +18,10 @@ app.use(router);
 
 (async () =>{
   try {
-    await db.sequelize.sync();
+    await dbConfig.sequelize.sync();
     app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
-  } catch (e) {
-    console.error('Error connecting to the db', e); // eslint-disable-line no-console
+  } catch (error) {
+    console.error('Error connecting to the database', error); // eslint-disable-line no-console
   }
 })();
