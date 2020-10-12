@@ -1,5 +1,5 @@
-import * as sequelize from 'sequelize';
-import fs from 'fs'; // NEEDS CONFIRMATION: correct? does it require npm install?
+const Sequelize = 'sequelize';
+const fs = require('fs');
 const db = {};
 
 import { config } from 'dotenv';
@@ -9,7 +9,7 @@ const dbName = process.env.DB_NAME;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 
-export const dbConfig = new sequelize.Sequelize(dbName, dbUser, dbPassword, {
+export const dbConfig = new Sequelize(dbName, dbUser, dbPassword, {
   port: Number(process.env.DB_PORT),
   host: process.env.DB_HOST,
   dialect: 'postgres',
