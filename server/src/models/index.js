@@ -2,14 +2,15 @@ const Sequelize = 'sequelize';
 const fs = require('fs');
 const db = {};
 
-import { config } from 'dotenv';
+const { config } = require('dotenv');
 config();
 
 const dbName = process.env.DB_NAME;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 
-export const dbConfig = new Sequelize(dbName, dbUser, dbPassword, {
+
+const sequalize = new Sequelize(dbName, dbUser, dbPassword, {
   port: Number(process.env.DB_PORT),
   host: process.env.DB_HOST,
   dialect: 'postgres',
@@ -42,3 +43,5 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+module.exports = db
