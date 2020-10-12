@@ -6,7 +6,7 @@ module.exports = (sequelize, type) => {
       type: type.INTEGER,
       references: {
         model: db.Genre,
-        key: 'id', // Needs confirmation we can use another foreign key to establish the relation
+        key: 'apiGenreId', // Needs confirmation we can use another foreign key to establish the relation
       },
     },
     movieId: {
