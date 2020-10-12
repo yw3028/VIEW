@@ -1,5 +1,6 @@
 import * as sequelize from 'sequelize';
 import fs from 'fs'; // NEEDS CONFIRMATION: correct? does it require npm install?
+const db = {};
 
 import { config } from 'dotenv';
 config();
@@ -38,3 +39,6 @@ Object.keys(db).forEach((modelName) => {
     db[modelName].associate(db);
   }
 });
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;

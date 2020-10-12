@@ -2,7 +2,7 @@
 // The timestamp is added automatically by Sequelize
 
 module.exports = (sequelize, type) => {
-  return sequelize.define('User', {
+  const User = sequelize.define('User', {
     email: {
       type: type.STRING,
       allowNull: false,
@@ -20,8 +20,10 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
     },
   });
+  User.associate = function (db) {
+    User.belongsToMany(Movie, { through: 'Wishlist' });
+    User.belongsToMany(Movie, { through: 'Watchedlist' });
+    User.hasMany(Journal);
+  };
+  return User;
 };
-
-User.belongsToMany(Movie, { through: 'Wishlist' });
-User.belongsToMany(Movie, { through: 'Watchedlist' });
-User.hasMany(Journal);

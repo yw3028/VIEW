@@ -2,7 +2,7 @@
 // The timestamp is added automatically by Sequelize
 
 module.exports = (sequelize, type) => {
-  return sequelize.define('Movie', {
+  const Movie = sequelize.define('Movie', {
     apiId: {
       type: type.INTEGER,
       allowNull: false,
@@ -42,9 +42,11 @@ module.exports = (sequelize, type) => {
       type: type.INTEGER,
     },
   });
+  Movie.associate = function (db) {
+    Movie.belongsToMany(User, { through: 'Wishlist' });
+    Movie.belongsToMany(User, { through: 'Watchedlist' });
+    Movie.hasMany(Journal);
+    Movie.belongsToMany(Genre, { through: db.GenreMovie });
+  };
+  return Movie;
 };
-
-Movie.belongsToMany(User, { through: 'Wishlist' });
-Movie.belongsToMany(User, { through: 'Watchedlist' });
-Movie.hasMany(Journal);
-Movie.belongsToMany(Genre, { through: 'GenreMovie' }); // NEEDS CONFIRMATION: DOES IT NEED TO BE A STRING?

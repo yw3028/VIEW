@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, type) => {
-  return sequelize.define('Genre', {
+  const Genre = sequelize.define('Genre', {
     genre: {
       type: type.STRING,
       allowNull: false,
@@ -11,6 +11,8 @@ module.exports = (sequelize, type) => {
       allowNull: false,
     },
   });
+  Genre.associate = function (db) {
+    Genre.belongsToMany(Movie, { through: db.GenreMovie });
+  };
+  return Genre;
 };
-
-Genre.belongsToMany(Movie, { through: 'GenreMovie' }); // NEEDS CONFIRMATION: DOES IT NEED TO BE A STRING?
