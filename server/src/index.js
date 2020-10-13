@@ -12,6 +12,10 @@ const { PORT } = process.env;
 
 const app = express();
 
+// Development logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 app.use(cors());
 app.use(express.json());
 app.use(router);
@@ -19,7 +23,7 @@ app.use(router);
 (async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     console.log('Connected to the database'); // eslint-disable-line no-console
     await app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
