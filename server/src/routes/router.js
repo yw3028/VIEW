@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+const journalController = require('../controllers/journalController');
 const userController = require('../controllers/userController');
 const wishlistController = require('../controllers/wishlistController');
 const watchedlistController = require('../controllers/watchedlistController');
@@ -26,5 +27,12 @@ router
   .get(userController.getOne)
   .delete(userController.removeOne);
 
+
+router.get('/journals', journalController.getAllJournals);
+router.post('/journals', journalController.postJournal);
+
+router.get('/journals/:journalId', journalController.getJournal);
+router.put('/journals/:journalId', journalController.updateJournal);
+router.delete('/journals/:journalId', journalController.deleteJournal);
 
 module.exports = router;
