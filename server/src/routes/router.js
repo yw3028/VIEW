@@ -3,6 +3,7 @@ const router = require('express').Router();
 const wishlistController = require('../controllers/wishlistController');
 const watchedlistController = require('../controllers/watchedlistController');
 
+
 router.get('/wishlist', wishlistController.getAll);
 
 router
@@ -18,5 +19,6 @@ router
   .get(watchedlistController.getOne)
   .post(watchedlistController.postOne)
   .delete(watchedlistController.deleteOne);
+
 
 module.exports = router;
