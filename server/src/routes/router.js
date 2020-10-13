@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+const journalController = require('../controllers/journalController');
 const wishlistController = require('../controllers/wishlistController');
 const watchedlistController = require('../controllers/watchedlistController');
 
@@ -12,5 +13,12 @@ const watchedlistController = require('../controllers/watchedlistController');
 // router.get('/watched/:movieId', watchedlistController.getOne);
 // router.post('/watched/:movieId', watchedlistController.postOne);
 // router.delete('/watched/:movieId', watchedlistController.deleteOne);
+
+router.get('/journals', journalController.getAllJournals);
+router.post('/journals', journalController.postJournal);
+
+router.get('/journals/:journalId', journalController.getJournal);
+router.put('/journals/:journalId', journalController.updateJournal);
+router.delete('/journals/:journalId', journalController.deleteJournal);
 
 module.exports = router;

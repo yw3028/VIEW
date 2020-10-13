@@ -17,26 +17,7 @@ exports.getAllJournals = async (req, res) => {
 
 exports.postJournal = async (req, res) => {
   try {
-    const {
-      title,
-      date,
-      entry,
-      location,
-      weather,
-      weatherTemperature,
-      UserId,
-      MovieId,
-    } = req.body;
-    const newJournal = await Journal.create({
-      title,
-      date,
-      entry,
-      location,
-      weather,
-      weatherTemperature,
-      UserId,
-      MovieId,
-    });
+    const newJournal = await Journal.create(req.body);
     res.send(newJournal);
     res.status(200);
   } catch (error) {
@@ -49,7 +30,10 @@ exports.getJournal = async (req, res) => {
   try {
     const id = req.params.journalId;
     const { UserId } = req.body;
-    const requestedJournal = await Journal.findOne({ where: { id, UserId } });
+    const requestedJournal = await Journal.findOne({
+      where: { id, UserId },
+      include: [Movie],
+    });
     res.send(requestedJournal);
     res.status(200);
   } catch (error) {
@@ -85,7 +69,6 @@ exports.deleteJournal = async (req, res) => {
   try {
     const id = req.params.journalId;
     const journalToDelete = await Journal.findByPk(id);
-    console.log('exports.deleteJournal -> journalToDelete', journalToDelete);
     await journalToDelete.destroy();
     res.sendStatus(200);
   } catch (error) {
