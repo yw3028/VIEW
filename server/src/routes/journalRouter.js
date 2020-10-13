@@ -1,11 +1,12 @@
 const router = require('express').Router();
+const createMovie = require('./helperFn');
 
 const journalController = require('../controllers/journalController');
 
 router
   .route('/')
   .get(journalController.getAllJournals)
-  .post(journalController.postJournal);
+  .post(createMovie, journalController.postJournal);
 
 router
   .route('/:journalId')

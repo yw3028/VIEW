@@ -6,6 +6,7 @@ const basename = path.basename(__filename);
 const db = {};
 
 const { config } = require('dotenv');
+
 config();
 
 const dbName = process.env.DB_NAME;

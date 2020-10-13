@@ -1,11 +1,12 @@
 const router = require('express').Router();
+const createMovie = require('./helperFn');
 
 const wishlistController = require('../controllers/wishlistController');
 
 router
   .route('/')
   .get(wishlistController.getAll)
-  .post(wishlistController.postOne);
+  .post(createMovie, wishlistController.postOne);
 
 router.delete('/:movieId', wishlistController.removeOne);
 
