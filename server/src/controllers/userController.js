@@ -1,4 +1,4 @@
-const User = require('../models/userModel');
+const { User } = require('../models');
 
 exports.postOne = async (req, res) => {
   try {
@@ -22,7 +22,7 @@ exports.getOne = async (req, res) => {
   try {
     const { userId } = req.params;
     const user = await User.findOne({
-      where: { userId },
+      where: { id: userId },
     });
     res.status(200);
     res.send(user);
@@ -35,7 +35,9 @@ exports.getOne = async (req, res) => {
 exports.removeOne = async (req, res) => {
   try {
     const { userId } = req.params;
-    await User.destroy({ userId });
+    await User.destroy({
+      where: { id: userId },
+    });
     res.sendStatus(200);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console

@@ -51,24 +51,12 @@ db.Sequelize = Sequelize;
 
 module.exports = db;
 
-//FOR TESTING, PLEASE DELETE IN THE END
+// setTimeout(() => {
+//   db.Movie.create({ title: 'movie title', apiId: 412 }).then((movie) => {
+//     db.Genre.create({ name: 'hello', apiId: 23 }).then((genre) => {
+//       genre.addMovie(movie.id);
+//     });
+//   });
+// }, 5000);
 
-setTimeout(() => {
-  db.Movie.create({ title: 'movie title', apiId: 4543 }).then((movie) => {
-    db.Genre.create({ name: 'hello', apiId: 23 }).then((genre) => {
-      genre.addMovie(movie.id);
-    });
-  });
-}, 7000);
 
-setTimeout(() => {
-  db.Movie.create({ title: 'second Movie', apiId: 453 }).then((movie) => {
-    db.Genre.create({ name: 'bye', apiId: 1265 }).then((genre) => {
-      genre.addMovie(movie.id).then(() => {
-        genre.getMovies().then((movies) => {
-          console.log('MOVIES', movies);
-        });
-      });
-    });
-  });
-}, 10000);
