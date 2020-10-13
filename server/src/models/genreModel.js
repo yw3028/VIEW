@@ -2,20 +2,17 @@ const db = require('./index');
 
 module.exports = (sequelize, type) => {
   const Genre = sequelize.define('Genre', {
-    name: {
+    genre: {
       type: type.STRING,
       allowNull: false,
     },
-    apiId: {
+    apiGenreId: {
       type: type.INTEGER,
       allowNull: false,
-      primaryKey: true,
     },
   });
   Genre.associate = function (db) {
-    Genre.belongsToMany(db.Movie, {
-      through: 'GenreMovies',
-    });
+    Genre.belongsToMany(db.Movie, { through: db.GenreMovie });
   };
   return Genre;
 };

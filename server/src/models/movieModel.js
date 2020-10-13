@@ -43,9 +43,7 @@ module.exports = (sequelize, type) => {
     Movie.belongsToMany(db.User, { through: 'Wishlist' });
     Movie.belongsToMany(db.User, { through: 'Watchedlist' });
     Movie.hasMany(db.Journal);
-    Movie.belongsToMany(db.Genre, {
-      through: 'GenreMovies',
-    });
+    Movie.belongsToMany(db.Genre, { through: db.GenreMovie });
   };
   return Movie;
 };
