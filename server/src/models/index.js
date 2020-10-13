@@ -50,13 +50,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-
-// setTimeout(() => {
-//   db.Movie.create({ title: 'movie title', apiId: 412 }).then((movie) => {
-//     db.Genre.create({ name: 'hello', apiId: 23 }).then((genre) => {
-//       genre.addMovie(movie.id);
-//     });
-//   });
-// }, 5000);
-
-

@@ -15,27 +15,6 @@ exports.getAll = async (req, res) => {
   }
 };
 
-// const user = await User.findByPk(1);
-// const watched = await user.addMovie(1)
-// const wish = await user.getWish()
-
-exports.getOne = async (req, res) => {
-  try {
-    const user = await User.findByPk(1);
-    if (!user) {
-      res.sendStatus(500);
-    }
-    const { movieId } = req.params;
-    const wishes = await user.getWish();
-    const wish = wishes.filter((wish) => wish.id === movieId);
-    res.status(200);
-    res.send(wish);
-  } catch (error) {
-    console.error('Error: ', error); // eslint-disable-line no-console
-    res.sendStatus(500);
-  }
-};
-
 exports.postOne = async (req, res) => {
   try {
     const { userId, movieId } = req.body;

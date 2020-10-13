@@ -9,20 +9,15 @@ router
   .get(wishlistController.getAll)
   .post(wishlistController.postOne);
 
-router
-  .route('/wishlist/:movieId')
-  .get(wishlistController.getOne)
-  .delete(wishlistController.removeOne);
+  router.delete('/wishlist/:movieId', wishlistController.removeOne);
+
 
 router
-  .route('/watched/:movieId')
+  .route('/watched/')
   .get(watchedlistController.getAll)
   .post(watchedlistController.postOne);
 
-router
-  .route('/watched/:movieId')
-  .get(watchedlistController.getOne)
-  .delete(watchedlistController.removeOne);
+router.delete('/watched/:movieId', watchedlistController.removeOne);
 
 router.post('/user', userController.postOne);
 
