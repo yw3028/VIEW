@@ -30,8 +30,7 @@ exports.getOne = async (req, res) => {
 
 exports.postOne = async (req, res) => {
   try {
-    const { movieId } = req.params;
-    const { userId } = req.body;
+    const { userId, movieId } = req.body;
     const newMovie = await Wishlist.create({ userId, movieId });
     res.status(201);
     res.send(newMovie);
@@ -41,7 +40,7 @@ exports.postOne = async (req, res) => {
   }
 };
 
-exports.deleteOne = async (req, res) => {
+exports.removeOne = async (req, res) => {
   try {
     const { movieId } = req.params;
     const { userId } = req.body;

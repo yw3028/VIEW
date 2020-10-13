@@ -1,24 +1,35 @@
 const router = require('express').Router();
 
+const userController = require('../controllers/userController');
 const wishlistController = require('../controllers/wishlistController');
 const watchedlistController = require('../controllers/watchedlistController');
 
-
-router.get('/wishlist', wishlistController.getAll);
+router
+  .route('/wishlist')
+  .get(wishlistController.getAll)
+  .post(wishlistController.postOne);
 
 router
   .route('/wishlist/:movieId')
   .get(wishlistController.getOne)
-  .post(wishlistController.postOne)
-  .delete(wishlistController.deleteOne);
+  .delete(wishlistController.removeOne);
 
-router.get('/watched', watchedlistController.getAll);
+router
+  .route('/watched/:movieId')
+  .get(watchedlistController.getAll)
+  .post(watchedlistController.postOne);
 
 router
   .route('/watched/:movieId')
   .get(watchedlistController.getOne)
-  .post(watchedlistController.postOne)
-  .delete(watchedlistController.deleteOne);
+  .delete(watchedlistController.removeOne);
+
+router.post('/user', userController.postOne);
+
+router
+  .route('/user/:userId')
+  .get(userController.getOne)
+  .delete(userController.removeOne);
 
 
 module.exports = router;
