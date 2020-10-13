@@ -1,4 +1,4 @@
-const Watchedlist = require('../models/watchedlist');
+const { Watchedlist } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {

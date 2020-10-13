@@ -13,7 +13,7 @@ const { PORT } = process.env;
 const app = Express();
 
 app.use(cors());
-app.use(json());
+app.use(express.json());
 app.use(router);
 
 (async () => {

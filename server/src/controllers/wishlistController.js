@@ -1,4 +1,4 @@
-const Wishlist = require('../models/wishlist');
+const { Wishlist } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {
@@ -13,7 +13,7 @@ exports.getAll = async (req, res) => {
 
 exports.getOne = async (req, res) => {
   try {
-    const {movieId} = req.params;
+    const { movieId } = req.params;
     const movie = await Wishlist.findOne({
       where: {
         userId: req.body.userId,
@@ -30,7 +30,7 @@ exports.getOne = async (req, res) => {
 
 exports.postOne = async (req, res) => {
   try {
-    const {movieId} = req.params;
+    const { movieId } = req.params;
     const { userId } = req.body;
     const newMovie = await Wishlist.create({ userId, movieId });
     res.status(201);
@@ -43,7 +43,7 @@ exports.postOne = async (req, res) => {
 
 exports.deleteOne = async (req, res) => {
   try {
-    const {movieId} = req.params;
+    const { movieId } = req.params;
     const { userId } = req.body;
     await Wishlist.destroy({
       where: { userId, movieId },
