@@ -1,15 +1,15 @@
 const { Wishlist } = require('../models');
 
-exports.getAll = async (req, res) => {
-  try {
-    const movies = await Wishlist.find();
-    res.status(200);
-    res.send(movies);
-  } catch (error) {
-    console.error('Error: ', error); // eslint-disable-line no-console
-    res.sendStatus(500);
-  }
-};
+// exports.getAll = async (req, res) => {
+//   try {
+//     const movies = await Wishlist.find();
+//     res.status(200);
+//     res.send(movies);
+//   } catch (error) {
+//     console.error('Error: ', error); // eslint-disable-line no-console
+//     res.sendStatus(500);
+//   }
+// };
 
 exports.getOne = async (req, res) => {
   try {

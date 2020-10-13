@@ -1,16 +1,16 @@
-const Express = require('express');
+const express = require('express');
 
 const { config } = require('dotenv');
 const cors = require('cors');
 
-const { db } = require('./models');
+const { sequelize } = require('./models');
 
 const router = require('./routes/router');
 
 config();
 const { PORT } = process.env;
 
-const app = Express();
+const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -18,10 +18,12 @@ app.use(router);
 
 (async () => {
   try {
-    await db.sequelize.sync();
-    app.listen(PORT);
+    await sequelize.authenticate();
+    await sequelize.sync();
+    console.log('Connected to the database'); // eslint-disable-line no-console
+    await app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
   } catch (error) {
-    console.error('Error connecting to the database', error); // eslint-disable-line no-console
+    console.error(error); // eslint-disable-line no-console
   }
 })();
