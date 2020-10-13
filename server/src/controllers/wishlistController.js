@@ -7,8 +7,7 @@ exports.getAll = async (req, res) => {
       res.sendStatus(500);
     }
     const wishes = await user.getWish();
-    res.status(200);
-    res.send(wishes);
+    res.status(200).send(wishes);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console
     res.sendStatus(500);
@@ -23,8 +22,7 @@ exports.postOne = async (req, res) => {
       res.sendStatus(500);
     }
     const wish = await user.addWish(movieId);
-    res.status(201);
-    res.send(wish);
+    res.status(201).send(wish);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console
     res.sendStatus(400);

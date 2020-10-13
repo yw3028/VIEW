@@ -7,8 +7,7 @@ exports.getAll = async (req, res) => {
       res.sendStatus(500);
     }
     const watchedMovies = await user.getWatched();
-    res.status(200);
-    res.send(watchedMovies);
+    res.status(200).send(watchedMovies);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console
     res.sendStatus(500);
@@ -23,8 +22,7 @@ exports.postOne = async (req, res) => {
       res.sendStatus(500);
     }
     const watchedMovie = await user.addWatched(movieId);
-    res.status(201);
-    res.send(watchedMovie);
+    res.status(201).send(watchedMovie);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console
     res.sendStatus(400);
