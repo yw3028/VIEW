@@ -5,13 +5,22 @@ const userController = require('../controllers/userController');
 const wishlistController = require('../controllers/wishlistController');
 const watchedlistController = require('../controllers/watchedlistController');
 
+const { Movie } = require('../models');
+
+async function createMovie(req, res, next) {
+  if (!req.body.movieId) {
+    const { id } = await Movie.create(req.body.movieObject);
+    req.body.movieId = id;
+  }
+  await next();
+}
+
 router
   .route('/wishlist')
   .get(wishlistController.getAll)
-  .post(wishlistController.postOne);
+  .post(createMovie, wishlistController.postOne);
 
-  router.delete('/wishlist/:movieId', wishlistController.removeOne);
-
+router.delete('/wishlist/:movieId', wishlistController.removeOne);
 
 router
   .route('/watched/')
@@ -26,7 +35,6 @@ router
   .route('/user/:userId')
   .get(userController.getOne)
   .delete(userController.removeOne);
-
 
 router.get('/journals', journalController.getAllJournals);
 router.post('/journals', journalController.postJournal);
