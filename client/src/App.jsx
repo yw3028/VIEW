@@ -1,9 +1,11 @@
 import React from 'react';
+import MovieItem from './components/MovieItemComponent';
+import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <MovieItem></MovieItem>
     </div>
   );
 };

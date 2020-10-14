@@ -1,15 +1,7 @@
 /* >>>>>> CSS STARTS HERE <<<<<< */
 
-.MovieDetails {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-}
-
 .movie-text-info {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   padding: 1rem;
 }
 
@@ -18,9 +10,12 @@
   display: none;
 }
 
-.img {
+.backdrop {
   max-width: 100%;
-  height: auto;
+  height: 30vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   /* object-fit: contain; */
 }
 
@@ -40,12 +35,9 @@
 }
 
 @media screen and (min-device-width: 680px) {
-  .MovieDetails {
-    width: 33%;
-  }
-
   .desktop-poster {
     display: inline;
+    margin-right: 2rem;
   }
 
   .mobile {
@@ -65,12 +57,6 @@
 }
 
 @media screen and (min-device-width: 1200px) {
-  .MovieDetails {
-    flex-direction: row;
-    width: 60%;
-    margin: auto;
-  }
-
   .desktop-poster {
     width: auto;
     height: 60vh;
