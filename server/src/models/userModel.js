@@ -17,9 +17,9 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
     },
   });
-  User.associate = function (db) {
-    User.belongsToMany(db.Movie, { through: 'Wishlist' });
-    User.belongsToMany(db.Movie, { through: 'Watchedlist' });
+  User.associate = (db) => {
+    User.belongsToMany(db.Movie, { through: 'Wishlist', as: 'Wish' });
+    User.belongsToMany(db.Movie, { through: 'Watchedlist', as: 'Watched' });
     User.hasMany(db.Journal);
   };
   return User;

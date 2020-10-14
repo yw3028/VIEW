@@ -19,7 +19,7 @@ module.exports = (sequelize, type) => {
       type: type.INTEGER,
     },
   });
-  Journal.associate = function (db) {
+  Journal.associate = (db) => {
     Journal.belongsTo(db.User);
     Journal.belongsTo(db.Movie);
   };
