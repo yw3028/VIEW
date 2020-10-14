@@ -6,7 +6,10 @@ const cors = require('cors');
 
 const { sequelize } = require('./models');
 
-const router = require('./routes/router');
+const userRouter = require('./routes/userRouter');
+const wishlistRouter = require('./routes/wishlistRouter');
+const watchedlistRouter = require('./routes/watchedlistRouter');
+const journalRouter = require('./routes/journalRouter');
 
 config();
 const { PORT } = process.env;
@@ -19,7 +22,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 app.use(cors());
 app.use(express.json());
-app.use(router);
+app.use('/user', userRouter);
+app.use('/wishlist', wishlistRouter);
+app.use('/watched', watchedlistRouter);
+app.use('/journal', journalRouter);
+
 
 (async () => {
   try {
