@@ -39,7 +39,7 @@ module.exports = (sequelize, type) => {
       type: type.INTEGER,
     },
   });
-  Movie.associate = function (db) {
+  Movie.associate = (db) => {
     Movie.belongsToMany(db.User, { through: 'Wishlist' });
     Movie.belongsToMany(db.User, { through: 'Watchedlist' });
     Movie.hasMany(db.Journal);
