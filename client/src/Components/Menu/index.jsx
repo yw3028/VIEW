@@ -2,21 +2,17 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Drawer from '@material-ui/core/Drawer';
-import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SearchIcon from '@material-ui/icons/Search';
@@ -28,165 +24,133 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
 
-const drawerWidth = 280;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 1,
+const useStyles = makeStyles({
+  menu: {
     position: 'relative',
   },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
+  list: {
+    width: 300,
+    padding: '1rem 0',
     display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    flexDirection: 'column',
   },
   user: {
-    padding: theme.spacing(2, 4),
+    padding: '1rem 2rem',
   },
-  list: {
-    padding: theme.spacing(1, 2),
+  listItems: {
+    padding: '1rem 2rem',
   },
   jhim: {
     width: '70%',
-    margin: 'auto',
     position: 'absolute',
-    bottom: '2rem',
+    bottom: '1rem',
     alignSelf: 'center',
   },
-}));
+});
 
-export default ({ open, setOpen }) => {
+export default () => {
   const classes = useStyles();
-  const theme = useTheme();
+  const [state, setState] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+
+    setState(open);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const list = () => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <div className={classes.user}>
+        <AccountCircleIcon color="action" fontSize="large" />
+        <Typography variant="h6">Santiago Ramon Cajal</Typography>
+        <Typography variant="body2">santiagorarmon1934@gmail.com</Typography>
+      </div>
+      <Divider />
+      <List className={classes.listItems}>
+        {/* <NavLink> */}
+        <ListItem button key="Search">
+          <ListItemIcon>
+            <SearchIcon />
+          </ListItemIcon>
+          <ListItemText secondary="Explore Movies" />
+        </ListItem>
+        {/* </NavLink> */}
+
+        <NavLink to="/wishlist">
+          <ListItem button key="Wishlist">
+            <ListItemIcon>
+              <FavoriteIcon />
+            </ListItemIcon>
+            <ListItemText secondary="Wishlist" />
+          </ListItem>
+        </NavLink>
+
+        <NavLink to="/watched">
+          <ListItem button key="Watched">
+            <ListItemIcon>
+              <RemoveRedEyeIcon />
+            </ListItemIcon>
+            <ListItemText secondary="Watched List" />
+          </ListItem>
+        </NavLink>
+
+        <NavLink to="/journal">
+          <ListItem button key="Journal">
+            <ListItemIcon>
+              <CreateIcon />
+            </ListItemIcon>
+            <ListItemText secondary="Journal" />
+          </ListItem>
+        </NavLink>
+
+        {/* <NavLink> */}
+        <ListItem button key="Friend">
+          <ListItemIcon>
+            <GroupIcon />
+          </ListItemIcon>
+          <ListItemText secondary="Friends' Movies" />
+        </ListItem>
+        {/* </NavLink> */}
+      </List>
+      <Divider />
+      <List className={classes.listItems}>
+        <ListItem button key="Sign-off">
+          <ListItemIcon>
+            <PowerSettingsNewIcon />
+          </ListItemIcon>
+          <ListItemText secondary="Sign Off" />
+        </ListItem>
+      </List>
+      <img className={classes.jhim} src={jhim} alt="jhim" />
+    </div>
+  );
 
   return (
-    <div className={classes.root}>
-      <AppBar
-        position="fixed"
-        color="transparent"
-        bottomOpacity="0.0"
-        elevation="0.0"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </div>
-        <div className={classes.user}>
-          <AccountCircleIcon color="action" fontSize="large" />
-          <Typography variant="h6">Santiago Ramon Cajal</Typography>
-          <Typography variant="body2">santiagorarmon1934@gmail.com</Typography>
-        </div>
-        <Divider />
-        <List className={classes.list}>
-          {/* <NavLink> */}
-          <ListItem button key="Search">
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <ListItemText secondary="Explore Movies" />
-          </ListItem>
-          {/* </NavLink> */}
-
-          <NavLink to="/wishlist">
-            <ListItem button key="Wishlist">
-              <ListItemIcon>
-                <FavoriteIcon />
-              </ListItemIcon>
-              <ListItemText secondary="Wishlist" />
-            </ListItem>
-          </NavLink>
-
-          <NavLink to="/watched">
-            <ListItem button key="Watched">
-              <ListItemIcon>
-                <RemoveRedEyeIcon />
-              </ListItemIcon>
-              <ListItemText secondary="Watched List" />
-            </ListItem>
-          </NavLink>
-
-          <NavLink to="/journal">
-            <ListItem button key="Journal">
-              <ListItemIcon>
-                <CreateIcon />
-              </ListItemIcon>
-              <ListItemText secondary="Journal" />
-            </ListItem>
-          </NavLink>
-
-          {/* <NavLink> */}
-          <ListItem button key="Friend">
-            <ListItemIcon>
-              <GroupIcon />
-            </ListItemIcon>
-            <ListItemText secondary="Friends' Movies" />
-          </ListItem>
-          {/* </NavLink> */}
-        </List>
-        <Divider />
-        <List className={classes.list}>
-          <ListItem button key="Sign-off">
-            <ListItemIcon>
-              <PowerSettingsNewIcon />
-            </ListItemIcon>
-            <ListItemText secondary="Sign Off" />
-          </ListItem>
-        </List>
-        <img className={classes.jhim} src={jhim} alt="jhim" />
-      </Drawer>
+    <div className={classes.menu}>
+      <React.Fragment key="left">
+        <Button onClick={toggleDrawer(true)}>
+          <MenuIcon />
+        </Button>
+        <SwipeableDrawer
+          anchor="left"
+          open={state}
+          onClose={toggleDrawer(false)}
+          onOpen={toggleDrawer(true)}
+        >
+          {list()}
+        </SwipeableDrawer>
+      </React.Fragment>
     </div>
   );
 };
