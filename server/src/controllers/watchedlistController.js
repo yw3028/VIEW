@@ -2,7 +2,8 @@ const { User } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {
-    const user = await User.findByPk(1);
+    const { UserId } = req.body;
+    const user = await User.findByPk(UserId);
     if (!user) {
       res.sendStatus(500);
     }
@@ -16,12 +17,12 @@ exports.getAll = async (req, res) => {
 
 exports.postOne = async (req, res) => {
   try {
-    const { userId, movieId } = req.body;
-    const user = await User.findByPk(userId);
+    const { UserId, MovieId } = req.body;
+    const user = await User.findByPk(UserId);
     if (!user) {
       res.sendStatus(500);
     }
-    const watchedMovie = await user.addWatched(movieId);
+    const watchedMovie = await user.addWatched(MovieId);
     res.status(201).send(watchedMovie);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console
@@ -31,7 +32,8 @@ exports.postOne = async (req, res) => {
 
 exports.removeOne = async (req, res) => {
   try {
-    const user = await User.findByPk(1);
+    const { UserId } = req.body;
+    const user = await User.findByPk(UserId);
     if (!user) {
       res.sendStatus(500);
     }

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const createMovie = require('./helperFn');
+const createMovie = require('../utils/helperFn');
 
 const wishlistController = require('../controllers/wishlistController');
 

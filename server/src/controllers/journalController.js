@@ -7,8 +7,7 @@ exports.getAllJournals = async (req, res) => {
       where: { UserId },
       include: [Movie],
     });
-    res.send(allJournals);
-    res.status(200);
+    res.status(200).send(allJournals);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
     res.sendStatus(500);
@@ -18,8 +17,7 @@ exports.getAllJournals = async (req, res) => {
 exports.postJournal = async (req, res) => {
   try {
     const newJournal = await Journal.create(req.body);
-    res.send(newJournal);
-    res.status(200);
+    res.status(200).send(newJournal);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
     res.sendStatus(500);
@@ -34,8 +32,7 @@ exports.getJournal = async (req, res) => {
       where: { id, UserId },
       include: [Movie],
     });
-    res.send(requestedJournal);
-    res.status(200);
+    res.status(200).send(requestedJournal);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
     res.sendStatus(500);
@@ -57,8 +54,7 @@ exports.updateJournal = async (req, res) => {
         plain: true, // makes sure that the returned instances are just plain objects
       }
     );
-    res.send(affectedRows);
-    res.status(200);
+    res.status(200).send(affectedRows);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
     res.sendStatus(500);

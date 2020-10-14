@@ -1,9 +1,9 @@
 const { Movie } = require('../models');
 
 const createMovie = async (req, res, next) => {
-  if (!req.body.movieId) {
+  if (!req.body.MovieId) {
     const { id } = await Movie.create(req.body.movieObject);
-    req.body.movieId = id;
+    req.body.MovieId = id;
   }
   await next();
 };
