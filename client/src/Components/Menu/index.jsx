@@ -1,6 +1,10 @@
 import React from 'react';
+
+import { NavLink } from 'react-router-dom';
+
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -40,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 1,
     position: 'relative',
-
   },
   drawerPaper: {
     width: drawerWidth,
@@ -64,14 +67,13 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     position: 'absolute',
     bottom: '2rem',
-    alignSelf:'center'
-  }
+    alignSelf: 'center',
+  },
 }));
 
-export default () => {
+export default ({ open, setOpen }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -83,18 +85,27 @@ export default () => {
 
   return (
     <div className={classes.root}>
-      {/* <CssBaseline /> */}
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerOpen}
-          edge="start"
-          className={clsx(classes.menuButton, open && classes.hide)}
-        >
-          <MenuIcon />
-        </IconButton>
-      </Toolbar>
+      <AppBar
+        position="fixed"
+        color="transparent"
+        bottomOpacity="0.0"
+        elevation="0.0"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            className={clsx(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -120,39 +131,53 @@ export default () => {
         </div>
         <Divider />
         <List className={classes.list}>
+          {/* <NavLink> */}
           <ListItem button key="Search">
             <ListItemIcon>
               <SearchIcon />
             </ListItemIcon>
             <ListItemText secondary="Explore Movies" />
           </ListItem>
-          <ListItem button key="Wishlist">
-            <ListItemIcon>
-              <FavoriteIcon />
-            </ListItemIcon>
-            <ListItemText secondary="Wishlist" />
-          </ListItem>
-          <ListItem button key="Watched">
-            <ListItemIcon>
-              <RemoveRedEyeIcon />
-            </ListItemIcon>
-            <ListItemText secondary="Watched List" />
-          </ListItem>
-          <ListItem button key="Journal">
-            <ListItemIcon>
-              <CreateIcon />
-            </ListItemIcon>
-            <ListItemText secondary="Journal" />
-          </ListItem>
+          {/* </NavLink> */}
+
+          <NavLink to="/wishlist">
+            <ListItem button key="Wishlist">
+              <ListItemIcon>
+                <FavoriteIcon />
+              </ListItemIcon>
+              <ListItemText secondary="Wishlist" />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to="/watched">
+            <ListItem button key="Watched">
+              <ListItemIcon>
+                <RemoveRedEyeIcon />
+              </ListItemIcon>
+              <ListItemText secondary="Watched List" />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to="/journal">
+            <ListItem button key="Journal">
+              <ListItemIcon>
+                <CreateIcon />
+              </ListItemIcon>
+              <ListItemText secondary="Journal" />
+            </ListItem>
+          </NavLink>
+
+          {/* <NavLink> */}
           <ListItem button key="Friend">
             <ListItemIcon>
               <GroupIcon />
             </ListItemIcon>
             <ListItemText secondary="Friends' Movies" />
           </ListItem>
-          </List>
-          <Divider />
-          <List className={classes.list}>
+          {/* </NavLink> */}
+        </List>
+        <Divider />
+        <List className={classes.list}>
           <ListItem button key="Sign-off">
             <ListItemIcon>
               <PowerSettingsNewIcon />
@@ -160,9 +185,8 @@ export default () => {
             <ListItemText secondary="Sign Off" />
           </ListItem>
         </List>
-        <img className={classes.jhim} src={jhim} alt='jhim'/>
+        <img className={classes.jhim} src={jhim} alt="jhim" />
       </Drawer>
-     
     </div>
   );
 };
