@@ -23,7 +23,7 @@ const movie = {
 
 export default () => (
   <Slider>
-    <div className="list_title">TITLE</div>
+    <div className="list_title">Explore</div>
     <div className="list_scroll">
       <div className="item">
         <MovieTile movie={movie} />

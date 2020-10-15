@@ -3,18 +3,17 @@ import styled from 'styled-components';
 export default styled.div`
   .list_scroll {
     overflow-x: auto;
-    padding: 2rem 1rem;
+    padding: 1.8rem 1rem;
     margin: 0 2rem;
     display: flex;
     overflow-y: hidden;
   }
 
   .list_title {
-    font-size: 1.6em;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    margin-top: 3rem;
-    padding-left: 5vw;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    padding-left: 3rem;
   }
 
   ::-webkit-scrollbar {

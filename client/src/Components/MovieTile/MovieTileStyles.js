@@ -11,7 +11,7 @@ export default styled.div`
   }
 
   .movie_img {
-    width: 300px;
+    width: 250px;
   }
 
   .movie_overlay {
