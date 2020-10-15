@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import JournalList from '../../Components/JournalList/JournalList';
 
 import { getJournal } from '../../Services/apiClient';
 
 const groupByMonths = (journals, date) => {
   return journals.reduce((result, journal) => {
-    const key = journal[date].slice(0, 7);
+    const key = moment(journal[date]).format('MMMM YYYY');
     return {
       ...result,
       [key]: [...(result[key] || []), journal],
@@ -28,9 +30,12 @@ const Journal = () => {
 
   return (
     <div>
-      {Object.entries(lists).forEach((value, key) => {
-        console.log(`${key} ${value}`);
-      })}
+      {Object.keys(lists).map((month, index) => (
+        <div key={index}>
+          <div>{month}</div>
+          <JournalList journals={lists[month]} />
+        </div>
+      ))}
     </div>
   );
 };
