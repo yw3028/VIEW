@@ -23,7 +23,6 @@ export default styled.div`
   .item {
     position: relative;
     display: block;
-    flex: 1 1 0px;
     padding: 0.7rem;
     transition: transform 500ms;
   }

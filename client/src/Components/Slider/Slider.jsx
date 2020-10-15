@@ -21,37 +21,20 @@ const movie = {
   release_date: '2020-09-29',
 };
 
+const title = 'Explore';
+
+// props => movies(array), list-title
 export default () => (
   <Slider>
-    <div className="list_title">Explore</div>
+    <div className="list_title">{title}</div>
     <div className="list_scroll">
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
-      <div className="item">
-        <MovieTile movie={movie} />
-      </div>
+      {[movie, movie, movie].map((movie) => {
+        return (
+          <div className="item">
+            <MovieTile movie={movie} />
+          </div>
+        );
+      })}
     </div>
   </Slider>
 );

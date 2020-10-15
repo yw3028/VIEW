@@ -12,6 +12,9 @@ export default styled.div`
 
   .movie_img {
     width: 250px;
+    @media screen and (min-device-width: 780px) {
+      width: 300px;
+    }
   }
 
   .movie_overlay {
