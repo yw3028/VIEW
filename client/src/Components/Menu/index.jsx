@@ -13,6 +13,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SearchIcon from '@material-ui/icons/Search';
@@ -78,6 +79,15 @@ export default () => {
       </div>
       <Divider />
       <List className={classes.listItems}>
+        <NavLink to="/home">
+          <ListItem button key="Home">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText secondary="Home" />
+          </ListItem>
+        </NavLink>
+
         {/* <NavLink> */}
         <ListItem button key="Search">
           <ListItemIcon>

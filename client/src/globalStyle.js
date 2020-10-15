@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+export default createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -89,6 +92,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-family: 'Roboto', sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -127,3 +131,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+a {
+  text-decoration: none;
+}
+button {
+  outline: none;
+}
+`;
