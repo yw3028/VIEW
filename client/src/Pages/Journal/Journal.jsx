@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import JournalList from '../../Components/JournalList/JournalList';
+import * as S from './JournalStyle';
 
 import { getJournal } from '../../Services/apiClient';
 
@@ -29,14 +30,14 @@ const Journal = () => {
   }, [journals]);
 
   return (
-    <div>
+    <S.JournalPage>
       {Object.keys(lists).map((month, index) => (
         <div key={index}>
           <h2>{month.toUpperCase()}</h2>
           <JournalList journals={lists[month]} />
         </div>
       ))}
-    </div>
+    </S.JournalPage>
   );
 };
 
