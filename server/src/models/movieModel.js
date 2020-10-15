@@ -7,12 +7,15 @@ module.exports = (sequelize, type) => {
     poster: {
       type: type.STRING,
     },
+    backdrop: {
+      type: type.STRING,
+    },
     title: {
       type: type.STRING,
       allowNull: false,
     },
-    year: {
-      type: type.INTEGER,
+    releaseDate: {
+      type: type.DATE,
     },
     genre: {
       type: type.STRING,
@@ -24,7 +27,7 @@ module.exports = (sequelize, type) => {
       type: type.STRING,
     },
     plot: {
-      type: type.STRING,
+      type: type.STRING(1000),
     },
     country: {
       type: type.STRING,
@@ -36,7 +39,7 @@ module.exports = (sequelize, type) => {
       type: type.INTEGER,
     },
     avgRating: {
-      type: type.INTEGER,
+      type: type.FLOAT,
     },
   });
   Movie.associate = (db) => {
