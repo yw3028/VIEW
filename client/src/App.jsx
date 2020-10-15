@@ -1,9 +1,10 @@
 import React from 'react';
+import Journal from './Pages/Journal/Journal';
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Journal/>
     </div>
   );
 };
