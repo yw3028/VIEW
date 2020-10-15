@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const S_JournalList = styled.div`
+export const JournalList = styled.div`
   display: flex;
-  margin: 50px;
+  margin: 50px 0;
 `;

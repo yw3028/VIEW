@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const S_JournalCard = styled.div`
+export const JournalCard = styled.div`
   width: 16rem;
-  height: 16rem;
+  height: auto;
   margin: auto 40px auto 0;
   box-shadow: 0 0 5px lightgray;
   position: relative;
@@ -10,26 +10,32 @@ export const S_JournalCard = styled.div`
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
-export const S_JournalDate = styled.div`
+export const JournalDate = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
-  left: 70%;
+  justify-content: center;
+  right: 10%;
   top: -10%;
   height: 3.5rem;
   width: 3.5rem;
   text-align: center;
   font-size: large;
-  padding: 2px;
+  padding: 1px;
   background: #ffcb00;
   border-radius: 5px;
 `;
 
-export const S_JournalPreview = styled.div`
+export const JournalPreview = styled.div`
   background-color: #fafafa;
   padding: 20px;
-  height: 35%;
+  height: 6rem;
+
   p {
     font-size: small;
   }
+`;
+
+export const MovieImg = styled.img`
+  width: 100%;
 `;

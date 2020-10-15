@@ -20,7 +20,7 @@ const Journal = () => {
 
   useEffect(() => {
     getJournal().then((journals) => {
-      setJournals(journals);
+      setJournals(journals.sort((a, b) => new Date(b.date) - new Date(a.date)));
     });
   }, []);
 
@@ -32,7 +32,7 @@ const Journal = () => {
     <div>
       {Object.keys(lists).map((month, index) => (
         <div key={index}>
-          <div>{month}</div>
+          <h2>{month.toUpperCase()}</h2>
           <JournalList journals={lists[month]} />
         </div>
       ))}

@@ -1,14 +1,14 @@
 import React from 'react';
 import JournalCard from '../JournalCard/JournalCard';
-import { S_JournalList } from './JournalListStyle';
+import * as S from './JournalListStyle';
 
 const JournalList = ({ journals }) => {
   return (
-    <S_JournalList>
+    <S.JournalList>
       {journals.map((journal) => (
         <JournalCard key={journal.id} journal={journal} />
       ))}
-    </S_JournalList>
+    </S.JournalList>
   );
 };
 
