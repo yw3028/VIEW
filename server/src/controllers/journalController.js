@@ -2,9 +2,9 @@ const { Journal, Movie } = require('../models');
 
 exports.getAllJournals = async (req, res) => {
   try {
-    const { UserId } = req.body;
+    // const { UserId } = req.body;
     const allJournals = await Journal.findAll({
-      where: { UserId },
+      where: { UserId: 1 },
       include: [Movie],
     });
     res.status(200).send(allJournals);
