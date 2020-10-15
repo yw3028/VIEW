@@ -1,0 +1,32 @@
+{
+  "name": "movie-journal-app",
+  "version": "1.0.0",
+  "description": "As a movie lover and a diary keeper, I have always wanted to have a personal app to keep track of the movies that I have watched and want to watch, which also allows me to scrawl or doodle something or write down some of my thoughts after watching the movie, like a diary book. Not like most of the movie apps, this app is absolutely personal, which means that no one can see any of the content that you put down unless you want to share them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yw3028/Movie-Journal-App.git"
+  },
+  "author": "Yu Wang, Jaume Fabrega, Jorge Macia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yw3028/Movie-Journal-App/issues"
+  },
+  "homepage": "https://github.com/yw3028/Movie-Journal-App#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "^2.1.2"
+  }
+}
