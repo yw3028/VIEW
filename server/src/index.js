@@ -31,7 +31,7 @@ app.use('/journal', journalRouter);
 (async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync();
+    await sequelize.sync({ force: true });
     console.log('Connected to the database'); // eslint-disable-line no-console
     await app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
