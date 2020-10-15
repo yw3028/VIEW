@@ -5,6 +5,7 @@ module.exports = (sequelize, type) => {
     },
     date: {
       type: type.DATE,
+      defaultValue: Date.now()
     },
     entry: {
       type: type.STRING,
