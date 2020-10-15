@@ -1,5 +1,5 @@
 import React from 'react';
-import './JournalStyle.js';
+import './JournalDetailStyle.js';
 import JournalMovieDetails from '../../Components/JournalMovieDetails/JournalMovieDetails';
 import JournalEntry from '../../Components/JouranlEntry/JournalEntry';
 import mockDataJournal from './MockJournalEntry';
