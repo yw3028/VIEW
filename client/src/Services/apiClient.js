@@ -31,8 +31,11 @@ export const removeFromWishlist = (id) =>
   fetchApiRequest(`wishlist/${id}`, { method: 'DELETE' });
 
 // Journals
-// get
-export const getJournal = () => fetchApiRequest('journal');
+// getAll
+export const getJournals = () => fetchApiRequest('journal');
+
+// getOne
+export const getJournalbyId = (id) => fetchApiRequest(`journal/${id}`);
 
 // post
 export const addToJournal = (data) =>
