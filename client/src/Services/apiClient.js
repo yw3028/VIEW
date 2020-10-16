@@ -62,7 +62,6 @@ const fetchApiRequest = (url, options = {}) => {
   })
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
-    .then((res) => console.log(res))
     .catch((error) => {
       console.log(`${error.message} while fetching /${url}`);
     });
