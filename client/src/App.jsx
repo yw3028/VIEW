@@ -25,7 +25,7 @@ export default () => {
       <GlobalStyle />
       <div>
         <Menu />
-        <Route path="/" component={Home}></Route>
+        <Route path="/home" component={Home}></Route>
         <Route path="/wishlist" component={Journal}></Route>
         <Route path="/watched" component={Journal}></Route>
         <Route path="/journal" component={Journal}></Route>
