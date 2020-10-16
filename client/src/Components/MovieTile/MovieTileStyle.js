@@ -11,9 +11,9 @@ export const MovieTile = styled.div`
   }
 
   .movie_img {
-    width: 250px;
+    width: 150px;
     @media screen and (min-device-width: 780px) {
-      width: 300px;
+      width: 200px;
     }
   }
 

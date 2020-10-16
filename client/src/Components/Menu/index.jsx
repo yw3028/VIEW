@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -28,6 +27,7 @@ import jhim from '../../assets/Jhim.png';
 const useStyles = makeStyles({
   menu: {
     position: 'relative',
+    paddingBottom: '30px',
   },
   list: {
     width: 300,
