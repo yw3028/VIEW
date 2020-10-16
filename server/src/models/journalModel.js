@@ -8,7 +8,7 @@ module.exports = (sequelize, type) => {
       defaultValue: Date.now(),
     },
     entry: {
-      type: type.STRING,
+      type: type.STRING(15000),
     },
     location: {
       type: type.STRING,
