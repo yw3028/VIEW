@@ -8,7 +8,6 @@ const imageUrlPath = 'https://image.tmdb.org/t/p/w300/';
 const JournalMovieDetails = ({movie}) => {
   return (
     <S.JournalMovieDetails>
-    {console.log(movie)}
       <S.DesktopPoster
         src={imageUrlPath + movie.poster}
         alt="movie-poster"
