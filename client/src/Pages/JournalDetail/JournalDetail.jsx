@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './JournalDetailStyle.js';
 import JournalMovieDetails from '../../Components/JournalMovieDetails/JournalMovieDetails';
 import JournalEntry from '../../Components/JouranlEntry/JournalEntry';
-import mockDataJournal from './MockJournalEntry';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import * as S from './JournalStyle';
+import { getJournalById } from '../../Services/apiClient';
 
-const useStyles = makeStyles((theme) => ({
+import * as S from './JournalDetailStyle';
+
+const useStyles = makeStyles(() => ({
   root: {
     '& > *': {
       margin: 20,
@@ -19,8 +20,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const JournalPage = () => {
+const JournalDetail = (props) => {
   const classes = useStyles();
+  const journalId = props.match.params.id;
+  const [journalEntry, setJournalEntry] = useState({});
+
+  useEffect(() => {
+    getJournalById(journalId).then((journal) => {
+      setJournalEntry(journal);
+      console.log(journal, 'journal');
+    });
+  }, [props]);
 
   return (
     <S.PageContainer>
@@ -34,12 +44,14 @@ const JournalPage = () => {
       </S.TopIcons>
       <S.MovieAndJournalContainer>
         <S.MovieDetailsContainer>
-          <JournalMovieDetails></JournalMovieDetails>
+          {journalEntry.Movie && (
+            <JournalMovieDetails movie={journalEntry.Movie} />
+          )}
         </S.MovieDetailsContainer>
-        <JournalEntry journalEntry={mockDataJournal}></JournalEntry>
+        <JournalEntry journalEntry={journalEntry}></JournalEntry>
       </S.MovieAndJournalContainer>
     </S.PageContainer>
   );
 };
 
-export default JournalPage;
+export default JournalDetail;
