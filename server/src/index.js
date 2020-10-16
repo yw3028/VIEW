@@ -10,6 +10,7 @@ const userRouter = require('./routes/userRouter');
 const wishlistRouter = require('./routes/wishlistRouter');
 const watchedlistRouter = require('./routes/watchedlistRouter');
 const journalRouter = require('./routes/journalRouter');
+const mockDbDev = require('./utils/mockDbDev');
 
 config();
 const { PORT } = process.env;
@@ -27,7 +28,6 @@ app.use('/wishlist', wishlistRouter);
 app.use('/watched', watchedlistRouter);
 app.use('/journal', journalRouter);
 
-
 (async () => {
   try {
     await sequelize.authenticate();
@@ -35,6 +35,7 @@ app.use('/journal', journalRouter);
     console.log('Connected to the database'); // eslint-disable-line no-console
     await app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
+    if (process.env.NODE_ENV === 'development') mockDbDev();
   } catch (error) {
     console.error(error); // eslint-disable-line no-console
   }
