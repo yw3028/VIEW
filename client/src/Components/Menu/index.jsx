@@ -150,7 +150,7 @@ export default () => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon />
+          <MenuIcon fontSize="large"/>
         </Button>
         <SwipeableDrawer
           anchor="left"
