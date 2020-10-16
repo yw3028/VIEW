@@ -15,6 +15,7 @@ const groupByMonths = (journals, date) => {
     };
   }, {});
 };
+
 const Journal = () => {
   const [journals, setJournals] = useState([]);
   const [lists, setLists] = useState({});
@@ -26,6 +27,7 @@ const Journal = () => {
   useEffect(() => {
     journals.length && setLists(groupByMonths(journals, 'date'));
   }, [journals]);
+
   return (
     <S.JournalPage>
       {Object.keys(lists).map((month, index) => (
@@ -37,4 +39,5 @@ const Journal = () => {
     </S.JournalPage>
   );
 };
+
 export default Journal;
