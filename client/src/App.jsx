@@ -5,6 +5,7 @@ import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
+import MovieDetail from './Pages/MovieDetail/MovieDetail';
 
 import GlobalStyle from './globalStyle';
 import App from './AppStyles';
@@ -43,8 +44,16 @@ export default () => {
             />
           )}
         ></Route>
-        <Route path="/wishlist" component={Journal}></Route>
+        <Route path="/wishlist" component={MovieDetail}></Route>
+        <Route
+          path="/wishlist/:id"
+          render={(props) => <MovieDetail {...props} />}
+        ></Route>
         <Route path="/watched" component={Journal}></Route>
+        <Route
+          path="/watched/:id"
+          render={(props) => <MovieDetail {...props} />}
+        ></Route>
         <Route exact path="/journal" component={Journal}></Route>
         <Route
           path="/journal/:id"

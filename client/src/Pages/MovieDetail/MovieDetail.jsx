@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MovieDetailStyle.js';
 import MovieDetails from '../../Components/MovieDetails/MovieDetails';
 import ActionButtons from '../../Components/ActionButton/ActionButtons';
@@ -17,8 +17,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MoviePage = () => {
+const MoviePage = (props) => {
   const classes = useStyles();
+
+  const movieId = props.match.params.id;
+  const [movieDetail, setMovieDetail] = useState({});
+
+  // useEffect(() => {
+
+  //   });
+  // }, [props]);
 
   return (
     <S.PageContainer>
