@@ -29,6 +29,7 @@ export const MovieTile = styled.div`
     background: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     transition: all 0.4s ease;
+    border-radius: 10px;
   }
 
   .movie_overlay_btn,

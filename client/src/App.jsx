@@ -9,15 +9,20 @@ import JournalEntry from './Components/JouranlEntry/JournalEntry';
 import GlobalStyle from './globalStyle';
 import App from './AppStyles';
 import MoviedApi from './Services/moviedApiClient';
+import { getWatchedlist, getWishlist } from './Services/apiClient';
 
 export default () => {
-  const [movies, setMovies] = useState({});
   const [explore, setExplore] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [status, setStatus] = useState([]);
 
   useEffect(() => {
-    MoviedApi.getExploreMovies().then((movies) => setMovies());
+    MoviedApi.getExploreMovies().then((movies) => setExplore(movies));
+    getWishlist().then((movies) => setWishlist(movies));
+    getWatchedlist()
+      .then((movies) => setWatched(movies))
+      .then(() => setStatus(true));
   }, []);
 
   return (
@@ -25,7 +30,19 @@ export default () => {
       <GlobalStyle />
       <div>
         <Menu />
-        <Route path="/home" component={Home}></Route>
+        <Route
+          exact
+          path="/"
+          render={(routeProps) => (
+            <Home
+              {...routeProps}
+              explore={explore}
+              wishlist={wishlist}
+              watched={watched}
+              status={status}
+            />
+          )}
+        ></Route>
         <Route path="/wishlist" component={Journal}></Route>
         <Route path="/watched" component={Journal}></Route>
         <Route exact path="/journal" component={Journal}></Route>
