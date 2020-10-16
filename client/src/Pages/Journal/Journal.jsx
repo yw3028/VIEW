@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import JournalList from '../../Components/JournalList/JournalList';
+
 import * as S from './JournalStyle';
-import { getJournal } from '../../Services/apiClient';
+
+import { getJournals } from '../../Services/apiClient';
+
 const groupByMonths = (journals, date) => {
   return journals.reduce((result, journal) => {
     const key = moment(journal[date]).format('MMMM YYYY');
@@ -12,17 +15,21 @@ const groupByMonths = (journals, date) => {
     };
   }, {});
 };
+
 const Journal = () => {
   const [journals, setJournals] = useState([]);
   const [lists, setLists] = useState({});
+  
   useEffect(() => {
-    getJournal().then((journals) => {
+    getJournals().then((journals) => {
       setJournals(journals.sort((a, b) => new Date(b.date) - new Date(a.date)));
     });
   }, []);
+
   useEffect(() => {
     journals.length && setLists(groupByMonths(journals, 'date'));
   }, [journals]);
+
   return (
     <S.JournalPage>
       {Object.keys(lists).map((month, index) => (
@@ -34,4 +41,5 @@ const Journal = () => {
     </S.JournalPage>
   );
 };
+
 export default Journal;

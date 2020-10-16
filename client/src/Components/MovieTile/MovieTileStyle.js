@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export default styled.div`
+export const MovieTile = styled.div`
   display: inline-block;
   margin-right: 10px;
   position: relative;
@@ -11,10 +11,9 @@ export default styled.div`
   }
 
   .movie_img {
-    border-radius: 10px;
-    width: 250px;
+    width: 150px;
     @media screen and (min-device-width: 780px) {
-      width: 250px;
+      width: 200px;
     }
   }
 

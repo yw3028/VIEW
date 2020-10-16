@@ -31,8 +31,11 @@ export const removeFromWishlist = (id) =>
   fetchApiRequest(`wishlist/${id}`, { method: 'DELETE' });
 
 // Journals
-// get
-export const getJournal = () => fetchApiRequest('journal');
+// getAll
+export const getJournals = () => fetchApiRequest('journal');
+
+// getOne
+export const getJournalById = (id) => fetchApiRequest(`journal/${id}`);
 
 // post
 export const addToJournal = (data) =>
@@ -62,7 +65,6 @@ const fetchApiRequest = (url, options = {}) => {
   })
     .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
     .then((res) => res.json())
-    .then((res) => console.log(res))
     .catch((error) => {
       console.log(`${error.message} while fetching /${url}`);
     });
