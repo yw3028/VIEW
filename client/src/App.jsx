@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
-import JournalEntry from './Components/JouranlEntry/JournalEntry';
+import JournalDetail from './Pages/JournalDetail/JournalDetail';
 
 import GlobalStyle from './globalStyle';
 import App from './AppStyles';
@@ -48,7 +48,7 @@ export default () => {
         <Route exact path="/journal" component={Journal}></Route>
         <Route
           path="/journal/:id"
-          render={(props) => <JournalEntry {...props} />}
+          render={(props) => <JournalDetail {...props} />}
         ></Route>
       </div>
     </App>
