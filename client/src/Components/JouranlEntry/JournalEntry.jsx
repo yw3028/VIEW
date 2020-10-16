@@ -1,36 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import {
-  S_JournalEntryContainer,
-  S_DateWeatherContainer,
-  S_MobileLabel,
-  S_JournalTitle,
-  S_JournalContent,
-  // S_Test,
-} from './JournalEntryStyle';
+import * as S from './JournalEntryStyle';
 
-const JournalEntry = ({ journalEntry }) => {
-  const {
-    title,
-    entry,
-    date,
-    weather,
-    weatherTemperature,
-    location,
-  } = journalEntry;
+import { getJournalById } from '../../Services/apiClient';
+
+const JournalEntry = (props) => {
+  const journalId = props.match.params.id;
+  const [journalEntry, setJournalEntry] = useState({});
+
+  useEffect(() => {
+    getJournalById(journalId).then((journal) => {
+      setJournalEntry(journal);
+    });
+  }, []);
 
   return (
-    <S_JournalEntryContainer>
-      {/* <S_Test> */}
-      <S_DateWeatherContainer>
+    <S.JournalEntryContainer>
+      {console.log(journalEntry)}
+      {/* <S.Test> */}
+      <S.DateWeatherContainer>
         <p>{moment(journalEntry.date).format('MMMM Do YYYY, h:mm')}</p>
-        <S_MobileLabel>&nbsp;·&nbsp;</S_MobileLabel>
+        <S.MobileLabel>&nbsp;·&nbsp;</S.MobileLabel>
         <p>{journalEntry.location} · 22ºC</p>
-      </S_DateWeatherContainer>
-      <S_JournalTitle>{journalEntry.title}</S_JournalTitle>
-      <S_JournalContent>{journalEntry.entry}</S_JournalContent>
-      {/* </S_Test> */}
-    </S_JournalEntryContainer>
+      </S.DateWeatherContainer>
+      <S.JournalTitle>{journalEntry.title}</S.JournalTitle>
+      <S.JournalContent>{journalEntry.entry}</S.JournalContent>
+      {/* </S.Test> */}
+    </S.JournalEntryContainer>
   );
 };
 

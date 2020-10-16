@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export default styled.div`
+export const Slider = styled.div`
   .list_scroll {
     overflow-x: auto;
     padding: 1.8rem 1rem;

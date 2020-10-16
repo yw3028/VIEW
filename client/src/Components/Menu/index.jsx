@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -25,9 +24,11 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
 
+
 const useStyles = makeStyles({
   menu: {
     position: 'relative',
+    paddingBottom: '30px',
   },
   list: {
     width: 300,
@@ -42,7 +43,8 @@ const useStyles = makeStyles({
     padding: '1rem 2rem',
   },
   jhim: {
-    width: '70%',
+    height: 'auto',
+    maxHeight: '10rem',
     position: 'absolute',
     bottom: '1rem',
     alignSelf: 'center',
@@ -150,7 +152,7 @@ export default () => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon />
+          <MenuIcon fontSize="large"/>
         </Button>
         <SwipeableDrawer
           anchor="left"

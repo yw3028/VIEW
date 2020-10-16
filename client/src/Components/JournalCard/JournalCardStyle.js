@@ -1,11 +1,13 @@
 import styled from 'styled-components/macro';
+
 export const JournalCard = styled.div`
-  width: 16rem;
-  height: auto;
-  margin: auto 40px auto 0;
+  width: 270px;
+  height: 270px;
+  margin: 20px 40px 20px 0;
   box-shadow: 0 0 5px lightgray;
   position: relative;
 `;
+
 export const JournalDate = styled.div`
   position: absolute;
   display: flex;
@@ -21,14 +23,17 @@ export const JournalDate = styled.div`
   background: #ffcb00;
   border-radius: 5px;
 `;
+
 export const JournalPreview = styled.div`
   background-color: #fafafa;
-  padding: 20px;
-  height: 6rem;
+  padding: 50px 30px 20px 30px;
+  height: 50px;
+
   p {
     font-size: small;
   }
 `;
+
 export const MovieImg = styled.img`
   width: 100%;
 `;

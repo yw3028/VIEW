@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const S_PageContainer = styled.div`
+export const PageContainer = styled.div`
   @media screen and (min-device-width: 780px) {
     width: 90%;
     margin: auto;
@@ -11,7 +11,7 @@ export const S_PageContainer = styled.div`
   }
 `;
 
-export const S_TopIcons = styled.div`
+export const TopIcons = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -24,7 +24,7 @@ export const S_TopIcons = styled.div`
   }
 `;
 
-export const S_MovieAndJournalContainer = styled.div`
+export const MovieAndJournalContainer = styled.div`
   @media screen and (min-device-width: 780px) {
     margin: 0 auto;
     display: flex;
@@ -35,7 +35,7 @@ export const S_MovieAndJournalContainer = styled.div`
   }
 `;
 
-export const S_MovieDetailsContainer = styled.div`
+export const MovieDetailsContainer = styled.div`
   @media screen and (min-device-width: 780px) {
     position: relative;
     display: flex;

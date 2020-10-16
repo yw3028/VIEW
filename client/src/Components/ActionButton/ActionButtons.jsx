@@ -1,32 +1,29 @@
 import React from 'react';
-import {
-  S_ActionButton,
-  S_ButtonsContainer,
-  S_IconText,
-} from './ActionButtonStyles';
+
+import * as S from './ActionButtonStyle';
 
 const ActionButtons = ({ text, wish, watched, journal }) => {
   return (
-    <S_ButtonsContainer>
+    <S.ButtonsContainer>
       {wish && (
-        <S_ActionButton>
+        <S.ActionButton>
           <span class="material-icons">favorite</span>
-          {text && <S_IconText>Wishlist</S_IconText>}
-        </S_ActionButton>
+          {text && <S.IconText>Wishlist</S.IconText>}
+        </S.ActionButton>
       )}
       {watched && (
-        <S_ActionButton>
+        <S.ActionButton>
           <span class="material-icons">visibility_off</span>
-          {text && <S_IconText>Watched</S_IconText>}
-        </S_ActionButton>
+          {text && <S.IconText>Watched</S.IconText>}
+        </S.ActionButton>
       )}
       {journal && (
-        <S_ActionButton>
+        <S.ActionButton>
           <span class="material-icons">create</span>
-          {text && <S_IconText>Journal</S_IconText>}
-        </S_ActionButton>
+          {text && <S.IconText>Journal</S.IconText>}
+        </S.ActionButton>
       )}
-    </S_ButtonsContainer>
+    </S.ButtonsContainer>
   );
 };
 

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export default styled.div`
+export const MovieTile = styled.div`
   display: inline-block;
   margin-right: 10px;
   position: relative;
@@ -11,9 +11,9 @@ export default styled.div`
   }
 
   .movie_img {
-    width: 250px;
+    width: 150px;
     @media screen and (min-device-width: 780px) {
-      width: 300px;
+      width: 200px;
     }
   }
 
@@ -29,6 +29,7 @@ export default styled.div`
     background: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     transition: all 0.4s ease;
+    border-radius: 10px;
   }
 
   .movie_overlay_btn,
