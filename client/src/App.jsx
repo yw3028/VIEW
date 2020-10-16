@@ -13,36 +13,69 @@ import MoviedApi from './Services/moviedApiClient';
 import { getWatchedlist, getWishlist } from './Services/apiClient';
 
 export default () => {
-  const [explore, setExplore] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
-  const [watched, setWatched] = useState([]);
-  const [status, setStatus] = useState([]);
+  const [movies, setMovies] = useState({});
+  const [lists, setLists] = useState({
+    explore: [],
+    inWishlist: [],
+    hasWatched: [],
+    hasJournal: [],
+  });
 
   useEffect(() => {
-    MoviedApi.getExploreMovies().then((movies) => setExplore(movies));
-    getWishlist().then((movies) => setWishlist(movies));
-    getWatchedlist()
-      .then((movies) => setWatched(movies))
-      .then(() => setStatus(true));
+    MoviedApi.getExploreMovies().then((apiMovies) => {
+      const tempObj = {};
+      apiMovies.forEach((apiMovie) => {
+        tempObj[apiMovie.id] = apiMovie;
+      });
+      setMovies({ ...movies, ...tempObj });
+    });
+    getWishlist().then((wishlistMovies) => {
+      const tempObj = {};
+      const tempArr = [];
+      wishlistMovies.forEach((wishlistMovie) => {
+        tempObj[wishlistMovie.apiId] = { ...wishlistMovie, inWishlist: true };
+        tempArr.push(wishlistMovie.apiId);
+      });
+      setMovies({ ...movies, ...tempObj });
+      setLists({ ...lists, inWishlist: [...lists.inWishlist, ...tempArr] });
+    });
+    getWatchedlist().then((watchedMovies) => {
+      const tempObj = {};
+      const tempArr = [];
+      watchedMovies.forEach((watchedMovie) => {
+        tempObj[watchedMovie.apiId] = { ...watchedMovie, hasWatched: true };
+        tempArr.push(watchedMovie.apiId);
+      });
+      setMovies({ ...movies, ...tempObj });
+      setLists({ ...lists, hasWatched: [...lists.hasWatched, ...tempArr] });
+    });
   }, []);
 
+  // console.log('WISH - OUTSIDE', lists.inWishlist);
+  // console.log(
+  //   'sdafasdfasdfasdf',
+  //   lists.inWishlist.map((apiId) => movies[apiId])
+  // );
   return (
     <App>
       <GlobalStyle />
       <div>
+        {console.log(lists)}
         <Menu />
         <Route
           exact
           path="/"
-          render={(routeProps) => (
-            <Home
-              {...routeProps}
-              explore={explore}
-              wishlist={wishlist}
-              watched={watched}
-              status={status}
-            />
-          )}
+          render={(routeProps) =>
+            lists.inWishlist && (
+              <Home
+                {...routeProps}
+                // explore={list}
+                wishlist={lists.inWishlist.map((apiId) => movies[apiId])}
+                watched={lists.hasWatched.map((apiId) => movies[apiId])}
+                // status={status}
+              />
+            )
+          }
         ></Route>
         <Route path="/wishlist" component={MovieDetail}></Route>
         <Route
