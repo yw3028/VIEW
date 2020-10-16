@@ -42,7 +42,8 @@ const useStyles = makeStyles({
     padding: '1rem 2rem',
   },
   jhim: {
-    width: '70%',
+    height: 'auto',
+    maxHeight: '10rem',
     position: 'absolute',
     bottom: '1rem',
     alignSelf: 'center',

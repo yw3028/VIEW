@@ -4,8 +4,8 @@ import * as S from './HeroStyle';
 
 export default () => {
   return (
-    <Hero>
-      <h1>Hello, Jhim Jhim</h1>
-    </Hero>
+    <S.Hero>
+      <p>Hello, Jhim Jhim</p>
+    </S.Hero>
   );
 };

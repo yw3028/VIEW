@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
+import Journal from './Pages/Journal/Journal';
 
 import GlobalStyle from './globalStyle';
 import App from './AppStyles';
@@ -25,9 +26,9 @@ export default () => {
       <div>
         <Menu />
         <Route path="/" component={Home}></Route>
-        <Route path="/wishlist" component={'Wishlist'}></Route>
-        <Route path="/watched" component={'Wishlist'}></Route>
-        <Route path="/journal" component={'Wishlist'}></Route>
+        <Route path="/wishlist" component={Journal}></Route>
+        <Route path="/watched" component={Journal}></Route>
+        <Route path="/journal" component={Journal}></Route>
       </div>
     </App>
   );
