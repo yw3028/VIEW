@@ -1,13 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import {
-  S_JournalEntryContainer,
-  S_DateWeatherContainer,
-  S_MobileLabel,
-  S_JournalTitle,
-  S_JournalContent,
-  // S_Test,
-} from './JournalEntryStyle';
+import * as S from './JournalEntryStyle';
 
 const JournalEntry = ({ journalEntry }) => {
   const {
@@ -20,17 +13,17 @@ const JournalEntry = ({ journalEntry }) => {
   } = journalEntry;
 
   return (
-    <S_JournalEntryContainer>
-      {/* <S_Test> */}
-      <S_DateWeatherContainer>
+    <S.JournalEntryContainer>
+      {/* <S.Test> */}
+      <S.DateWeatherContainer>
         <p>{moment(journalEntry.date).format('MMMM Do YYYY, h:mm')}</p>
-        <S_MobileLabel>&nbsp;·&nbsp;</S_MobileLabel>
+        <S.MobileLabel>&nbsp;·&nbsp;</S.MobileLabel>
         <p>{journalEntry.location} · 22ºC</p>
-      </S_DateWeatherContainer>
-      <S_JournalTitle>{journalEntry.title}</S_JournalTitle>
-      <S_JournalContent>{journalEntry.entry}</S_JournalContent>
-      {/* </S_Test> */}
-    </S_JournalEntryContainer>
+      </S.DateWeatherContainer>
+      <S.JournalTitle>{journalEntry.title}</S.JournalTitle>
+      <S.JournalContent>{journalEntry.entry}</S.JournalContent>
+      {/* </S.Test> */}
+    </S.JournalEntryContainer>
   );
 };
 

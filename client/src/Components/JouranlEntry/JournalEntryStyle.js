@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const S_JournalEntryContainer = styled.div`
+export const JournalEntryContainer = styled.div`
   /* border: 1px solid blue; */
   padding-left: 1.5rem;
   font-family: 'Roboto';
@@ -11,7 +11,7 @@ export const S_JournalEntryContainer = styled.div`
   padding: 0 1.5rem;
 `;
 
-export const S_DateWeatherContainer = styled.div`
+export const DateWeatherContainer = styled.div`
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
@@ -28,13 +28,13 @@ export const S_DateWeatherContainer = styled.div`
   }
 `;
 
-export const S_MobileLabel = styled.div`
+export const MobileLabel = styled.div`
   @media screen and (min-device-width: 780px) {
     display: none;
   }
 `;
 
-export const S_JournalTitle = styled.textarea`
+export const JournalTitle = styled.textarea`
   font-size: 1.5rem;
   font-weight: 500;
   border: none;
@@ -49,7 +49,7 @@ export const S_JournalTitle = styled.textarea`
   }
 `;
 
-export const S_JournalContent = styled.textarea`
+export const JournalContent = styled.textarea`
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 300;
