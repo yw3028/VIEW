@@ -1,4 +1,4 @@
-import React, { useState, useEfect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import Menu from './Components/Menu';
