@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export default styled.div`
+export const MovieTile = styled.div`
   display: inline-block;
   margin-right: 10px;
   position: relative;

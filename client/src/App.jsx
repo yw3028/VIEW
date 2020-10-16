@@ -14,9 +14,6 @@ export default () => {
   const [wishlist, setWishlist] = useState([]);
   const [watched, setWatched] = useState([]);
 
-  const udpdateState = (name, list) => {
-    setMovies(movies => )
-  }
 
   useEffect(() => {
     MoviedApi.getExploreMovies().then((movies) => setMovies());

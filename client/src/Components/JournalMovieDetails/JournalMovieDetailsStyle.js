@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const S_JournalMovieDetails = styled.div`
+export const JournalMovieDetails = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
@@ -18,7 +18,7 @@ export const S_JournalMovieDetails = styled.div`
   }
 `;
 
-export const S_Backdrop = styled.div`
+export const Backdrop = styled.div`
   max-width: 100%;
   height: 30vh;
   background-size: cover;
@@ -30,7 +30,7 @@ export const S_Backdrop = styled.div`
   }
 `;
 
-export const S_DesktopPoster = styled.img`
+export const DesktopPoster = styled.img`
   display: none;
 
   @media screen and (min-device-width: 780px) {
@@ -48,11 +48,11 @@ export const S_DesktopPoster = styled.img`
   }
 `;
 
-export const S_TextBox = styled.div`
+export const TextBox = styled.div`
   margin-top: 1.5rem;
 `;
 
-export const S_MovieTitle = styled.p`
+export const MovieTitle = styled.p`
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.4rem;
@@ -60,7 +60,7 @@ export const S_MovieTitle = styled.p`
   margin-bottom: 1rem;
 `;
 
-export const S_MovieInfo = styled.p`
+export const MovieInfo = styled.p`
   font-size: 0.8rem;
   text-align: center;
   color: #797979;

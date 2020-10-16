@@ -1,7 +1,7 @@
 import React from 'react';
-
-import Slider from './SliderStyles';
 import MovieTile from '../MovieTile/MovieTile';
+
+import * as S from './SliderStyle';
 
 const movie = {
   popularity: 2119.668,
@@ -25,7 +25,7 @@ const title = 'Explore';
 
 // props => movies(array), list-title
 export default () => (
-  <Slider>
+  <S.Slider>
     <div className="list_title">{title}</div>
     <div className="list_scroll">
       {[movie, movie, movie].map((movie) => {
@@ -36,5 +36,5 @@ export default () => (
         );
       })}
     </div>
-  </Slider>
+  </S.Slider>
 );

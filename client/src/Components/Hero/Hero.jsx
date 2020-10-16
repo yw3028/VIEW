@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Hero from './HeroStyles';
+import * as S from './HeroStyle';
 
 export default () => {
   return (

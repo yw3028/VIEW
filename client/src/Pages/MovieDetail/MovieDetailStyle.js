@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const S_PageContainer = styled.div`
+export const PageContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const S_PageContainer = styled.div`
   }
 `;
 
-export const S_TopLeftIcon = styled.div`
+export const TopLeftIcon = styled.div`
   position: absolute;
   left: -5px;
   top: -5px;
@@ -35,7 +35,7 @@ export const S_TopLeftIcon = styled.div`
   }
 `;
 
-export const S_MovieDetailsContainer = styled.div`
+export const MovieDetailsContainer = styled.div`
   @media screen and (min-device-width: 780px) {
     position: relative;
     display: flex;
@@ -45,7 +45,7 @@ export const S_MovieDetailsContainer = styled.div`
   }
 `;
 
-export const S_ActionButtonsPosition = styled.div`
+export const ActionButtonsPosition = styled.div`
   position: fixed;
   bottom: 0px;
   background: white;

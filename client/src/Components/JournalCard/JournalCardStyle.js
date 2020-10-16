@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+
 export const JournalCard = styled.div`
   width: 16rem;
   height: auto;
@@ -6,6 +7,7 @@ export const JournalCard = styled.div`
   box-shadow: 0 0 5px lightgray;
   position: relative;
 `;
+
 export const JournalDate = styled.div`
   position: absolute;
   display: flex;
@@ -21,14 +23,17 @@ export const JournalDate = styled.div`
   background: #ffcb00;
   border-radius: 5px;
 `;
+
 export const JournalPreview = styled.div`
   background-color: #fafafa;
   padding: 20px;
   height: 6rem;
+
   p {
     font-size: small;
   }
 `;
+
 export const MovieImg = styled.img`
   width: 100%;
 `;

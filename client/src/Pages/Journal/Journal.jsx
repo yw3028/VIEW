@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import JournalList from '../../Components/JournalList/JournalList';
+
 import * as S from './JournalStyle';
+
 import { getJournal } from '../../Services/apiClient';
+
 const groupByMonths = (journals, date) => {
   return journals.reduce((result, journal) => {
     const key = moment(journal[date]).format('MMMM YYYY');

@@ -1,10 +1,9 @@
 import React from 'react';
-
-import MovieTile from './MovieTileStyles';
+import * as S from './MovieTileStyle';
 
 export default ({ movie }) => {
   return (
-    <MovieTile>
+    <S.MovieTile>
       <img
         className="movie_img"
         alt="movie cover"
@@ -14,6 +13,6 @@ export default ({ movie }) => {
         <button className="movie_overlay_btn">✓</button>
         <button className="movie_overlay_btn">+</button>
       </div>
-    </MovieTile>
+    </S.MovieTile>
   );
 };

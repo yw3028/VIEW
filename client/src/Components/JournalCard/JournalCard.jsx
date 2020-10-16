@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import * as S from './JournalCardStyle';
+
 const JournalCard = ({ journal }) => {
   return (
     <S.JournalCard>

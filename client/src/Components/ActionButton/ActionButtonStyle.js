@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export const S_ButtonsContainer = styled.div`
+export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 0.8rem;
@@ -11,7 +11,7 @@ export const S_ButtonsContainer = styled.div`
   }
 `;
 
-export const S_ActionButton = styled.div`
+export const ActionButton = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,15 +27,15 @@ export const S_ActionButton = styled.div`
   }
 `;
 
-export const S_Icon = styled.div``;
+export const Icon = styled.div``;
 
-export const S_IconText = styled.div`
+export const IconText = styled.div`
   font-size: 0.8rem;
   margin-top: 0.2rem;
   @media screen and (min-device-width: 780px) {
     /* margin-top: 0.5rem; */
     display: none;
-    ${S_ActionButton}:hover & {
+    ${ActionButton}:hover & {
       display: inline;
     }
   }
