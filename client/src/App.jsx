@@ -4,6 +4,8 @@ import { Route } from 'react-router-dom';
 import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
+import Wishlist from './Pages/Wishlist/Wishlist';
+import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
 
 import GlobalStyle from './globalStyle';
@@ -43,8 +45,8 @@ export default () => {
             />
           )}
         ></Route>
-        <Route path="/wishlist" component={Journal}></Route>
-        <Route path="/watched" component={Journal}></Route>
+        <Route path="/wishlist" component={Wishlist}></Route>
+        <Route path="/watched" component={WatchedList}></Route>
         <Route exact path="/journal" component={Journal}></Route>
         <Route
           path="/journal/:id"
