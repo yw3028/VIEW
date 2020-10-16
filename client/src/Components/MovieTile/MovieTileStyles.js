@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export default styled.div`
   display: inline-block;
@@ -11,9 +11,10 @@ export default styled.div`
   }
 
   .movie_img {
+    border-radius: 10px;
     width: 250px;
     @media screen and (min-device-width: 780px) {
-      width: 300px;
+      width: 250px;
     }
   }
 
@@ -29,6 +30,7 @@ export default styled.div`
     background: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     transition: all 0.4s ease;
+    border-radius: 10px;
   }
 
   .movie_overlay_btn,
