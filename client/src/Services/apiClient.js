@@ -35,7 +35,7 @@ export const removeFromWishlist = (id) =>
 export const getJournals = () => fetchApiRequest('journal');
 
 // getOne
-export const getJournalbyId = (id) => fetchApiRequest(`journal/${id}`);
+export const getJournalById = (id) => fetchApiRequest(`journal/${id}`);
 
 // post
 export const addToJournal = (data) =>
