@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './MovieDetailStyle.js';
 import MovieDetails from '../../Components/MovieDetails/MovieDetails';
 import ActionButtons from '../../Components/ActionButton/ActionButtons';
@@ -8,7 +8,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import * as S from './MovieDetailStyle';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     '& > *': {
       margin: 20,
@@ -21,12 +21,7 @@ const MoviePage = (props) => {
   const classes = useStyles();
 
   const movieId = props.match.params.id;
-  const [movieDetail, setMovieDetail] = useState({});
-
-  // useEffect(() => {
-
-  //   });
-  // }, [props]);
+  const movieDetail = props.movies[movieId];
 
   return (
     <S.PageContainer>
@@ -36,7 +31,7 @@ const MoviePage = (props) => {
         </IconButton>
       </S.TopLeftIcon>
       <S.MovieDetailsContainer>
-        <MovieDetails></MovieDetails>
+        <MovieDetails movie={movieDetail} />
       </S.MovieDetailsContainer>
       <S.ActionButtonsPosition>
         <ActionButtons
@@ -44,6 +39,7 @@ const MoviePage = (props) => {
           wish={true}
           watched={true}
           journal={true}
+          movieId={movieId}
         ></ActionButtons>
       </S.ActionButtonsPosition>
     </S.PageContainer>

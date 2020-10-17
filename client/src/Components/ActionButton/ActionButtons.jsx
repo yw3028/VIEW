@@ -1,28 +1,44 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { MovieContext } from '../../App';
 import * as S from './ActionButtonStyle';
 
-const ActionButtons = ({ text, wish, watched, journal }) => {
+const ActionButtons = ({ text, wish, watched, journal, movieId }) => {
+  const { updateMovieStatusInList, lists } = useContext(MovieContext);
+  console.log(MovieContext);
+  console.log(lists);
+  console.log('movieId', movieId);
+
   return (
     <S.ButtonsContainer>
       {wish && (
         <S.ActionButton>
-          <span class="material-icons">favorite</span>
+          <span
+            class="material-icons"
+            onClick={() =>
+              updateMovieStatusInList(Number(movieId), 'inWishlist')
+            }
+          >
+            favorite
+          </span>
           {text && <S.IconText>Wishlist</S.IconText>}
         </S.ActionButton>
       )}
-      {watched && (
+      {/* {watched && (
         <S.ActionButton>
-          <span class="material-icons">visibility_off</span>
+          <span class="material-icons" onClick={updateMovieStatusInList}>
+            visibility_off
+          </span>
           {text && <S.IconText>Watched</S.IconText>}
         </S.ActionButton>
       )}
       {journal && (
         <S.ActionButton>
-          <span class="material-icons">create</span>
+          <span class="material-icons" onClick={updateMovieStatusInList}>
+            create
+          </span>
           {text && <S.IconText>Journal</S.IconText>}
         </S.ActionButton>
-      )}
+      )} */}
     </S.ButtonsContainer>
   );
 };

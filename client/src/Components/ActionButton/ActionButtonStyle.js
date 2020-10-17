@@ -11,7 +11,7 @@ export const ButtonsContainer = styled.div`
   }
 `;
 
-export const ActionButton = styled.div`
+export const ActionButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
