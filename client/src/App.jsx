@@ -32,19 +32,6 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    getWishlist().then((wishlistMovies) => {
-      const tempObj = {};
-      const tempArr = [];
-      wishlistMovies.forEach((wishlistMovie) => {
-        tempObj[wishlistMovie.apiId] = { ...wishlistMovie, inWishlist: true };
-        tempArr.push(wishlistMovie.apiId);
-      });
-      setMovies({ ...movies, ...tempObj });
-      setLists({ ...lists, inWishlist: [...lists.inWishlist, ...tempArr] });
-    });
-  }, []);
-
-  useEffect(() => {
     getWatchedlist().then((watchedMovies) => {
       const tempObj = {};
       const tempArr = [];
@@ -53,18 +40,37 @@ export default () => {
         tempArr.push(watchedMovie.apiId);
       });
       // console.log('tempArr', tempArr);
-      setMovies({ ...movies, ...tempObj });
-      setLists({ ...lists, hasWatched: [...lists.hasWatched, ...tempArr] });
+      // setMovies({ ...movies, ...tempObj });
+      setMovies(Object.assign(movies, tempObj));
+      // const tempObj2 = Object.assign(lists, tempObj);
+      // setLists({ ...lists, hasWatched: [...lists.hasWatched, ...tempArr] });
+      setLists(Object.assign(lists, { hasWatched: tempArr }));
     });
   }, []);
+  useEffect(() => {
+    getWishlist().then((wishlistMovies) => {
+      const tempObj = {};
+      const tempArr = [];
+      wishlistMovies.forEach((wishlistMovie) => {
+        tempObj[wishlistMovie.apiId] = { ...wishlistMovie, inWishlist: true };
+        tempArr.push(wishlistMovie.apiId);
+      });
+      // setMovies({ ...movies, ...tempObj });
+      setMovies(Object.assign(movies, tempObj));
+      setLists(Object.assign(lists, { inWishlist: tempArr }));
+      // setLists({ ...lists, inWishlist: [...lists.inWishlist, ...tempArr] });
+    });
+  }, []);
+
   const wishlist = lists.inWishlist.map((apiId) => movies[apiId]);
   const watchlist = lists.hasWatched.map((apiId) => movies[apiId]);
   console.log('>>>>>> LOGS STARTS <<<<<<<');
   console.log('MOVIES: ', movies);
-  console.log('LIST.inWishlist: ', lists.inWishlist);
+  console.log('LISTS : ', lists);
   console.log('LIST.hasWatched: ', lists.hasWatched);
-  console.log('wishlist: ', wishlist);
+  console.log('LIST.inWishlist: ', lists.inWishlist);
   console.log('watchlist: ', watchlist);
+  console.log('wishlist: ', wishlist);
   // console.log('WATCHED - OUTSIDE', lists.hasWatched);
   return (
     <App>
@@ -81,7 +87,7 @@ export default () => {
                 {...routeProps}
                 // explore={list}
                 wishlist={wishlist}
-                // watched={lists.hasWatched.map((apiId) => movies[apiId])}
+                watched={watchlist}
                 // status={status}
               />
             )
