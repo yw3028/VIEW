@@ -10,7 +10,7 @@ import MovieDetail from './Pages/MovieDetail/MovieDetail';
 import GlobalStyle from './globalStyle';
 import App from './AppStyles';
 import MoviedApi from './Services/moviedApiClient';
-import { getWatchedlist, getWishlist } from './Services/apiClient';
+import { getWatchedlist, getWishlist, getJournals } from './Services/apiClient';
 
 export default () => {
   const [movies, setMovies] = useState({});
@@ -21,62 +21,69 @@ export default () => {
     hasJournal: [],
   });
 
+  const updateMovieStatusInList = (movieId, list) => {
+    setLists((lists) => ({
+      ...lists,
+      [list]: lists[list].include(movieId)
+        ? lists[list].filter((id) => id !== movieId)
+        : [...lists[list], movieId],
+    }));
+    setMovies((movies) => ({
+      ...movies,
+      [movieId]: Object.assign(movies[movieId], {
+        list: !movies[movieId].list,
+      }),
+    }));
+  };
+
+  const updateState = (name, apiMovies) => {
+    setMovies((movies) =>
+      apiMovies.reduce(
+        (acc, movie) => ({
+          ...acc,
+          [movie.id]: Object.assign(movie, { [name]: true }),
+        }),
+        movies
+      )
+    );
+    setLists((lists) => ({
+      ...lists,
+      [name]: apiMovies.map((movie) => movie.id),
+    }));
+  };
+
   useEffect(() => {
     MoviedApi.getExploreMovies().then((apiMovies) => {
-      const tempObj = {};
-      apiMovies.forEach((apiMovie) => {
-        tempObj[apiMovie.id] = apiMovie;
-      });
-      setMovies({ ...movies, ...tempObj });
+      updateState('explore', apiMovies);
     });
-  }, []);
-
-  useEffect(() => {
     getWatchedlist().then((watchedMovies) => {
-      const tempObj = {};
-      const tempArr = [];
-      watchedMovies.forEach((watchedMovie) => {
-        tempObj[watchedMovie.apiId] = { ...watchedMovie, hasWatched: true };
-        tempArr.push(watchedMovie.apiId);
-      });
-      // console.log('tempArr', tempArr);
-      // setMovies({ ...movies, ...tempObj });
-      setMovies(Object.assign(movies, tempObj));
-      // const tempObj2 = Object.assign(lists, tempObj);
-      // setLists({ ...lists, hasWatched: [...lists.hasWatched, ...tempArr] });
-      setLists(Object.assign(lists, { hasWatched: tempArr }));
+      updateState('hasWatched', watchedMovies);
     });
-  }, []);
-  useEffect(() => {
     getWishlist().then((wishlistMovies) => {
-      const tempObj = {};
-      const tempArr = [];
-      wishlistMovies.forEach((wishlistMovie) => {
-        tempObj[wishlistMovie.apiId] = { ...wishlistMovie, inWishlist: true };
-        tempArr.push(wishlistMovie.apiId);
-      });
-      // setMovies({ ...movies, ...tempObj });
-      setMovies(Object.assign(movies, tempObj));
-      setLists(Object.assign(lists, { inWishlist: tempArr }));
-      // setLists({ ...lists, inWishlist: [...lists.inWishlist, ...tempArr] });
+      updateState('inWishlist', wishlistMovies);
+    });
+    getJournals().then((journals) => {
+      updateState('hasJournal', journals);
     });
   }, []);
 
+  const exploreList = lists.explore.map((apiId) => movies[apiId]);
   const wishlist = lists.inWishlist.map((apiId) => movies[apiId]);
   const watchlist = lists.hasWatched.map((apiId) => movies[apiId]);
   console.log('>>>>>> LOGS STARTS <<<<<<<');
   console.log('MOVIES: ', movies);
   console.log('LISTS : ', lists);
+  console.log('LIST.explore: ', lists.explore);
   console.log('LIST.hasWatched: ', lists.hasWatched);
   console.log('LIST.inWishlist: ', lists.inWishlist);
+  console.log('LIST.hasJournal: ', lists.hasJournal);
+  console.log('exploreList: ', exploreList);
   console.log('watchlist: ', watchlist);
   console.log('wishlist: ', wishlist);
-  // console.log('WATCHED - OUTSIDE', lists.hasWatched);
   return (
     <App>
       <GlobalStyle />
       <div>
-        {/* {console.log('LISTS >>>>>>', lists)} */}
         <Menu />
         <Route
           exact
@@ -85,22 +92,17 @@ export default () => {
             lists.inWishlist && (
               <Home
                 {...routeProps}
-                // explore={list}
+                explore={exploreList}
                 wishlist={wishlist}
                 watched={watchlist}
-                // status={status}
               />
             )
           }
         ></Route>
-        <Route path="/wishlist" component={MovieDetail}></Route>
-        <Route
-          path="/wishlist/:id"
-          render={(props) => <MovieDetail {...props} />}
-        ></Route>
+        <Route path="/wishlist" component={WishList}></Route>
         <Route path="/watched" component={Journal}></Route>
         <Route
-          path="/watched/:id"
+          path="/movie/:id"
           render={(props) => <MovieDetail {...props} />}
         ></Route>
         <Route exact path="/journal" component={Journal}></Route>
