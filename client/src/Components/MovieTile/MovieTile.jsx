@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '../ActionButton/ActionButtons';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import { MovieContext } from '../../App';
+import { useHistory } from 'react-router-dom';
 
 import * as S from './MovieTileStyle';
 
 export default ({ movie }) => {
   // In our db the poster is called poster but in moviedApi is called poster_path
+  const { updateMovieStatusInList } = useContext(MovieContext);
+
+  const history = useHistory();
+
   const image = movie.poster_path ? movie.poster_path : movie.poster;
   return (
-    <Link to={`/movie/${movie.apiId ? movie.apiId : movie.id}`}>
+    <div
+      onClick={() =>
+        history.push(`/movie/${movie.apiId ? movie.apiId : movie.id}#movie`)
+      }
+    >
+      {/* <HashLink to={`/movie/${movie.apiId ? movie.apiId : movie.id}#movie`}> */}
       <S.MovieTile>
         <img
           className="movie_img"
@@ -20,6 +31,14 @@ export default ({ movie }) => {
             <Button
               wish={true}
               movieId={movie.apiId ? movie.apiId : movie.id}
+              onClick={(event) => {
+                event.preventDefault();
+                // event.stopPropagation();
+                updateMovieStatusInList(
+                  Number(movie.apiId ? movie.apiId : movie.id),
+                  'inWishlist'
+                );
+              }}
             />
           </button>
           <button className="movie_overlay_btn">
@@ -31,6 +50,7 @@ export default ({ movie }) => {
           </button>
         </div>
       </S.MovieTile>
-    </Link>
+      {/* </HashLink> */}
+    </div>
   );
 };

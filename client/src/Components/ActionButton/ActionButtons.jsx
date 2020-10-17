@@ -4,9 +4,6 @@ import * as S from './ActionButtonStyle';
 
 const ActionButtons = ({ text, wish, watched, journal, movieId }) => {
   const { updateMovieStatusInList, lists } = useContext(MovieContext);
-  console.log(MovieContext);
-  console.log(lists);
-  console.log('movieId', movieId);
 
   return (
     <S.ButtonsContainer>
