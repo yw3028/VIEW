@@ -29,6 +29,9 @@ export default () => {
       });
       setMovies({ ...movies, ...tempObj });
     });
+  }, []);
+
+  useEffect(() => {
     getWishlist().then((wishlistMovies) => {
       const tempObj = {};
       const tempArr = [];
@@ -39,6 +42,9 @@ export default () => {
       setMovies({ ...movies, ...tempObj });
       setLists({ ...lists, inWishlist: [...lists.inWishlist, ...tempArr] });
     });
+  }, []);
+
+  useEffect(() => {
     getWatchedlist().then((watchedMovies) => {
       const tempObj = {};
       const tempArr = [];
@@ -46,21 +52,25 @@ export default () => {
         tempObj[watchedMovie.apiId] = { ...watchedMovie, hasWatched: true };
         tempArr.push(watchedMovie.apiId);
       });
+      // console.log('tempArr', tempArr);
       setMovies({ ...movies, ...tempObj });
       setLists({ ...lists, hasWatched: [...lists.hasWatched, ...tempArr] });
     });
   }, []);
-
-  // console.log('WISH - OUTSIDE', lists.inWishlist);
-  // console.log(
-  //   'sdafasdfasdfasdf',
-  //   lists.inWishlist.map((apiId) => movies[apiId])
-  // );
+  const wishlist = lists.inWishlist.map((apiId) => movies[apiId]);
+  const watchlist = lists.hasWatched.map((apiId) => movies[apiId]);
+  console.log('>>>>>> LOGS STARTS <<<<<<<');
+  console.log('MOVIES: ', movies);
+  console.log('LIST.inWishlist: ', lists.inWishlist);
+  console.log('LIST.hasWatched: ', lists.hasWatched);
+  console.log('wishlist: ', wishlist);
+  console.log('watchlist: ', watchlist);
+  // console.log('WATCHED - OUTSIDE', lists.hasWatched);
   return (
     <App>
       <GlobalStyle />
       <div>
-        {console.log(lists)}
+        {/* {console.log('LISTS >>>>>>', lists)} */}
         <Menu />
         <Route
           exact
@@ -70,8 +80,8 @@ export default () => {
               <Home
                 {...routeProps}
                 // explore={list}
-                wishlist={lists.inWishlist.map((apiId) => movies[apiId])}
-                watched={lists.hasWatched.map((apiId) => movies[apiId])}
+                wishlist={wishlist}
+                // watched={lists.hasWatched.map((apiId) => movies[apiId])}
                 // status={status}
               />
             )

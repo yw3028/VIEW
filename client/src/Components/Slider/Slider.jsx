@@ -4,7 +4,7 @@ import MovieTile from '../MovieTile/MovieTile';
 import * as S from './SliderStyle';
 
 export default ({ list, title }) => {
-  console.log('LIST', list);
+  // console.log('LIST', list);
   return (
     <S.Slider>
       <div className="list_title">{title}</div>
