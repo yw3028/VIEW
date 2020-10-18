@@ -2,6 +2,7 @@ const { User } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {
+    console.log(req.headers.authorization);
     // const { UserId } = req.body;
     const user = await User.findByPk(1);
     if (!user) {
