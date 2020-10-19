@@ -20,8 +20,10 @@ const useStyles = makeStyles(() => ({
 const MoviePage = (props) => {
   const classes = useStyles();
 
+  // Use useEffect as good practice
+
   const movieId = props.match.params.id;
-  const movieDetail = props.movies[movieId];
+  const movieDetail = props.movies[movieId] || null; // Call hk, useEffect as good pracite and make async;
 
   return (
     <S.PageContainer>

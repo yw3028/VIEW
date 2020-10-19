@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import history from './history';
 
 import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
@@ -24,8 +25,6 @@ export default () => {
   });
 
   const updateMovieStatusInList = (movieId, list) => {
-    console.log('updateMovieStatusInList -> list', list);
-    console.log('updateMovieStatusInList -> movieId', movieId);
     setLists((lists) => ({
       ...lists,
       [list]: lists[list].includes(movieId)
@@ -35,23 +34,36 @@ export default () => {
     setMovies((movies) => ({
       ...movies,
       [movieId]: Object.assign(movies[movieId], {
-        list: !movies[movieId].list,
+        [list]: !movies[movieId][list],
       }),
     }));
   };
 
   const updateState = (name, apiMovies) => {
     setMovies((movies) =>
-      apiMovies.reduce(
-        (acc, movie) => ({
+      apiMovies.reduce((acc, movie) => {
+        const id = movie.apiId ? movie.apiId : movie.id;
+        if (acc[id]) {
+          Object.assign(acc[id], { [name]: true });
+          return acc;
+        }
+        return {
           ...acc,
-          [movie.apiId ? movie.apiId : movie.id]: Object.assign(movie, {
-            [name]: true,
-          }),
-        }),
-        movies
-      )
+          [id]: Object.assign(movie, { [name]: true }),
+        };
+      }, movies)
     );
+    // apiMovies.reduce(
+    //   (acc, movie) => ({
+    //     ...acc,
+    //     // [movie[name]]: Object.assign(movie, { [name]: true }),
+    //     [movie.apiId ? movie.apiId : movie.id]: Object.assign(movie, {
+    //       [name]: true,
+    //     }),
+    //   }),
+    //   movies
+    //   )
+    // );
     setLists((lists) => ({
       ...lists,
       [name]: apiMovies.map((movie) => (movie.apiId ? movie.apiId : movie.id)),
@@ -59,31 +71,33 @@ export default () => {
   };
 
   useEffect(() => {
-    MoviedApi.getExploreMovies().then((apiMovies) => {
+    const promiseOne = MoviedApi.getExploreMovies().then((apiMovies) => {
       updateState('explore', apiMovies);
     });
-    getWatchedlist().then((watchedMovies) => {
+    const promiseTwo = getWatchedlist().then((watchedMovies) => {
       updateState('hasWatched', watchedMovies);
     });
-    getWishlist().then((wishlistMovies) => {
+    const promiseThree = getWishlist().then((wishlistMovies) => {
       updateState('inWishlist', wishlistMovies);
     });
-    getJournals().then((journals) => {
-      setMovies((movies) =>
-        journals.reduce(
-          (acc, journal) => ({
-            ...acc,
-            [journal.Movie.id]: Object.assign(journal.Movie, {
-              hasjournals: true,
+    Promise.all([promiseOne, promiseTwo, promiseThree]).then(() => {
+      getJournals().then((journals) => {
+        setMovies((movies) =>
+          journals.reduce(
+            (acc, journal) => ({
+              ...acc,
+              [journal.Movie.apiId]: Object.assign(acc[journal.Movie.apiId], {
+                hasJournal: journal.Movie.id,
+              }),
             }),
-          }),
-          movies
-        )
-      );
-      setLists((lists) => ({
-        ...lists,
-        hasJournal: journals.map((journal) => journal.Movie.id),
-      }));
+            movies
+          )
+        );
+        setLists((lists) => ({
+          ...lists,
+          hasJournal: journals.map((journal) => journal.Movie.apiId),
+        }));
+      });
     });
   }, []);
 
@@ -101,10 +115,10 @@ export default () => {
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
   return (
-    <MovieContext.Provider value={{ updateMovieStatusInList, lists }}>
+    <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
       <App>
         <GlobalStyle />
-        <div>
+        <div history={history}>
           <Menu />
           <Route
             exact
