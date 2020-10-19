@@ -86,7 +86,7 @@ export default () => {
       </div>
       <Divider />
       <List className={classes.listItems}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <ListItem button key="Home">
             <ListItemIcon>
               <HomeIcon />
