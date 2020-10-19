@@ -53,17 +53,6 @@ const App = () => {
         };
       }, movies)
     );
-    // apiMovies.reduce(
-    //   (acc, movie) => ({
-    //     ...acc,
-    //     // [movie[name]]: Object.assign(movie, { [name]: true }),
-    //     [movie.apiId ? movie.apiId : movie.id]: Object.assign(movie, {
-    //       [name]: true,
-    //     }),
-    //   }),
-    //   movies
-    //   )
-    // );
     setLists((lists) => ({
       ...lists,
       [name]: apiMovies.map((movie) => (movie.apiId ? movie.apiId : movie.id)),
