@@ -3,12 +3,10 @@ import styled from 'styled-components/macro';
 export const MovieDetails = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
   font-weight: 300;
 
   @media screen and (min-device-width: 780px) {
     flex-direction: row;
-    align-items: center;
     width: 80%;
     margin: auto;
   }
@@ -77,7 +75,7 @@ export const MoviePlot = styled.p`
 
   @media screen and (min-device-width: 1200px) {
     font-size: 1.2rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     line-height: 1.8rem;
   }
 `;
@@ -87,5 +85,6 @@ export const DesktopLabels = styled.span`
 
   @media screen and (min-device-width: 1200px) {
     display: inline;
+    font-weight: 500;
   }
 `;

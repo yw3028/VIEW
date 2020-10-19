@@ -1,6 +1,5 @@
 import React from 'react';
-// import movie from './MockDataMovieDetails';
-
+import moment from 'moment';
 import * as S from './MovieDetailsStyle';
 
 const imageUrlPath = 'https://image.tmdb.org/t/p/w300/';
@@ -17,16 +16,16 @@ const MovieDetails = ({ movie }) => {
         <S.MovieTitle>{movie.title}</S.MovieTitle>
         <S.MovieInfo>
           <S.DesktopLabels>Released Date: </S.DesktopLabels>
-          {movie.release_date}
+          {moment(movie.release_date).format('D MMMM YYYY')}
         </S.MovieInfo>
-        <S.MovieInfo>
+        {/* <S.MovieInfo>
           <S.DesktopLabels>Genre: </S.DesktopLabels>
           {movie.genre}
-        </S.MovieInfo>
-        <S.MovieInfo>
+        </S.MovieInfo> */}
+        {/* <S.MovieInfo>
           <S.DesktopLabels>Runtime: </S.DesktopLabels>
           {movie.runTime} min
-        </S.MovieInfo>
+        </S.MovieInfo> */}
         <S.MoviePlot>{movie.overview}</S.MoviePlot>
       </S.TextBox>
     </S.MovieDetails>

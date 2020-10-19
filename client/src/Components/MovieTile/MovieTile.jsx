@@ -29,6 +29,7 @@ export default ({ movie }) => {
         <div className="movie_overlay">
           <button className="movie_overlay_btn">
             <Button
+              color={'white'}
               wish={true}
               movieId={movie.apiId ? movie.apiId : movie.id}
               onClick={(event) => {
@@ -43,8 +44,8 @@ export default ({ movie }) => {
           </button>
           <button className="movie_overlay_btn">
             <Button
+              color={'white'}
               watched={true}
-              color={true}
               movieId={movie.apiId ? movie.apiId : movie.id}
             />
           </button>
