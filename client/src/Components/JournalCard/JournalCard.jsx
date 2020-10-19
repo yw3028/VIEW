@@ -1,12 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import { HashLink } from 'react-router-hash-link';
 
 import * as S from './JournalCardStyle';
 
 const JournalCard = ({ journal }) => {
   return (
-    <Link to={`/journal/${journal.id}`}>
+    <HashLink to={`/journal/${journal.id}#${journal.id}`}>
       <S.JournalCard>
         <S.JournalDate>
           <div style={{ padding: '5px' }}>
@@ -22,7 +23,7 @@ const JournalCard = ({ journal }) => {
           alt={journal.Movie.title}
         ></S.MovieImg>
       </S.JournalCard>
-    </Link>
+    </HashLink>
   );
 };
 export default JournalCard;
