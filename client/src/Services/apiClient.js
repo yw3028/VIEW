@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const BASE_URL = 'http://localhost:3001';
 
 // Watchedlists
@@ -57,14 +59,13 @@ export const deleteJournalEntry = (id) =>
 
 // Helper fetch function
 const fetchApiRequest = (url, options = {}) => {
-  return fetch(`${BASE_URL}/${url}`, {
+  return axios(`${BASE_URL}/${url}`, {
     headers: {
       'Content-Type': 'application/json',
     },
     ...options,
   })
-    .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
-    .then((res) => res.json())
+    .then((res) => (res.status <= 400 ? res.data : Promise.reject(res)))
     .catch((error) => {
       console.log(`${error.message} while fetching /${url}`);
     });

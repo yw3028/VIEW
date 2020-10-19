@@ -87,7 +87,7 @@ module.exports = () => {
         .then(() => user.addWatched(7))
         .then(() => user.addWatched(14))
     );
-    db.User.create({ email: 'junglegeorge@gmail.com' }).then((user) =>
+    db.User.create({ email: 'jmaciasalord@gmail.com' }).then((user) =>
       user
         .addWish(4)
         .then(() => user.addWatched(1))

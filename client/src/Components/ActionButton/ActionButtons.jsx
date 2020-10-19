@@ -34,7 +34,7 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       {wish && (
         <S.ActionButton color={color}>
           <span
-            class="material-icons"
+            className="material-icons"
             onClick={() =>
               updateMovieStatusInList(Number(movieId), 'inWishlist')
             }
@@ -49,7 +49,7 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       {watched && (
         <S.ActionButton color={color}>
           <span
-            class="material-icons"
+            className="material-icons"
             onClick={() =>
               updateMovieStatusInList(Number(movieId), 'hasWatched')
             }
@@ -63,7 +63,7 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       )}
       {journal && (
         <S.ActionButton color={color} onClick={createOrReadJournal}>
-          <span class="material-icons">
+          <span className="material-icons">
             {lists.hasJournal.includes(Number(movieId)) ? 'book' : 'create'}
           </span>
           {text && <S.IconText>Journal</S.IconText>}
