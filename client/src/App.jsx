@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
@@ -25,6 +27,30 @@ const App = () => {
     hasWatched: [],
     hasJournal: [],
   });
+
+  const successGoogle = (response) => {
+    // postLoginToken({ tokenId: response.tokenId })
+    axios({
+      method: 'POST',
+      url: 'http://localhost:3001/googlelogin',
+      data: { tokenId: response.tokenId },
+    })
+      .then((response) => {
+        console.log('Google succes', response);
+        Cookies.set('token', response.data.token, {
+          expires: 30,
+        });
+        setUser(response.data.user[0]);
+      })
+      .then(() => {
+        getWishlist().then((movies) => setWishlist(movies));
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const errorGoogle = (response) => {
+    console.log(response);
+  };
 
   const updateMovieStatusInList = (movieId, list) => {
     setLists((lists) => ({
@@ -106,40 +132,39 @@ const App = () => {
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
   return user === null ? (
-    <Login setWishlist={setWishlist} setUser={setUser} />
+    <Login succesGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
     <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
       <S.App>
         <GlobalStyle />
-          <Route
-            exact
-            path="/"
-            render={(routeProps) =>
-              lists.inWishlist && (
-                <Home
-                  {...routeProps}
-                  explore={exploreList}
-                  wishlist={wishlist}
-                  watched={watchlist}
-                />
-              )
-            }
-          ></Route>
-          <Route path="/wishlist" component={Wishlist}></Route>
-          <Route path="/watched" component={WatchedList}></Route>
-          <Route
-            path="/movie/:id"
-            render={(props) => <MovieDetail {...props} movies={movies} />}
-          ></Route>
-          <Route exact path="/journal" component={Journal}></Route>
-          <Route
-            path="/journal/:id"
-            render={(props) => <JournalDetail {...props} />}
-          ></Route>
+        <Route
+          exact
+          path="/"
+          render={(routeProps) =>
+            lists.inWishlist && (
+              <Home
+                {...routeProps}
+                explore={exploreList}
+                wishlist={wishlist}
+                watched={watchlist}
+              />
+            )
+          }
+        ></Route>
+        <Route path="/wishlist" component={Wishlist}></Route>
+        <Route path="/watched" component={WatchedList}></Route>
+        <Route
+          path="/movie/:id"
+          render={(props) => <MovieDetail {...props} movies={movies} />}
+        ></Route>
+        <Route exact path="/journal" component={Journal}></Route>
+        <Route
+          path="/journal/:id"
+          render={(props) => <JournalDetail {...props} />}
+        ></Route>
       </S.App>
     </MovieContext.Provider>
   );
 };
 
 export default App;
-
