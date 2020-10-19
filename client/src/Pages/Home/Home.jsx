@@ -11,7 +11,7 @@ export default ({ explore, wishlist, watched, status }) => {
   const { user, setUser, setIsAuth } = useContext(MovieContext);
   return (
     <>
-      <Menu user={user} setIsAuth={() => setIsAuth(false)} />
+      <Menu user={user} setIsAuth={setIsAuth} />
       <S.Home>
         <Hero />
         <Slider list={explore} title={'Explore'} status={status} />

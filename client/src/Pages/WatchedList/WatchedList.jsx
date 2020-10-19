@@ -20,7 +20,7 @@ const WatchedList = () => {
 
   return (
     <>
-      <Menu user={user} setIsAuth={() => setIsAuth(false)} />
+      <Menu user={user} setIsAuth={setIsAuth} />
       <S.Wishlist>
         {watchedList.map((watchedMovie) => (
           <MovieTile movie={watchedMovie} />

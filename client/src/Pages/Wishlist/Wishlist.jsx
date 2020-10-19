@@ -20,7 +20,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <Menu user={user} setIsAuth={() => setIsAuth(false)} />
+      <Menu user={user} setIsAuth={setIsAuth} />
       <S.Wishlist>
         {wishlist.map((wish) => (
           <MovieTile movie={wish} />

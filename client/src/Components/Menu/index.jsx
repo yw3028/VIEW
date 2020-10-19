@@ -177,7 +177,9 @@ export default ({ user, setIsAuth }) => {
               </div>
             )}
             clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
-            onLogoutSuccess={() => setIsAuth(false)}
+            onLogoutSuccess={() => {
+              setIsAuth(false);
+            }}
           ></GoogleLogout>
         </ListItem>
       </List>

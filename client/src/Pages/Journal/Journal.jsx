@@ -34,7 +34,7 @@ const Journal = () => {
   const { user, setIsAuth } = useContext(MovieContext);
   return (
     <>
-      <Menu user={user} setIsAuth={() => setIsAuth(false)} />
+      <Menu user={user} setIsAuth={setIsAuth} />
       <S.JournalPage>
         {Object.keys(lists).map((month, index) => (
           <div key={index}>
