@@ -21,7 +21,7 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       addToJournal({
         title: 'Add your title',
         entry: 'Start typing...',
-        MovieId: Number(1),
+        MovieId: Number(movieId),
         UserId: 1,
       }).then((res) => {
         console.log('createOrReadJournal -> res', res);

@@ -26,7 +26,6 @@ const JournalDetail = (props) => {
   const [journalEntry, setJournalEntry] = useState({});
 
   useEffect(() => {
-    console.log('JournalDetail -> journalId', journalId);
     getJournalById(journalId).then((journal) => {
       setJournalEntry(journal);
       console.log(journal, 'journal');
@@ -49,7 +48,10 @@ const JournalDetail = (props) => {
             <JournalMovieDetails movie={journalEntry.Movie} />
           )}
         </S.MovieDetailsContainer>
-        <JournalEntry journalEntry={journalEntry}></JournalEntry>
+        <JournalEntry
+          journalEntry={journalEntry}
+          setJournalEntry={setJournalEntry}
+        ></JournalEntry>
       </S.MovieAndJournalContainer>
     </S.PageContainer>
   );
