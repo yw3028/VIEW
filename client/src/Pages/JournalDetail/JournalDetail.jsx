@@ -26,6 +26,7 @@ const JournalDetail = (props) => {
   const [journalEntry, setJournalEntry] = useState({});
 
   useEffect(() => {
+    console.log('JournalDetail -> journalId', journalId);
     getJournalById(journalId).then((journal) => {
       setJournalEntry(journal);
       console.log(journal, 'journal');

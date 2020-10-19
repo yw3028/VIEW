@@ -6,12 +6,10 @@ import { addToJournal } from '../../Services/apiClient';
 
 const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
-  console.log('ActionButtons -> movies', movies[movieId]);
-  // console.log('ActionButtons -> lists', lists);
 
   const history = useHistory();
 
-  const createOrReadJournal = async () => {
+  const createOrReadJournal = () => {
     // Check if it has journal
     if (lists.hasJournal.includes(Number(movieId))) {
       // Yes --> GET journal
@@ -20,13 +18,16 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       history.push(`/journal/${movies[movieId].hasJournal}`);
     } else {
       // NO --> POST journal and return :journalId
-      const newJournal = await addToJournal({
+      addToJournal({
         title: 'Add your title',
         entry: 'Start typing...',
         MovieId: Number(1),
+        UserId: 1,
+      }).then((res) => {
+        console.log('createOrReadJournal -> res', res);
+        // Pass :journalId to router
+        history.push(`/journal/${res.id}`);
       });
-      // Pass :journalId to router
-      history.push(`/journal/${newJournal.id}`);
     }
   };
   return (
