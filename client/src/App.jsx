@@ -18,7 +18,14 @@ export default () => {
   const [watched, setWatched] = useState([]);
   const [status, setStatus] = useState([]);
 
+  const [user, setUser] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(true);
+
   useEffect(() => {
+    // axios
+    //   .get('http://localhost:3001/googlelogin/whoami')
+    //   .then((response) => console.log(response))
+    //   .catch((error) => console.log(error));
     MoviedApi.getExploreMovies().then((movies) => setExplore(movies));
     getWishlist().then((movies) => setWishlist(movies));
     getWatchedlist()
@@ -26,33 +33,39 @@ export default () => {
       .then(() => setStatus(true));
   }, []);
 
-  return (
-    <Login />
-    // <App>
-    //   <GlobalStyle />
-    //   <div>
-    //     <Menu />
-    //     <Route
-    //       exact
-    //       path="/"
-    //       render={(routeProps) => (
-    //         <Home
-    //           {...routeProps}
-    //           explore={explore}
-    //           wishlist={wishlist}
-    //           watched={watched}
-    //           status={status}
-    //         />
-    //       )}
-    //     ></Route>
-    //     <Route path="/wishlist" component={Journal}></Route>
-    //     <Route path="/watched" component={Journal}></Route>
-    //     <Route exact path="/journal" component={Journal}></Route>
-    //     <Route
-    //       path="/journal/:id"
-    //       render={(props) => <JournalDetail {...props} />}
-    //     ></Route>
-    //   </div>
-    // </App>
+  return user === null ? (
+    <Login
+      user={user}
+      setUser={setUser}
+      loadingUser={loadingUser}
+      setLoadingUser={setLoadingUser}
+    />
+  ) : (
+    <App>
+      <GlobalStyle />
+      <div>
+        <Menu setUser={setUser} />
+        <Route
+          exact
+          path="/"
+          render={(routeProps) => (
+            <Home
+              {...routeProps}
+              explore={explore}
+              wishlist={wishlist}
+              watched={watched}
+              status={status}
+            />
+          )}
+        ></Route>
+        <Route path="/wishlist" component={Journal}></Route>
+        <Route path="/watched" component={Journal}></Route>
+        <Route exact path="/journal" component={Journal}></Route>
+        <Route
+          path="/journal/:id"
+          render={(props) => <JournalDetail {...props} />}
+        ></Route>
+      </div>
+    </App>
   );
 };

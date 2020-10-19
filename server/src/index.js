@@ -32,7 +32,7 @@ app.use('/watched', watchedlistRouter);
 app.use('/journal', journalRouter);
 
 app.all('*', (req, res, next) => {
-  console.error(`${req.url} not found in this server`);
+  console.error(`${req.url} not found in this server`); // eslint-disable-line no-console
   res.sendStatus(404);
 });
 

@@ -1,14 +1,10 @@
+// const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 
 const { User } = require('../models');
 
-const {
-  GOOGLE_CLIENT_ID,
-  JWT_SECRET,
-  JWT_EXPIRES_IN,
-  JWT_COOKIE_EXPIRES_IN,
-} = process.env;
+const { GOOGLE_CLIENT_ID, JWT_SECRET, JWT_EXPIRES_IN } = process.env;
 
 const client = new OAuth2Client(GOOGLE_CLIENT_ID);
 
@@ -44,7 +40,7 @@ exports.googleLogin = async (req, res) => {
         defaults: { email, firstName: name },
       });
 
-      createSendToken(user, req, res);
+      createSendToken(user[0], req, res);
     }
   } catch (error) {
     console.log(error);

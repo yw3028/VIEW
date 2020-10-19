@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -23,7 +24,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
-
 
 const useStyles = makeStyles({
   menu: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default () => {
+export default ({ setUser }) => {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -65,6 +65,10 @@ export default () => {
     }
 
     setState(open);
+  };
+
+  const logout = () => {
+    setUser(null);
   };
 
   const list = () => (
@@ -141,7 +145,31 @@ export default () => {
           <ListItemIcon>
             <PowerSettingsNewIcon />
           </ListItemIcon>
-          <ListItemText secondary="Sign Off" />
+          <GoogleLogout
+            tag="div"
+            type="div"
+            icon={false}
+            key="Sign-off"
+            render={(renderProps) => (
+              <div
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                style={{
+                  fontSize: '0.875rem',
+                  fontFamily: 'Roboto',
+                  fontWeight: 400,
+                  lineHeight: 1.43,
+                  color: 'rgba(0, 0, 0, 0.54)',
+                  letterSpacing: '0.01071em',
+                  cursor: 'pointer',
+                }}
+              >
+                Sign off
+              </div>
+            )}
+            clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
+            onLogoutSuccess={logout}
+          ></GoogleLogout>
         </ListItem>
       </List>
       <img className={classes.jhim} src={jhim} alt="jhim" />
@@ -152,7 +180,7 @@ export default () => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon fontSize="large"/>
+          <MenuIcon fontSize="large" />
         </Button>
         <SwipeableDrawer
           anchor="left"

@@ -7,19 +7,19 @@ const ActionButtons = ({ text, wish, watched, journal }) => {
     <S.ButtonsContainer>
       {wish && (
         <S.ActionButton>
-          <span class="material-icons">favorite</span>
+          <span className="material-icons">favorite</span>
           {text && <S.IconText>Wishlist</S.IconText>}
         </S.ActionButton>
       )}
       {watched && (
         <S.ActionButton>
-          <span class="material-icons">visibility_off</span>
+          <span className="material-icons">visibility_off</span>
           {text && <S.IconText>Watched</S.IconText>}
         </S.ActionButton>
       )}
       {journal && (
         <S.ActionButton>
-          <span class="material-icons">create</span>
+          <span className="material-icons">create</span>
           {text && <S.IconText>Journal</S.IconText>}
         </S.ActionButton>
       )}
