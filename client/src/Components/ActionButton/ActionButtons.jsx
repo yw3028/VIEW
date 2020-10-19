@@ -58,7 +58,7 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
               ? 'done_outline'
               : 'visibility_off'}
           </span>
-          {text && <S.IconText>Watchedlist</S.IconText>}
+          {text && <S.IconText>Watched</S.IconText>}
         </S.ActionButton>
       )}
       {journal && (

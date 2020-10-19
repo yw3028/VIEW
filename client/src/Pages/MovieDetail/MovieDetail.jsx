@@ -29,7 +29,7 @@ const MoviePage = (props) => {
     <S.PageContainer>
       <S.TopLeftIcon className={classes.root}>
         <IconButton aria-label="go back">
-        <ArrowBackIcon onClick={props.history.goBack}/>
+          <ArrowBackIcon onClick={props.history.goBack} />
         </IconButton>
       </S.TopLeftIcon>
       <S.MovieDetailsContainer>
@@ -39,7 +39,15 @@ const MoviePage = (props) => {
         <ActionButtons
           text={true}
           wish={true}
+          movieId={movieId}
+        ></ActionButtons>
+        <ActionButtons
+          text={true}
           watched={true}
+          movieId={movieId}
+        ></ActionButtons>
+        <ActionButtons
+          text={true}
           journal={true}
           movieId={movieId}
         ></ActionButtons>
