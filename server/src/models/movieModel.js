@@ -26,7 +26,7 @@ module.exports = (sequelize, type) => {
     cast: {
       type: type.STRING,
     },
-    plot: {
+    overview: {
       type: type.STRING(1000),
     },
     country: {

@@ -19,7 +19,7 @@ const JournalCard = ({ journal }) => {
           <p>{journal.entry.slice(0, 50)}...</p>
         </S.JournalPreview>
         <S.MovieImg
-          src={`https://image.tmdb.org/t/p/w300/${journal.Movie.backdrop}`}
+          src={`https://image.tmdb.org/t/p/w300/${journal.Movie.backdrop_path}`}
           alt={journal.Movie.title}
         ></S.MovieImg>
       </S.JournalCard>
