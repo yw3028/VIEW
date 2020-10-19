@@ -14,11 +14,17 @@ import GlobalStyle from './globalStyle';
 import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
 import Login from './Pages/Login/Login';
-import { getWatchedlist, getWishlist, getJournals } from './Services/apiClient';
+import {
+  getWatchedlist,
+  getWishlist,
+  getJournals,
+  sendTokenToServer,
+} from './Services/apiClient';
 
 export const MovieContext = React.createContext(null);
 
 const App = () => {
+  const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
   const [movies, setMovies] = useState({});
   const [lists, setLists] = useState({
@@ -29,21 +35,18 @@ const App = () => {
   });
 
   const successGoogle = (response) => {
-    // postLoginToken({ tokenId: response.tokenId })
-    axios({
-      method: 'POST',
-      url: 'http://localhost:3001/googlelogin',
-      data: { tokenId: response.tokenId },
-    })
+    const tokenId = response.tokenId;
+    console.log(response);
+    sendTokenToServer({ tokenId })
       .then((response) => {
-        console.log('Google succes', response);
-        Cookies.set('token', response.data.token, {
+        Cookies.set('token', response.token, {
           expires: 30,
         });
-        setUser(response.data.user[0]);
-      })
-      .then(() => {
-        getWishlist().then((movies) => setWishlist(movies));
+        const currentUser = Array.isArray(response.user)
+          ? response.user[0]
+          : response.user;
+        setUser(currentUser);
+        setIsAuth(true);
       })
       .catch((error) => console.log(error));
   };
@@ -88,35 +91,37 @@ const App = () => {
   };
 
   useEffect(() => {
-    const promiseOne = MoviedApi.getExploreMovies().then((apiMovies) => {
-      updateState('explore', apiMovies);
-    });
-    const promiseTwo = getWatchedlist().then((watchedMovies) => {
-      updateState('hasWatched', watchedMovies);
-    });
-    const promiseThree = getWishlist().then((wishlistMovies) => {
-      updateState('inWishlist', wishlistMovies);
-    });
-    Promise.all([promiseOne, promiseTwo, promiseThree]).then(() => {
-      getJournals().then((journals) => {
-        setMovies((movies) =>
-          journals.reduce(
-            (acc, journal) => ({
-              ...acc,
-              [journal.Movie.apiId]: Object.assign(acc[journal.Movie.apiId], {
-                hasJournal: journal.Movie.id,
-              }),
-            }),
-            movies
-          )
-        );
-        setLists((lists) => ({
-          ...lists,
-          hasJournal: journals.map((journal) => journal.Movie.apiId),
-        }));
+    if (isAuth) {
+      const promiseOne = MoviedApi.getExploreMovies().then((apiMovies) => {
+        updateState('explore', apiMovies);
       });
-    });
-  }, []);
+      const promiseTwo = getWatchedlist().then((watchedMovies) => {
+        updateState('hasWatched', watchedMovies);
+      });
+      const promiseThree = getWishlist().then((wishlistMovies) => {
+        updateState('inWishlist', wishlistMovies);
+      });
+      Promise.all([promiseOne, promiseTwo, promiseThree]).then(() => {
+        getJournals().then((journals) => {
+          setMovies((movies) =>
+            journals.reduce(
+              (acc, journal) => ({
+                ...acc,
+                [journal.Movie.apiId]: Object.assign(acc[journal.Movie.apiId], {
+                  hasJournal: journal.Movie.id,
+                }),
+              }),
+              movies
+            )
+          );
+          setLists((lists) => ({
+            ...lists,
+            hasJournal: journals.map((journal) => journal.Movie.apiId),
+          }));
+        });
+      });
+    }
+  }, [isAuth]);
 
   const exploreList = lists.explore.map((apiId) => movies[apiId]);
   const wishlist = lists.inWishlist.map((apiId) => movies[apiId]);
@@ -131,10 +136,12 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
-  return user === null ? (
-    <Login succesGoogle={successGoogle} errorGoogle={errorGoogle} />
+  return !isAuth ? (
+    <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
-    <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
+    <MovieContext.Provider
+      value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
+    >
       <S.App>
         <GlobalStyle />
         <Route

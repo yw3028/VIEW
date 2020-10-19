@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -57,7 +58,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default ({ setUser }) => {
+export default ({ user, setIsAuth }) => {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -81,9 +82,15 @@ export default ({ setUser }) => {
       onKeyDown={toggleDrawer(false)}
     >
       <div className={classes.user}>
-        <AccountCircleIcon color="action" fontSize="large" />
-        <Typography variant="h6">Santiago Ramon Cajal</Typography>
-        <Typography variant="body2">santiagorarmon1934@gmail.com</Typography>
+        {user.image ? (
+          <Avatar alt={user.name} src={user.image} />
+        ) : (
+          <AccountCircleIcon color="action" fontSize="large" />
+        )}
+        <Typography variant="h6">
+          {user.firstName} {user.lastName}
+        </Typography>
+        <Typography variant="body2">{user.email}</Typography>
       </div>
       <Divider />
       <List className={classes.listItems}>
@@ -170,7 +177,7 @@ export default ({ setUser }) => {
               </div>
             )}
             clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
-            onLogoutSuccess={() => setUser(null)}
+            onLogoutSuccess={() => setIsAuth(false)}
           ></GoogleLogout>
         </ListItem>
       </List>

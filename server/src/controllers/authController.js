@@ -31,15 +31,22 @@ exports.googleLogin = async (req, res) => {
       idToken: tokenId,
       audience: GOOGLE_CLIENT_ID,
     });
-    const { name, email } = response.payload;
+
+    const { given_name, family_name, email, picture } = response.payload;
     const emailVerified = response.payload.email_verified;
 
     if (emailVerified) {
       const user = await User.findOrCreate({
         where: { email },
-        defaults: { email, firstName: name },
+        defaults: {
+          email,
+          firstName: given_name,
+          lastName: family_name,
+          image: picture,
+        },
       });
       const currentUser = Array.isArray(user) ? user[0] : user;
+
       req.user = currentUser;
       createSendToken(currentUser, req, res);
     }
@@ -66,5 +73,7 @@ exports.protect = async (req, res, next) => {
     } catch (error) {
       console.error(error);
     }
+  } else {
+    next();
   }
 };

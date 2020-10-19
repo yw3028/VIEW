@@ -6,8 +6,6 @@ import { addToJournal } from '../../Services/apiClient';
 
 const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
-  console.log('ActionButtons -> movies', movies[movieId]);
-  // console.log('ActionButtons -> lists', lists);
 
   const history = useHistory();
 
