@@ -1,5 +1,9 @@
 import styled from 'styled-components/macro';
 
+export const Buttons = styled.div`
+  color: white;
+`;
+
 export const MovieTile = styled.div`
   display: inline-block;
   margin-right: 10px;

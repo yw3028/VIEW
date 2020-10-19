@@ -12,7 +12,7 @@ export default ({ list, title }) => {
           list.map((movie) => {
             return (
               <div className="item">
-                <MovieTile movie={movie} />
+                <MovieTile key={movie.id} movie={movie} />
               </div>
             );
           })}

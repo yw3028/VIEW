@@ -8,7 +8,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import * as S from './MovieDetailStyle';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     '& > *': {
       margin: 20,
@@ -17,8 +17,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MoviePage = () => {
+const MoviePage = (props) => {
   const classes = useStyles();
+
+  // Use useEffect as good practice
+
+  const movieId = props.match.params.id;
+  const movieDetail = props.movies[movieId] || null; // Call hk, useEffect as good pracite and make async;
 
   return (
     <S.PageContainer>
@@ -28,7 +33,7 @@ const MoviePage = () => {
         </IconButton>
       </S.TopLeftIcon>
       <S.MovieDetailsContainer>
-        <MovieDetails></MovieDetails>
+        <MovieDetails movie={movieDetail} />
       </S.MovieDetailsContainer>
       <S.ActionButtonsPosition>
         <ActionButtons
@@ -36,6 +41,7 @@ const MoviePage = () => {
           wish={true}
           watched={true}
           journal={true}
+          movieId={movieId}
         ></ActionButtons>
       </S.ActionButtonsPosition>
     </S.PageContainer>

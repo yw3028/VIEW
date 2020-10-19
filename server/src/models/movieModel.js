@@ -4,17 +4,17 @@ module.exports = (sequelize, type) => {
       type: type.INTEGER,
       allowNull: false,
     },
-    poster: {
+    poster_path: {
       type: type.STRING,
     },
-    backdrop: {
+    backdrop_path: {
       type: type.STRING,
     },
     title: {
       type: type.STRING,
       allowNull: false,
     },
-    releaseDate: {
+    release_date: {
       type: type.DATE,
     },
     genre: {

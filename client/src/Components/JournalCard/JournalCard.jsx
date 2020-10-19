@@ -1,12 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 import * as S from './JournalCardStyle';
 
 const JournalCard = ({ journal }) => {
   return (
-    <Link to={`/journal/${journal.id}`}>
+    <Link to={`/journal/${journal.id}#${journal.id}`}>
       <S.JournalCard>
         <S.JournalDate>
           <div>

@@ -1,33 +1,32 @@
 import React from 'react';
-import mockupMovie from './MockDataMovieDetails';
-
+import moment from 'moment';
 import * as S from './MovieDetailsStyle';
 
 const imageUrlPath = 'https://image.tmdb.org/t/p/w300/';
 
-const MovieDetails = () => {
+const MovieDetails = ({ movie }) => {
   return (
     <S.MovieDetails>
       <S.DesktopPoster
-        src={imageUrlPath + mockupMovie.poster}
+        src={imageUrlPath + movie.poster_path}
         alt="movie-poster"
       />
-      <S.Backdrop bgImage={imageUrlPath + mockupMovie.backdrop}></S.Backdrop>
+      <S.Backdrop bgImage={imageUrlPath + movie.backdrop_path}></S.Backdrop>
       <S.TextBox>
-        <S.MovieTitle>{mockupMovie.title}</S.MovieTitle>
+        <S.MovieTitle>{movie.title}</S.MovieTitle>
         <S.MovieInfo>
           <S.DesktopLabels>Released Date: </S.DesktopLabels>
-          {mockupMovie.year}
+          {moment(movie.release_date).format('D MMMM YYYY')}
         </S.MovieInfo>
-        <S.MovieInfo>
+        {/* <S.MovieInfo>
           <S.DesktopLabels>Genre: </S.DesktopLabels>
-          {mockupMovie.genre}
-        </S.MovieInfo>
-        <S.MovieInfo>
+          {movie.genre}
+        </S.MovieInfo> */}
+        {/* <S.MovieInfo>
           <S.DesktopLabels>Runtime: </S.DesktopLabels>
-          {mockupMovie.runTime} min
-        </S.MovieInfo>
-        <S.MoviePlot>{mockupMovie.plot}</S.MoviePlot>
+          {movie.runTime} min
+        </S.MovieInfo> */}
+        <S.MoviePlot>{movie.overview}</S.MoviePlot>
       </S.TextBox>
     </S.MovieDetails>
   );
