@@ -9,10 +9,10 @@ const JournalMovieDetails = ({movie}) => {
   return (
     <S.JournalMovieDetails>
       <S.DesktopPoster
-        src={imageUrlPath + movie.poster}
+        src={imageUrlPath + movie.poster_path}
         alt="movie-poster"
       />
-      <S.Backdrop bgImage={imageUrlPath + movie.backdrop}></S.Backdrop>
+      <S.Backdrop bgImage={imageUrlPath + movie.backdrop_path}></S.Backdrop>
       <S.TextBox>
         <S.MovieTitle>{movie.title}</S.MovieTitle>
         <S.MovieInfo>
