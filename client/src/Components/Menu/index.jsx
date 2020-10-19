@@ -67,10 +67,6 @@ export default ({ setUser }) => {
     setState(open);
   };
 
-  const logout = () => {
-    setUser(null);
-  };
-
   const list = () => (
     <div
       className={classes.list}
@@ -168,7 +164,7 @@ export default ({ setUser }) => {
               </div>
             )}
             clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
-            onLogoutSuccess={logout}
+            onLogoutSuccess={() => setUser(null)}
           ></GoogleLogout>
         </ListItem>
       </List>

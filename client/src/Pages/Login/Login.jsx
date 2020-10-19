@@ -19,7 +19,7 @@ const initAxiosInterceptors = () => {
 
 initAxiosInterceptors();
 
-const Login = ({ user, setUser, loadingUser, setLoadingUser }) => {
+const Login = ({ setUser, setWishlist }) => {
   const responseSuccessGoogle = (response) => {
     axios({
       method: 'POST',
@@ -30,14 +30,20 @@ const Login = ({ user, setUser, loadingUser, setLoadingUser }) => {
         console.log('Google succes', response);
         Cookies.set('token', response.data.token, {
           expires: 30,
-          sameSite: 'none',
         });
         setUser(response.data.user[0]);
+      })
+      .then(() => {
+        // MoviedApi.getExploreMovies().then((movies) => setExplore(movies));
+        getWishlist().then((movies) => setWishlist(movies));
+        // getWatchedlist()
+        //   .then((movies) => setWatched(movies))
+        //   .then(() => setStatus(true));
       })
       .catch((error) => console.log(error));
   };
 
-  // const responseErrorGoogle = (response) => {};
+  const responseErrorGoogle = (response) => {};
 
   return (
     <div className="container">
@@ -47,7 +53,7 @@ const Login = ({ user, setUser, loadingUser, setLoadingUser }) => {
           clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
           buttonText="Login with Google"
           onSuccess={responseSuccessGoogle}
-          // onFailure={responseErrorGoogle}
+          onFailure={responseErrorGoogle}
           cookiePolicy={'single_host_origin'}
         />
       </div>

@@ -2,9 +2,7 @@ const { User } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {
-    console.log(req.headers.authorization);
-    // const { UserId } = req.body;
-    const user = await User.findByPk(1);
+    const user = await User.findByPk(req.user.id);
     if (!user) {
       res.sendStatus(500);
     }
@@ -18,8 +16,8 @@ exports.getAll = async (req, res) => {
 
 exports.postOne = async (req, res) => {
   try {
-    const { UserId, MovieId } = req.body;
-    const user = await User.findByPk(1);
+    const { MovieId } = req.body;
+    const user = await User.findByPk(req.user.id);
     if (!user) {
       res.sendStatus(500);
     }
@@ -33,8 +31,7 @@ exports.postOne = async (req, res) => {
 
 exports.removeOne = async (req, res) => {
   try {
-    // const { UserId } = req.body;
-    const user = await User.findByPk(1);
+    const user = await User.findByPk(req.user.id);
     if (!user) {
       res.sendStatus(500);
     }

@@ -1,4 +1,4 @@
-// const { promisify } = require('util');
+const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 
@@ -39,10 +39,32 @@ exports.googleLogin = async (req, res) => {
         where: { email },
         defaults: { email, firstName: name },
       });
-
-      createSendToken(user[0], req, res);
+      const currentUser = Array.isArray(user) ? user[0] : user;
+      req.user = currentUser;
+      createSendToken(currentUser, req, res);
     }
   } catch (error) {
     console.log(error);
+  }
+};
+
+exports.protect = async (req, res, next) => {
+  let token;
+  const authHeader = req.headers.authorization;
+
+  if (authHeader && authHeader.startsWith('Bearer')) {
+    token = authHeader.split(' ')[1];
+
+    try {
+      const decoded = await promisify(jwt.verify)(token, JWT_SECRET);
+      const user = await User.findOne({
+        where: { id: decoded.id },
+      });
+
+      req.user = user;
+      next();
+    } catch (error) {
+      console.error(error);
+    }
   }
 };

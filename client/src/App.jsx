@@ -19,27 +19,9 @@ export default () => {
   const [status, setStatus] = useState([]);
 
   const [user, setUser] = useState(null);
-  const [loadingUser, setLoadingUser] = useState(true);
-
-  useEffect(() => {
-    // axios
-    //   .get('http://localhost:3001/googlelogin/whoami')
-    //   .then((response) => console.log(response))
-    //   .catch((error) => console.log(error));
-    MoviedApi.getExploreMovies().then((movies) => setExplore(movies));
-    getWishlist().then((movies) => setWishlist(movies));
-    getWatchedlist()
-      .then((movies) => setWatched(movies))
-      .then(() => setStatus(true));
-  }, []);
 
   return user === null ? (
-    <Login
-      user={user}
-      setUser={setUser}
-      loadingUser={loadingUser}
-      setLoadingUser={setLoadingUser}
-    />
+    <Login setWishlist={setWishlist} setUser={setUser} />
   ) : (
     <App>
       <GlobalStyle />
