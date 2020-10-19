@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import history from './history';
 
 import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
@@ -120,7 +119,6 @@ export default () => {
     <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
       <App>
         <GlobalStyle />
-        <div history={history}>
           <Menu />
           <Route
             exact
@@ -136,8 +134,8 @@ export default () => {
               )
             }
           ></Route>
-          {/* <Route path="/wishlist" component={WishList}></Route>
-        <Route path="/watched" component={WatchedList}></Route> */}
+          <Route path="/wishlist" component={Wishlist}></Route>
+          <Route path="/watched" component={WatchedList}></Route>
           <Route
             path="/movie/:id"
             render={(props) => <MovieDetail {...props} movies={movies} />}
@@ -147,7 +145,6 @@ export default () => {
             path="/journal/:id"
             render={(props) => <JournalDetail {...props} />}
           ></Route>
-        </div>
       </App>
     </MovieContext.Provider>
   );
