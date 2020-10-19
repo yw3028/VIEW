@@ -27,8 +27,8 @@ import jhim from '../../assets/Jhim.png';
 
 const useStyles = makeStyles({
   menu: {
-    position: 'relative',
-    paddingBottom: '30px',
+    position: 'fixed',
+    margin: '40px',
   },
   list: {
     width: 300,
