@@ -7,20 +7,20 @@ const mockMovie = (movie) => {
   const {
     apiId,
     title,
-    poster,
-    backdrop,
-    releaseDate,
-    plot,
+    poster_path,
+    backdrop_path,
+    release_date,
+    overview,
     avgRating,
   } = movie;
   setTimeout(() => {
     db.Movie.create({
       apiId,
       title,
-      poster,
-      backdrop,
-      releaseDate,
-      plot,
+      poster_path,
+      backdrop_path,
+      release_date,
+      overview,
       avgRating,
     });
   }, 500);

@@ -4,6 +4,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 0.8rem;
+  color: red;
 
   @media screen and (min-device-width: 780px) {
     /* width: 300px; */
@@ -11,14 +12,16 @@ export const ButtonsContainer = styled.div`
   }
 `;
 
-export const ActionButton = styled.div`
+export const ActionButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  color: #303030;
+  border: none;
+  color: ${(props) => props.color};
+  background-color: transparent;
 
   @media screen and (min-device-width: 780px) {
     display: flex;

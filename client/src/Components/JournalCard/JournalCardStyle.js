@@ -6,6 +6,7 @@ export const JournalCard = styled.div`
   margin: 20px 40px 20px 0;
   box-shadow: 0 0 5px lightgray;
   position: relative;
+  color: black;
 `;
 
 export const JournalDate = styled.div`
@@ -22,12 +23,22 @@ export const JournalDate = styled.div`
   padding: 1px;
   background: #ffcb00;
   border-radius: 5px;
+
+  div {
+    padding: 5px;
+  }
 `;
 
 export const JournalPreview = styled.div`
   background-color: #fafafa;
-  padding: 50px 30px 20px 30px;
+  padding: 40px 30px 30px 30px;
   height: 50px;
+
+  h4 {
+    margin: 10px 0;
+    font-size: medium;
+    font-weight: 500;
+  }
 
   p {
     font-size: small;

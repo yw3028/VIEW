@@ -24,11 +24,17 @@ import CreateIcon from '@material-ui/icons/Create';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 const useStyles = makeStyles({
   menu: {
-    position: 'relative',
-    paddingBottom: '30px',
+    position: '-webkit-sticky',
+    position: 'sticky',
+    top: '-1px',
+    margin: '40px',
+    width: '100%',
+    background: 'white',
+    zIndex: 1,
   },
   list: {
     width: 300,
@@ -81,7 +87,7 @@ export default ({ setUser }) => {
       </div>
       <Divider />
       <List className={classes.listItems}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <ListItem button key="Home">
             <ListItemIcon>
               <HomeIcon />

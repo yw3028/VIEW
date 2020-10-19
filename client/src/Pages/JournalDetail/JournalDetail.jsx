@@ -36,7 +36,7 @@ const JournalDetail = (props) => {
     <S.PageContainer>
       <S.TopIcons className={classes.root}>
         <IconButton aria-label="go back">
-          <ArrowBackIcon />
+          <ArrowBackIcon onClick={props.history.goBack} />
         </IconButton>
         <IconButton aria-label="delete">
           <DeleteIcon />
