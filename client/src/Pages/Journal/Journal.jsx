@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import JournalList from '../../Components/JournalList/JournalList';
+import Menu from '../../Components/Menu';
 
 import * as S from './JournalStyle';
 
@@ -19,7 +20,7 @@ const groupByMonths = (journals, date) => {
 const Journal = () => {
   const [journals, setJournals] = useState([]);
   const [lists, setLists] = useState({});
-  
+
   useEffect(() => {
     getJournals().then((journals) => {
       setJournals(journals.sort((a, b) => new Date(b.date) - new Date(a.date)));
@@ -31,14 +32,17 @@ const Journal = () => {
   }, [journals]);
 
   return (
-    <S.JournalPage>
-      {Object.keys(lists).map((month, index) => (
-        <div key={index}>
-          <h2>{month.toUpperCase()}</h2>
-          <JournalList journals={lists[month]} />
-        </div>
-      ))}
-    </S.JournalPage>
+    <>
+      <Menu />
+      <S.JournalPage>
+        {Object.keys(lists).map((month, index) => (
+          <div key={index}>
+            <h2>{month.toUpperCase()}</h2>
+            <JournalList journals={lists[month]} />
+          </div>
+        ))}
+      </S.JournalPage>
+    </>
   );
 };
 
