@@ -9,7 +9,7 @@ const JournalCard = ({ journal }) => {
     <Link to={`/journal/${journal.id}`}>
       <S.JournalCard>
         <S.JournalDate>
-          <div style={{ padding: '5px' }}>
+          <div>
             {moment(journal.date).format('ddd DD').toUpperCase()}
           </div>
         </S.JournalDate>
