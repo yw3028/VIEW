@@ -23,12 +23,17 @@ import CreateIcon from '@material-ui/icons/Create';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
-
+import zIndex from '@material-ui/core/styles/zIndex';
 
 const useStyles = makeStyles({
   menu: {
-    position: 'fixed',
+    position: '-webkit-sticky',
+    position: 'sticky',
+    top: '-1px',
     margin: '40px',
+    width: '100%',
+    background: 'white',
+    zIndex: 1,
   },
   list: {
     width: 300,
@@ -152,7 +157,7 @@ export default () => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon fontSize="large"/>
+          <MenuIcon fontSize="large" />
         </Button>
         <SwipeableDrawer
           anchor="left"
