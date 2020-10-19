@@ -29,7 +29,7 @@ const MoviePage = (props) => {
     <S.PageContainer>
       <S.TopLeftIcon className={classes.root}>
         <IconButton aria-label="go back">
-          <ArrowBackIcon />
+        <ArrowBackIcon onClick={props.history.goBack}/>
         </IconButton>
       </S.TopLeftIcon>
       <S.MovieDetailsContainer>
