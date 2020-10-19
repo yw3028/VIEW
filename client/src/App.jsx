@@ -5,6 +5,8 @@ import history from './history';
 import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
+import Wishlist from './Pages/Wishlist/Wishlist';
+import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
 import MovieDetail from './Pages/MovieDetail/MovieDetail';
 
