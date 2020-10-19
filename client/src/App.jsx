@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
-import Menu from './Components/Menu';
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
 import Wishlist from './Pages/Wishlist/Wishlist';
@@ -9,11 +8,11 @@ import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
 
 import GlobalStyle from './globalStyle';
-import App from './AppStyles';
+import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
 import { getWatchedlist, getWishlist } from './Services/apiClient';
 
-export default () => {
+const App = () => {
   const [explore, setExplore] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [watched, setWatched] = useState([]);
@@ -28,10 +27,8 @@ export default () => {
   }, []);
 
   return (
-    <App>
+    <S.App>
       <GlobalStyle />
-      <div>
-        <Menu />
         <Route
           exact
           path="/"
@@ -52,7 +49,9 @@ export default () => {
           path="/journal/:id"
           render={(props) => <JournalDetail {...props} />}
         ></Route>
-      </div>
-    </App>
+    </S.App>
   );
 };
+
+export default App;
+
