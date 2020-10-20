@@ -94,6 +94,7 @@ video {
   font: inherit;
   font-family: 'Roboto', sans-serif;
   vertical-align: baseline;
+  scrollbar-width: none;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -136,5 +137,9 @@ a {
 }
 button {
   outline: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 `;
