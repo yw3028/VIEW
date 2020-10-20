@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 
-import Menu from '../../Components/Menu/index';
-import MovieTile from '../../Components/MovieTile/MovieTile';
-import Slider from '../../Components/Slider/Slider';
+import Menu from '../Menu/index';
+import Slider from '../Slider/Slider';
 import { MovieContext } from '../../App';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Explore = ({ searchMovies, setSearchMovies }) => {
+const Search = ({ searchMovies, setSearchMovies }) => {
   const handleChange = (event) => {
     const text = event.target.value;
     moviedApi
@@ -26,15 +25,12 @@ const Explore = ({ searchMovies, setSearchMovies }) => {
       .then((response) => setSearchMovies(response));
   };
 
-  // const [searchMovies, setSearchMovies] = useState([]);
-
   const classes = useStyles();
 
   const { user, setIsAuth } = useContext(MovieContext);
   return (
     <>
       <Menu user={user} setIsAuth={setIsAuth} />
-      <div>this is the explore</div>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           id="standard-basic"
@@ -47,4 +43,4 @@ const Explore = ({ searchMovies, setSearchMovies }) => {
   );
 };
 
-export default Explore;
+export default Search;
