@@ -7,10 +7,9 @@ import * as S from './MovieTileStyle';
 
 export default ({ movie }) => {
   const { updateMovieStatusInList } = useContext(MovieContext);
-
   return (
     <S.MovieTile>
-      <Link to={`/movie/${movie.apiId ? movie.apiId : movie.id}#movie`}>
+      <Link to={`/movie/${movie.apiId ? movie.apiId : movie.id}`}>
         <div>
           <img
             className="movie_img"
@@ -21,12 +20,11 @@ export default ({ movie }) => {
       </Link>
 
       <div className="movie_overlay">
-      
         <button className="movie_overlay_btn">
           <Button
             color={'white'}
             wish={true}
-            movieId={movie.apiId ? movie.apiId : movie.id}
+            movie={movie}
             onClick={(event) => {
               event.preventDefault();
               // event.stopPropagation();
@@ -41,7 +39,7 @@ export default ({ movie }) => {
           <Button
             color={'white'}
             watched={true}
-            movieId={movie.apiId ? movie.apiId : movie.id}
+            movie={movie}
           />
         </button>
       </div>

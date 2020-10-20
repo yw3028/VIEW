@@ -7,7 +7,7 @@ import * as S from './JournalCardStyle';
 
 const JournalCard = ({ journal }) => {
   return (
-    <Link to={`/journal/${journal.id}#${journal.id}`}>
+    <Link to={`/journal/${journal.id}`}>
       <S.JournalCard>
         <S.JournalDate>
           <div>

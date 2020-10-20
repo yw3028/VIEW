@@ -41,7 +41,7 @@ const MoviePage = (props) => {
           wish={true}
           watched={true}
           journal={true}
-          movieId={movieId}
+          movie={movieDetail}
         ></ActionButtons>
       </S.ActionButtonsPosition>
     </S.PageContainer>
