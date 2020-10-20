@@ -27,6 +27,7 @@ const Login = ({ successGoogle, errorGoogle }) => {
           onSuccess={(response) => successGoogle(response)}
           onFailure={(response) => errorGoogle(response)}
           cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
         />
       </div>
     </div>

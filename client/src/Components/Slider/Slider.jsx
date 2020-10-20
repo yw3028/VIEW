@@ -11,9 +11,11 @@ export default ({ list, title }) => {
         {list &&
           list.map((movie) => {
             return (
-              <div className="item">
-                <MovieTile key={movie.id} movie={movie} />
-              </div>
+              movie.poster_path && (
+                <div className="item">
+                  <MovieTile key={movie.id} movie={movie} />
+                </div>
+              )
             );
           })}
       </div>

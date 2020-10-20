@@ -31,6 +31,7 @@ exports.getJournal = async (req, res) => {
       where: { id, UserId: req.user.id },
       include: [Movie],
     });
+    console.log(requestedJournal);
     res.status(200).send(requestedJournal);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
