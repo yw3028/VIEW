@@ -4,9 +4,9 @@ export default {
   getExploreMovies: () => fetchRequest(`discover`),
   getCategories: () => fetchRequest(`categories`),
   getMoviesFromCategory: (id) => fetchRequest(`categories/${id}`),
-  getMovieById: (id) => fetchRequest(`/movie/${id}`),
+  getMovieById: (id) => fetchRequest(`movie/${id}`),
   // For the searchBar
-  getMovieByTitle: (title) => fetchRequest(`/search?q=${title}`),
+  getMovieByTitle: (title) => fetchRequest(`search?q=${title}`),
 };
 
 const fetchRequest = (url) => {

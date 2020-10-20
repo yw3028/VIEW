@@ -8,20 +8,10 @@ import MoviedApi from '../../Services/moviedApiClient';
 
 import * as S from './ExploreStyle';
 
-// getCategories: () => fetchRequest(`categories`),
-// getMoviesFromCategory: (id) => fetchRequest(`categories/${id}`),
-
-const WatchedList = () => {
+const Explore = () => {
   const { updateMovieStatusInList, updateState, movies, lists } = useContext(
     MovieContext
   );
-  // const [watchedList, setWatchedList] = useState([]);
-
-  // useEffect(() => {
-  //   getWatchedlist().then((watchedList) => {
-  //     setWatchedList(watchedList);
-  //   });
-  // }, []);
 
   const [categories, setCategories] = useState([]);
 
@@ -60,4 +50,5 @@ const WatchedList = () => {
   );
 };
 
-export default WatchedList;
+export default Explore;
+

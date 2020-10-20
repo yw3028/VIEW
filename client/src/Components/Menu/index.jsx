@@ -103,14 +103,14 @@ export default ({ user, setIsAuth }) => {
           </ListItem>
         </NavLink>
 
-        {/* <NavLink> */}
-        <ListItem button key="Search">
-          <ListItemIcon>
-            <SearchIcon />
-          </ListItemIcon>
-          <ListItemText secondary="Explore Movies" />
-        </ListItem>
-        {/* </NavLink> */}
+        <NavLink to="/explore">
+          <ListItem button key="Search">
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText secondary="Explore Movies" />
+          </ListItem>
+        </NavLink>
 
         <NavLink to="/wishlist">
           <ListItem button key="Wishlist">
