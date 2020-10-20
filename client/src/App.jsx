@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
+import Explore from './Pages/Explore/Explore';
 import Wishlist from './Pages/Wishlist/Wishlist';
 import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
@@ -26,6 +27,7 @@ export const MovieContext = React.createContext(null);
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
+  const [searchMovies, setSearchMovies] = useState([]);
   const [movies, setMovies] = useState({});
   const [lists, setLists] = useState({
     explore: [],
@@ -165,6 +167,16 @@ const App = () => {
           render={(props) => <MovieDetail {...props} movies={movies} />}
         ></Route>
         <Route exact path="/journal" component={Journal}></Route>
+        <Route
+          path="/explore"
+          render={(props) => (
+            <Explore
+              {...props}
+              searchMovies={searchMovies}
+              setSearchMovies={setSearchMovies}
+            />
+          )}
+        ></Route>
         <Route
           path="/journal/:id"
           render={(props) => <JournalDetail {...props} />}
