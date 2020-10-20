@@ -3,7 +3,6 @@ import { MovieContext } from '../../App';
 import { useHistory } from 'react-router-dom';
 import * as S from './ActionButtonStyle';
 import {
-  getWatchedlist,
   addToJournal,
   addToWatchedlist,
   removeFromWatchedlist,
@@ -15,7 +14,7 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
 
   const history = useHistory();
-  const movieId = Number(movie.apiId ? movie.apiId : movie.id); // ?
+  const movieId = Number(movie.apiId ? movie.apiId : movie.id); 
 
   const createOrReadJournal = () => {
     // Check if it has journal
