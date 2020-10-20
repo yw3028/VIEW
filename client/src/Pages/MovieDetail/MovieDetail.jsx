@@ -39,12 +39,12 @@ const MoviePage = (props) => {
         <ActionButtons
           text={true}
           wish={true}
-          movieId={movieId}
+          movie={movieDetail}
         ></ActionButtons>
         <ActionButtons
           text={true}
           watched={true}
-          movieId={movieId}
+          movie={movieDetail}
         ></ActionButtons>
         <ActionButtons
           text={true}
