@@ -5,7 +5,7 @@ export const Buttons = styled.div`
 `;
 
 export const MovieTile = styled.div`
-  display: inline-block;
+  display: flex;
   margin-right: 10px;
   position: relative;
   overflow-y: visible;
@@ -14,23 +14,26 @@ export const MovieTile = styled.div`
     opacity: 1;
   }
 
+  &:hover .movie_img {
+    /* opacity: 0.8; */
+    filter: blur(1px) brightness(80%);
+    }
+
   .movie_img {
-    width: 150px;
+    width: 150px;    
     @media screen and (min-device-width: 780px) {
       width: 200px;
     }
   }
 
   .movie_overlay {
-    height: 100%;
     width: 100%;
     position: absolute;
-    bottom: 0;
     opacity: 0;
     display: flex;
+    align-self:center;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     transition: all 0.4s ease;
     border-radius: 10px;
