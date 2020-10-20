@@ -10,7 +10,7 @@ export const getWatchedlist = () => fetchApiRequest('watched');
 export const addToWatchedlist = (data) =>
   fetchApiRequest('watched', {
     method: 'POST',
-    body: JSON.stringify(data),
+    data: JSON.stringify(data),
   });
 
 // delete: id
@@ -25,7 +25,7 @@ export const getWishlist = () => fetchApiRequest('wishlist');
 export const addToWishlist = (data) =>
   fetchApiRequest('wishlist', {
     method: 'POST',
-    body: JSON.stringify(data),
+    data: JSON.stringify(data),
   });
 
 // delete
@@ -43,14 +43,14 @@ export const getJournalById = (id) => fetchApiRequest(`journal/${id}`);
 export const addToJournal = (data) =>
   fetchApiRequest('journal', {
     method: 'POST',
-    body: JSON.stringify(data),
+    data: JSON.stringify(data),
   });
 
 // update
 export const updateJournalEntry = (id, data) =>
   fetchApiRequest(`journal/${id}`, {
     method: 'PUT',
-    body: JSON.stringify(data),
+    data: JSON.stringify(data),
   });
 
 // delete
@@ -68,10 +68,10 @@ export const sendTokenToServer = (data) =>
 // Helper fetch function
 const fetchApiRequest = (url, options = {}) => {
   return axios(`${BASE_URL}/${url}`, {
+    ...options,
     headers: {
       'Content-Type': 'application/json',
     },
-    ...options,
   })
     .then((res) => (res.status <= 400 ? res.data : Promise.reject(res)))
     .catch((error) => {
