@@ -11,11 +11,13 @@ import MovieDetail from './Pages/MovieDetail/MovieDetail';
 import GlobalStyle from './globalStyle';
 import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
+import Login from './Pages/Login/Login';
 import { getWatchedlist, getWishlist, getJournals } from './Services/apiClient';
 
 export const MovieContext = React.createContext(null);
 
 const App = () => {
+  const [user, setUser] = useState(null);
   const [movies, setMovies] = useState({});
   const [lists, setLists] = useState({
     explore: [],
@@ -103,7 +105,9 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
-  return (
+  return user === null ? (
+    <Login setWishlist={setWishlist} setUser={setUser} />
+  ) : (
     <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
       <S.App>
         <GlobalStyle />

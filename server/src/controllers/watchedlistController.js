@@ -2,8 +2,7 @@ const { User } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {
-    // const { UserId } = req.body;
-    const user = await User.findByPk(1);
+    const user = await User.findByPk(req.user.id);
     if (!user) {
       res.sendStatus(500);
     }
