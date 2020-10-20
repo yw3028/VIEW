@@ -25,7 +25,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
-import zIndex from '@material-ui/core/styles/zIndex';
 
 const useStyles = makeStyles({
   menu: {
@@ -44,7 +43,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   user: {
-    padding: '1rem 2rem',
+    padding: '1rem 4rem',
+    textAlign: 'right',
+    display: 'flex',
+    flexDirection:'column',
+    alignItems: 'center'
   },
   listItems: {
     padding: '1rem 2rem',
@@ -83,7 +86,7 @@ export default ({ user, setIsAuth }) => {
     >
       <div className={classes.user}>
         {user.image ? (
-          <Avatar alt={user.name} src={user.image} />
+          <Avatar alt={user.name} src={user.image} style={{height: '4rem', width: 'auto'}}/>
         ) : (
           <AccountCircleIcon color="action" fontSize="large" />
         )}
