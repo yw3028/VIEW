@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
@@ -12,11 +14,17 @@ import GlobalStyle from './globalStyle';
 import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
 import Login from './Pages/Login/Login';
-import { getWatchedlist, getWishlist, getJournals } from './Services/apiClient';
+import {
+  getWatchedlist,
+  getWishlist,
+  getJournals,
+  sendTokenToServer,
+} from './Services/apiClient';
 
 export const MovieContext = React.createContext(null);
 
 const App = () => {
+  const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
   const [movies, setMovies] = useState({});
   const [lists, setLists] = useState({
@@ -25,6 +33,27 @@ const App = () => {
     hasWatched: [],
     hasJournal: [],
   });
+
+  const successGoogle = (response) => {
+    const tokenId = response.tokenId;
+    console.log(response);
+    sendTokenToServer({ tokenId })
+      .then((response) => {
+        Cookies.set('token', response.token, {
+          expires: 30,
+        });
+        const currentUser = Array.isArray(response.user)
+          ? response.user[0]
+          : response.user;
+        setUser(currentUser);
+        setIsAuth(true);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const errorGoogle = (response) => {
+    console.log(response);
+  };
 
   const updateMovieStatusInList = (movieId, list) => {
     setLists((lists) => ({
@@ -62,35 +91,37 @@ const App = () => {
   };
 
   useEffect(() => {
-    const promiseOne = MoviedApi.getExploreMovies().then((apiMovies) => {
-      updateState('explore', apiMovies);
-    });
-    const promiseTwo = getWatchedlist().then((watchedMovies) => {
-      updateState('hasWatched', watchedMovies);
-    });
-    const promiseThree = getWishlist().then((wishlistMovies) => {
-      updateState('inWishlist', wishlistMovies);
-    });
-    Promise.all([promiseOne, promiseTwo, promiseThree]).then(() => {
-      getJournals().then((journals) => {
-        setMovies((movies) =>
-          journals.reduce(
-            (acc, journal) => ({
-              ...acc,
-              [journal.Movie.apiId]: Object.assign(acc[journal.Movie.apiId], {
-                hasJournal: journal.Movie.id,
-              }),
-            }),
-            movies
-          )
-        );
-        setLists((lists) => ({
-          ...lists,
-          hasJournal: journals.map((journal) => journal.Movie.apiId),
-        }));
+    if (isAuth) {
+      const promiseOne = MoviedApi.getExploreMovies().then((apiMovies) => {
+        updateState('explore', apiMovies);
       });
-    });
-  }, []);
+      const promiseTwo = getWatchedlist().then((watchedMovies) => {
+        updateState('hasWatched', watchedMovies);
+      });
+      const promiseThree = getWishlist().then((wishlistMovies) => {
+        updateState('inWishlist', wishlistMovies);
+      });
+      Promise.all([promiseOne, promiseTwo, promiseThree]).then(() => {
+        getJournals().then((journals) => {
+          setMovies((movies) =>
+            journals.reduce(
+              (acc, journal) => ({
+                ...acc,
+                [journal.Movie.apiId]: Object.assign(acc[journal.Movie.apiId], {
+                  hasJournal: journal.Movie.id,
+                }),
+              }),
+              movies
+            )
+          );
+          setLists((lists) => ({
+            ...lists,
+            hasJournal: journals.map((journal) => journal.Movie.apiId),
+          }));
+        });
+      });
+    }
+  }, [isAuth]);
 
   const exploreList = lists.explore.map((apiId) => movies[apiId]);
   const wishlist = lists.inWishlist.map((apiId) => movies[apiId]);
@@ -105,41 +136,42 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
-  return user === null ? (
-    <Login setWishlist={setWishlist} setUser={setUser} />
+  return !isAuth ? (
+    <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
-    <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
+    <MovieContext.Provider
+      value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
+    >
       <S.App>
         <GlobalStyle />
-          <Route
-            exact
-            path="/"
-            render={(routeProps) =>
-              lists.inWishlist && (
-                <Home
-                  {...routeProps}
-                  explore={exploreList}
-                  wishlist={wishlist}
-                  watched={watchlist}
-                />
-              )
-            }
-          ></Route>
-          <Route path="/wishlist" component={Wishlist}></Route>
-          <Route path="/watched" component={WatchedList}></Route>
-          <Route
-            path="/movie/:id"
-            render={(props) => <MovieDetail {...props} movies={movies} />}
-          ></Route>
-          <Route exact path="/journal" component={Journal}></Route>
-          <Route
-            path="/journal/:id"
-            render={(props) => <JournalDetail {...props} />}
-          ></Route>
+        <Route
+          exact
+          path="/"
+          render={(routeProps) =>
+            lists.inWishlist && (
+              <Home
+                {...routeProps}
+                explore={exploreList}
+                wishlist={wishlist}
+                watched={watchlist}
+              />
+            )
+          }
+        ></Route>
+        <Route path="/wishlist" component={Wishlist}></Route>
+        <Route path="/watched" component={WatchedList}></Route>
+        <Route
+          path="/movie/:id"
+          render={(props) => <MovieDetail {...props} movies={movies} />}
+        ></Route>
+        <Route exact path="/journal" component={Journal}></Route>
+        <Route
+          path="/journal/:id"
+          render={(props) => <JournalDetail {...props} />}
+        ></Route>
       </S.App>
     </MovieContext.Provider>
   );
 };
 
 export default App;
-

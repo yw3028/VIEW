@@ -6,6 +6,7 @@ import { addToJournal } from '../../Services/apiClient';
 
 const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
+
   const history = useHistory();
 
   const createOrReadJournal = async () => {

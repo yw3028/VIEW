@@ -57,6 +57,14 @@ export const updateJournalEntry = (id, data) =>
 export const deleteJournalEntry = (id) =>
   fetchApiRequest(`journal/${id}`, { method: 'DELETE' });
 
+// Auth
+export const sendTokenToServer = (data) =>
+  fetchApiRequest('googleLogin', {
+    method: 'POST',
+    url: 'http://localhost:3001/googlelogin',
+    data,
+  });
+
 // Helper fetch function
 const fetchApiRequest = (url, options = {}) => {
   return axios(`${BASE_URL}/${url}`, {
