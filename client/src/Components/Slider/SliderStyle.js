@@ -3,16 +3,19 @@ import styled from 'styled-components/macro';
 export const Slider = styled.div`
   .list_scroll {
     overflow-x: auto;
-    padding: 1.8rem 1rem;
-    margin: 0 2rem;
+    padding: 1.8rem 0rem;
+    /* margin: 0 0 0 2rem; */
     display: flex;
     overflow-y: hidden;
+    &:first-child {
+      margin-left: 2rem;
+    }
   }
 
   .list_title {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-top: 1rem;
+    margin-top: 4rem;
     padding-left: 3rem;
   }
 
@@ -25,6 +28,10 @@ export const Slider = styled.div`
     display: block;
     padding: 0.7rem;
     transition: transform 500ms;
+
+    &:first-child {
+      margin-left: 2.8rem;
+    }
   }
 
   .list_scroll .item,
