@@ -138,6 +138,7 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
+  
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
