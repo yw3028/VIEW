@@ -15,8 +15,9 @@ exports.getAll = async (req, res) => {
 };
 
 exports.postOne = async (req, res) => {
+  console.log("exports.postOne -> req.body", req.body)
   try {
-    const user = await User.findByPk(1, { include: ['Wish']});
+    const user = await User.findByPk(req.user.id, { include: ['Wish']});
     if (!user) {
       res.sendStatus(500);
     }
@@ -31,7 +32,7 @@ exports.postOne = async (req, res) => {
 
 exports.removeOne = async (req, res) => {
   try {
-    const user = await User.findByPk(1, { include: ['Wish']});
+    const user = await User.findByPk(req.user.id, { include: ['Wish']});
     if (!user) {
       res.sendStatus(500);
     }

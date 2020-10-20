@@ -16,7 +16,7 @@ export const MovieTile = styled.div`
 
   &:hover .movie_img {
     /* opacity: 0.8; */
-    filter: blur(1px) brightness(80%);
+    filter: brightness(70%);
     }
 
   .movie_img {

@@ -4,7 +4,7 @@ exports.getAllJournals = async (req, res) => {
   try {
     // const { UserId } = req.body;
     const allJournals = await Journal.findAll({
-      where: { UserId: 1 },
+      where: { UserId: req.user.id},
       include: [Movie],
     });
     res.status(200).send(allJournals);
@@ -27,9 +27,8 @@ exports.postJournal = async (req, res) => {
 exports.getJournal = async (req, res) => {
   try {
     const id = req.params.journalId;
-    // const { UserId } = req.body;
     const requestedJournal = await Journal.findOne({
-      where: { id, UserId: 1 },
+      where: { id, UserId: req.user.id },
       include: [Movie],
     });
     console.log(requestedJournal);
