@@ -16,7 +16,7 @@ exports.getAll = async (req, res) => {
 
 exports.postOne = async (req, res) => {
   try {
-    const user = await User.findByPk(1, { include: ['Watched']});
+    const user = await User.findByPk(req.user.id, { include: ['Watched']});
     if (!user) {
       res.sendStatus(500);
     }
@@ -32,7 +32,7 @@ exports.postOne = async (req, res) => {
 exports.removeOne = async (req, res) => {
   try {
     // const { UserId } = req.body;
-    const user = await User.findByPk(1, { include: ['Watched']});
+    const user = await User.findByPk(req.user.id, { include: ['Watched']});
     if (!user) {
       res.sendStatus(500);
     }
