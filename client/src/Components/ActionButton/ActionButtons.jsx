@@ -2,45 +2,67 @@ import React, { useContext } from 'react';
 import { MovieContext } from '../../App';
 import { useHistory } from 'react-router-dom';
 import * as S from './ActionButtonStyle';
-import { addToJournal } from '../../Services/apiClient';
+import {
+  getWatchedlist,
+  addToJournal,
+  addToWatchedlist,
+  removeFromWatchedlist,
+  addToWishlist,
+  removeFromWishlist,
+} from '../../Services/apiClient';
 
-const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
+const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
 
   const history = useHistory();
+  const movieId = Number(movie.apiId ? movie.apiId : movie.id); // ?
 
   const createOrReadJournal = () => {
-    // Check if it has journal
-    if (lists.hasJournal.includes(Number(movieId))) {
-      // Yes --> GET journal
-      // Pass :journalId to router
-      console.log('createOrReadJournal -> movies.movieId', movies.movieId);
+    if (lists.hasJournal.includes(movieId)) {
       history.push(`/journal/${movies[movieId].hasJournal}`);
     } else {
-      // NO --> POST journal and return :journalId
       addToJournal({
         title: 'Add your title',
         entry: 'Start typing...',
-        MovieId: Number(movieId),
+        MovieId: movie.apiId ? movie.id : null,
+        movieObject: movie,
         UserId: 1,
       }).then((res) => {
-        console.log('createOrReadJournal -> res', res);
-        // Pass :journalId to router
         history.push(`/journal/${res.id}`);
       });
     }
   };
+
+  const handleClickWishlist = () => {
+    const prom = lists.inWishlist.includes(movieId)
+      ? removeFromWishlist(movieId)
+      : addToWishlist({
+          MovieId: movie.apiId ? movie.id : null,
+          movieObject: movie,
+        });
+    prom.then(() => {
+      updateMovieStatusInList(movieId, 'inWishlist');
+    });
+  };
+
+  const handleClickWatchedlist = () => {
+    const prom = lists.hasWatched.includes(movieId)
+      ? removeFromWatchedlist(movieId)
+      : addToWatchedlist({
+          MovieId: movie.apiId ? movie.id : null,
+          movieObject: movie,
+        });
+    prom.then(() => {
+      updateMovieStatusInList(movieId, 'hasWatched');
+    });
+  };
+
   return (
     <S.ButtonsContainer>
       {wish && (
         <S.ActionButton color={color}>
-          <span
-            class="material-icons"
-            onClick={() =>
-              updateMovieStatusInList(Number(movieId), 'inWishlist')
-            }
-          >
-            {lists.inWishlist.includes(Number(movieId))
+          <span class="material-icons" onClick={handleClickWishlist}>
+            {lists.inWishlist.includes(movieId)
               ? 'favorite'
               : 'favorite_border'}
           </span>
@@ -49,13 +71,8 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       )}
       {watched && (
         <S.ActionButton color={color}>
-          <span
-            class="material-icons"
-            onClick={() =>
-              updateMovieStatusInList(Number(movieId), 'hasWatched')
-            }
-          >
-            {lists.hasWatched.includes(Number(movieId))
+          <span class="material-icons" onClick={handleClickWatchedlist}>
+            {lists.hasWatched.includes(movieId)
               ? 'done_outline'
               : 'visibility_off'}
           </span>
@@ -65,7 +82,7 @@ const ActionButtons = ({ text, wish, watched, journal, movieId, color }) => {
       {journal && (
         <S.ActionButton color={color} onClick={createOrReadJournal}>
           <span class="material-icons">
-            {lists.hasJournal.includes(Number(movieId)) ? 'book' : 'create'}
+            {lists.hasJournal.includes(movieId) ? 'book' : 'create'}
           </span>
           {text && <S.IconText>Journal</S.IconText>}
         </S.ActionButton>

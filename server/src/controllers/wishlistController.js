@@ -1,9 +1,8 @@
-const { User } = require('../models');
+const { User, Movie } = require('../models');
 
 exports.getAll = async (req, res) => {
   try {
-    // const { UserId } = req.body;
-    const user = await User.findByPk(1);
+    const user = await User.findByPk(req.user.id);
     if (!user) {
       res.sendStatus(500);
     }
@@ -17,11 +16,11 @@ exports.getAll = async (req, res) => {
 
 exports.postOne = async (req, res) => {
   try {
-    const { UserId, MovieId } = req.body;
-    const user = await User.findByPk(1);
+    const user = await User.findByPk(1, { include: ['Wish']});
     if (!user) {
       res.sendStatus(500);
     }
+    const { MovieId } = req.body;
     const wish = await user.addWish(MovieId);
     res.status(201).send(wish);
   } catch (error) {
@@ -32,13 +31,13 @@ exports.postOne = async (req, res) => {
 
 exports.removeOne = async (req, res) => {
   try {
-    // const { UserId } = req.body;
-    const user = await User.findByPk(1);
+    const user = await User.findByPk(1, { include: ['Wish']});
     if (!user) {
       res.sendStatus(500);
     }
-    const { movieId } = req.params;
-    await user.removeWish(movieId);
+    const apiId = req.params.movieId;
+    const foundMovie = user.Wish.find((movie) => movie.apiId === +apiId);
+    await user.removeWish(foundMovie.id);
     res.sendStatus(200);
   } catch (error) {
     console.error('Error: ', error); // eslint-disable-line no-console

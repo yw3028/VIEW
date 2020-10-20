@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -11,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -56,7 +58,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default () => {
+export default ({ user, setIsAuth }) => {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -80,9 +82,15 @@ export default () => {
       onKeyDown={toggleDrawer(false)}
     >
       <div className={classes.user}>
-        <AccountCircleIcon color="action" fontSize="large" />
-        <Typography variant="h6">Santiago Ramon Cajal</Typography>
-        <Typography variant="body2">santiagorarmon1934@gmail.com</Typography>
+        {user.image ? (
+          <Avatar alt={user.name} src={user.image} />
+        ) : (
+          <AccountCircleIcon color="action" fontSize="large" />
+        )}
+        <Typography variant="h6">
+          {user.firstName} {user.lastName}
+        </Typography>
+        <Typography variant="body2">{user.email}</Typography>
       </div>
       <Divider />
       <List className={classes.listItems}>
@@ -146,7 +154,33 @@ export default () => {
           <ListItemIcon>
             <PowerSettingsNewIcon />
           </ListItemIcon>
-          <ListItemText secondary="Sign Off" />
+          <GoogleLogout
+            tag="div"
+            type="div"
+            icon={false}
+            key="Sign-off"
+            render={(renderProps) => (
+              <div
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                style={{
+                  fontSize: '0.875rem',
+                  fontFamily: 'Roboto',
+                  fontWeight: 400,
+                  lineHeight: 1.43,
+                  color: 'rgba(0, 0, 0, 0.54)',
+                  letterSpacing: '0.01071em',
+                  cursor: 'pointer',
+                }}
+              >
+                Sign off
+              </div>
+            )}
+            clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
+            onLogoutSuccess={() => {
+              setIsAuth(false);
+            }}
+          ></GoogleLogout>
         </ListItem>
       </List>
       <img className={classes.jhim} src={jhim} alt="jhim" />
