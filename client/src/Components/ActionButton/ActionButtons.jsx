@@ -14,7 +14,7 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
 
   const history = useHistory();
-  const movieId = Number(movie.apiId ? movie.apiId : movie.id); 
+  const movieId = Number(movie.apiId ? movie.apiId : movie.id);
 
   const createOrReadJournal = () => {
     if (lists.hasJournal.includes(movieId)) {
@@ -25,8 +25,8 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
         entry: 'Start typing...',
         MovieId: movie.apiId ? movie.id : null,
         movieObject: movie,
-        UserId: 1,
       }).then((res) => {
+        movies[movieId] = Object.assign(movies[movieId], { hasJournal: true });
         history.push(`/journal/${res.id}`);
       });
     }
@@ -79,9 +79,9 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
         </S.ActionButton>
       )}
       {journal && (
-        <S.ActionButton color={color} onClick={createOrReadJournal}>
-          <span class="material-icons">
-            {lists.hasJournal.includes(movieId) ? 'book' : 'create'}
+        <S.ActionButton color={color}>
+          <span class="material-icons" onClick={createOrReadJournal}>
+            {movies[movieId]['hasJournal'] ? 'book' : 'create'}
           </span>
           {text && <S.IconText>Journal</S.IconText>}
         </S.ActionButton>

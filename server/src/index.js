@@ -47,7 +47,7 @@ app.all('*', (req, res, next) => {
 (async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     console.log('Connected to the database'); // eslint-disable-line no-console
     await app.listen(PORT);
     console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
