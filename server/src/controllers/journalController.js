@@ -2,11 +2,13 @@ const { Journal, Movie } = require('../models');
 
 exports.getAllJournals = async (req, res) => {
   try {
-    // const { UserId } = req.body;
+    const { id } = req.user;
+    console.log('exports.getAllJournals -> id', id);
     const allJournals = await Journal.findAll({
-      where: { UserId: req.user.id},
+      where: { UserId: id },
       include: [Movie],
     });
+    console.log('exports.getAllJournals -> allJournals', allJournals);
     res.status(200).send(allJournals);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
@@ -16,7 +18,9 @@ exports.getAllJournals = async (req, res) => {
 
 exports.postJournal = async (req, res) => {
   try {
-    const newJournal = await Journal.create(req.body);
+    console.log(req.user.id);
+    const tempObj = Object.assign(req.body, { UserId: req.user.id });
+    const newJournal = await Journal.create(tempObj);
     res.status(200).send(newJournal);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
@@ -26,12 +30,12 @@ exports.postJournal = async (req, res) => {
 
 exports.getJournal = async (req, res) => {
   try {
+    console.log('exports.getJournal -> req', req);
     const id = req.params.journalId;
     const requestedJournal = await Journal.findOne({
-      where: { id, UserId: req.user.id },
+      where: { id },
       include: [Movie],
     });
-    console.log(requestedJournal);
     res.status(200).send(requestedJournal);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
