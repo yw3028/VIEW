@@ -32,3 +32,21 @@ export const ButtonsDiv = styled.div`
   justify-content: space-between;
   width: 50%;
 `;
+
+export const Button = styled.button`
+  border: none;
+  font-family: 'Roboto';
+  width: 4rem;
+  padding: 0.4rem 0.4rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 4px #999;
+  outline: none;
+
+  &:hover {
+    background: ${(props) =>
+        (props.value === 'delete' && '#ff6057') ||
+        (props.value === 'keep' && '#3CB043')}
+      radial-gradient(circle, transparent 1%, #919191 1%) center/15000%;
+  }
+`;

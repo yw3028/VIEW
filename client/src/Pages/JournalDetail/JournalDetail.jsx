@@ -63,6 +63,8 @@ const JournalDetail = (props) => {
       </S.MovieAndJournalContainer>
       <DeletePopupAlert
         displayPopup={displayPopup ? 'flex' : 'none'}
+        setDisplayPopup={setDisplayPopup}
+        journalId={journalId}
       ></DeletePopupAlert>
     </S.PageContainer>
   );
