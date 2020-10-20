@@ -7,6 +7,7 @@ import { MovieContext } from '../../App';
 import * as S from './JournalStyle';
 
 import { getJournals } from '../../Services/apiClient';
+import JournalEntry from '../../Components/JouranlEntry/JournalEntry';
 
 const groupByMonths = (journals, date) => {
   return journals.reduce((result, journal) => {
@@ -39,7 +40,7 @@ const Journal = () => {
         {Object.keys(lists).map((month, index) => (
           <div key={index}>
             <h2>{month.toUpperCase()}</h2>
-            <JournalList journals={lists[month]} />
+            <JournalList journals={lists[month]} setJournals={setJournals} />
           </div>
         ))}
       </S.JournalPage>

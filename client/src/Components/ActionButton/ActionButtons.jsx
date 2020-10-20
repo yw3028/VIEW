@@ -18,13 +18,9 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
   const movieId = Number(movie.apiId ? movie.apiId : movie.id); // ?
 
   const createOrReadJournal = () => {
-    // Check if it has journal
     if (lists.hasJournal.includes(movieId)) {
-      // Yes --> GET journal
-      // Pass :journalId to router
       history.push(`/journal/${movies[movieId].hasJournal}`);
     } else {
-      // NO --> POST journal and return :journalId
       addToJournal({
         title: 'Add your title',
         entry: 'Start typing...',
@@ -32,7 +28,6 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
         movieObject: movie,
         UserId: 1,
       }).then((res) => {
-        // Pass :journalId to router
         history.push(`/journal/${res.id}`);
       });
     }

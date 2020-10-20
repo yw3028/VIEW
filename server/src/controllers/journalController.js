@@ -4,7 +4,7 @@ exports.getAllJournals = async (req, res) => {
   try {
     // const { UserId } = req.body;
     const allJournals = await Journal.findAll({
-      where: { UserId: 1},
+      where: { UserId: 1 },
       include: [Movie],
     });
     res.status(200).send(allJournals);
@@ -32,6 +32,7 @@ exports.getJournal = async (req, res) => {
       where: { id, UserId: 1 },
       include: [Movie],
     });
+    console.log(requestedJournal);
     res.status(200).send(requestedJournal);
   } catch (error) {
     console.error('Error', error); // eslint-disable-line
