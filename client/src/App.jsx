@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
+import Explore from './Pages/Explore/Explore';
 import Wishlist from './Pages/Wishlist/Wishlist';
 import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
@@ -136,6 +137,7 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
+  
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
