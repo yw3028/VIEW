@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
+import Explore from './Pages/Explore/Explore';
 import Wishlist from './Pages/Wishlist/Wishlist';
 import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
@@ -104,38 +105,44 @@ const App = () => {
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
   return (
-    <MovieContext.Provider value={{ updateMovieStatusInList, movies, lists }}>
+    <MovieContext.Provider
+      value={{ updateMovieStatusInList, updateState, movies, lists }}
+    >
       <S.App>
         <GlobalStyle />
-          <Route
-            exact
-            path="/"
-            render={(routeProps) =>
-              lists.inWishlist && (
-                <Home
-                  {...routeProps}
-                  explore={exploreList}
-                  wishlist={wishlist}
-                  watched={watchlist}
-                />
-              )
-            }
-          ></Route>
-          <Route path="/wishlist" component={Wishlist}></Route>
-          <Route path="/watched" component={WatchedList}></Route>
-          <Route
-            path="/movie/:id"
-            render={(props) => <MovieDetail {...props} movies={movies} />}
-          ></Route>
-          <Route exact path="/journal" component={Journal}></Route>
-          <Route
-            path="/journal/:id"
-            render={(props) => <JournalDetail {...props} />}
-          ></Route>
+        <Route
+          exact
+          path="/"
+          render={(routeProps) =>
+            lists.inWishlist && (
+              <Home
+                {...routeProps}
+                explore={exploreList}
+                wishlist={wishlist}
+                watched={watchlist}
+              />
+            )
+          }
+        ></Route>
+        <Route
+          path="/explore"
+          component={Explore}
+          render={(props) => <Explore {...props} />}
+        ></Route>
+        <Route path="/wishlist" component={Wishlist}></Route>
+        <Route path="/watched" component={WatchedList}></Route>
+        <Route
+          path="/movie/:id"
+          render={(props) => <MovieDetail {...props} movies={movies} />}
+        ></Route>
+        <Route exact path="/journal" component={Journal}></Route>
+        <Route
+          path="/journal/:id"
+          render={(props) => <JournalDetail {...props} />}
+        ></Route>
       </S.App>
     </MovieContext.Provider>
   );
 };
 
 export default App;
-

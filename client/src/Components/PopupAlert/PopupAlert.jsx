@@ -13,11 +13,8 @@ const PopupAlert = ({ displayPopup, setDisplayPopup, journalId }) => {
     console.log('handleClick -> event.target', event.target);
     console.log('handleClick -> event.target.value', event.target.value);
     if (event.target.value === 'keep') {
-      console.log('keep clicked');
       setDisplayPopup(!displayPopup);
     } else if (event.target.value === 'delete') {
-      // delete journal entry
-      // return to journal list
       console.log('delete clicked');
       deleteJournalEntry(Number(journalId)).then(() => {
         history.push('/journal/');
