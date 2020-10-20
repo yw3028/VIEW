@@ -36,11 +36,7 @@ export default ({ movie }) => {
           />
         </button>
         <button className="movie_overlay_btn">
-          <Button
-            color={'white'}
-            watched={true}
-            movie={movie}
-          />
+          <Button color={'white'} watched={true} movie={movie} />
         </button>
       </div>
     </S.MovieTile>
