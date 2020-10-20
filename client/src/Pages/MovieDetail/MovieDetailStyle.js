@@ -47,16 +47,21 @@ export const MovieDetailsContainer = styled.div`
 
 export const ActionButtonsPosition = styled.div`
   position: fixed;
+  display: flex;
+  justify-content: space-around;
   bottom: 0px;
   background: white;
   box-shadow: -1px -1px 10px -1px rgba(0, 0, 0, 0.22);
   width: 100%;
 
   @media screen and (min-device-width: 780px) {
+    display: flex;
+    height: auto;
+    width: 250px;
     background: transparent;
     box-shadow: none;
-    left: 70%;
-    top: 12.5%;
+    right: 10%;
+    top: 13%;
     z-index: 1;
   }
 `;

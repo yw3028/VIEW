@@ -14,9 +14,9 @@ export default ({ explore, wishlist, watched, status }) => {
       <Menu user={user} setIsAuth={setIsAuth} />
       <S.Home>
         <Hero />
-        <Slider list={explore} title={'Explore'} status={status} />
-        <Slider list={wishlist} title={'Wishlist'} status={status} />
-        <Slider list={watched} title={'Watched'} status={status} />
+        <Slider list={explore} title={'Explore'} />
+        <Slider list={wishlist} title={'Wishlist'} />
+        <Slider list={watched} title={'Watched'} />
       </S.Home>
     </>
   );
