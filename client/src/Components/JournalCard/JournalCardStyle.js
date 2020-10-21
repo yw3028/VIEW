@@ -8,8 +8,8 @@ export const JournalCard = styled.div`
   position: relative;
   color: black;
   display: flex;
-flex-direction: column;
-justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const JournalDate = styled.div`
