@@ -40,6 +40,8 @@ const useStyles = makeStyles({
     padding: '1rem 0',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: 'lightGray',
+    height: '100%'
   },
   user: {
     padding: '1rem 4rem',
@@ -64,6 +66,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     bottom: '2rem',
     alignSelf: 'center',
+    borderRadius: '5px'
   }
 });
 
