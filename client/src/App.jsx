@@ -143,7 +143,7 @@ const App = () => {
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
     <MovieContext.Provider
-      value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
+      value={{ updateMovieStatusInList, updateState, movies, lists, user, setIsAuth }}
     >
       <S.App>
         <GlobalStyle />
