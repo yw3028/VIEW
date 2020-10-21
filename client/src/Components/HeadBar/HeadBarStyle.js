@@ -18,4 +18,5 @@ export const Logo = styled.p`
   font-family: 'Monoton', cursive;
   font-size: 36px;
   letter-spacing: 3px;
+  margin-left: 10rem;
 `;
