@@ -8,6 +8,21 @@ import Typical from 'react-typical';
 
 import * as S from './LoginStyle';
 
+const steps = [
+  'watch',
+  1000,
+  'share',
+  1000,
+  'enjoy',
+  1000,
+  'track',
+  1000,
+  'Journal about',
+  1000,
+  'view',
+  1000,
+];
+
 const Login = ({ successGoogle, errorGoogle }) => {
   const initAxiosInterceptors = () => {
     axios.interceptors.request.use((config) => {
@@ -21,65 +36,25 @@ const Login = ({ successGoogle, errorGoogle }) => {
 
   initAxiosInterceptors();
 
-  const steps = [
-    'Track what you watch',
-    1000,
-    'Add movies to your wishlist',
-    1000,
-    'Journal about it',
-    1000,
-  ];
-
   return (
     <Fade>
       <S.Login>
-        <div className="container">
-          <div className="signup">
-            <div className="left">
-              <h1>
-                A new way to{' '}
-                <Typical
-                  steps={[
-                    'watch',
-                    1000,
-                    'share',
-                    1000,
-                    'enjoy',
-                    1000,
-                    'track',
-                    1000,
-                    'Journal about',
-                    1000,
-                    'view',
-                    1000,
-                  ]}
-                  // loop={Infinity}
-                  wrapper="p"
-                />
-                movies
-              </h1>
-              <Typical steps={steps} loop={Infinity} wrapper="p" />
-              {/* <ul>
-                <li>Track what you watch</li>
-                <li>Add movies to your wishlist</li>
-                <li>Journal about it</li>
-                <li>Check your friend's taste</li>
-                <li>Find common movies to watch</li>
-              </ul> */}
-            </div>
-            <div className="right box">
-              <img src={viewImage} alt="view-img" />
-              <GoogleLogin
-                clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
-                buttonText="Sign in with Google"
-                onSuccess={(response) => successGoogle(response)}
-                onFailure={(response) => errorGoogle(response)}
-                cookiePolicy={'single_host_origin'}
-                // isSignedIn={true}
-              />
-            </div>
-          </div>
-        </div>
+        <h1>
+          A new way to <Typical steps={steps} wrapper="h1" />
+          movies
+        </h1>
+        <S.Right>
+          <img src={viewImage} alt="view-img" />
+          <GoogleLogin
+            className="google"
+            clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
+            buttonText="Sign in with Google"
+            onSuccess={(response) => successGoogle(response)}
+            onFailure={(response) => errorGoogle(response)}
+            cookiePolicy={'single_host_origin'}
+            // isSignedIn={true}
+          />
+        </S.Right>
       </S.Login>
     </Fade>
   );
