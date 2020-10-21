@@ -138,7 +138,7 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
-  
+
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
@@ -161,6 +161,7 @@ const App = () => {
             )
           }
         ></Route>
+        <Route path="/explore" component={Explore}></Route>
         <Route path="/wishlist" component={Wishlist}></Route>
         <Route path="/watched" component={WatchedList}></Route>
         <Route
