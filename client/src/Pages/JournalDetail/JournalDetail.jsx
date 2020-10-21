@@ -34,7 +34,6 @@ const JournalDetail = (props) => {
   useEffect(() => {
     getJournalById(journalId).then((journal) => {
       setJournalEntry(journal);
-      console.log(journal, 'journal');
     });
   }, [props]);
 
@@ -48,7 +47,6 @@ const JournalDetail = (props) => {
           aria-label="delete"
           onClick={() => {
             setDisplayPopup(!displayPopup);
-            console.log('clicked');
           }}
         >
           <DeleteIcon />
