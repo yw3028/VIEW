@@ -14,6 +14,10 @@ const useStyles = makeStyles(() => ({
     '& > *': {
       margin: 20,
       backgroundColor: 'white',
+      boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)',
+      '&:hover': {
+        backgroundColor: 'darkgray',
+      },
     },
   },
 }));
@@ -41,16 +45,19 @@ const MoviePage = (props) => {
           text={true}
           wish={true}
           movie={movieDetail}
+          circular={true}
         ></ActionButtons>
         <ActionButtons
           text={true}
           watched={true}
           movie={movieDetail}
+          circular={true}
         ></ActionButtons>
         <ActionButtons
           text={true}
           journal={true}
           movie={movieDetail}
+          circular={true}
         ></ActionButtons>
       </S.ActionButtonsPosition>
     </S.PageContainer>

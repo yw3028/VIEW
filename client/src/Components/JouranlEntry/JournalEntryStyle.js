@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const JournalEntryContainer = styled.div`
+  margin-left: 2rem;
   padding-left: 1.5rem;
   line-height: 1.5rem;
   height: 60vh;
@@ -33,11 +34,16 @@ export const JournalTitle = styled.textarea`
   font-weight: ${(props) => `${props.theme.fontWeight.title}`};
   font-size: ${(props) => `${props.theme.fontSize.large}`};
   border: none;
-  width: 100%;
+  width: 80%;
   margin-top: 1.5rem;
   resize: none;
+  background: ${(props) => `${props.theme.colors.background}`};
+  outline: none;
 
   @media screen and (min-device-width: 780px) {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dotted lightgray;
+    background: ${(props) => `${props.theme.colors.white}`};
     padding-right: 1.5rem;
     height: 2rem;
   }
@@ -53,8 +59,11 @@ export const JournalContent = styled.textarea`
   width: 100%;
   height: 100%;
   resize: none;
+  background: ${(props) => `${props.theme.colors.background}`};
+  outline: none;
 
   @media screen and (min-device-width: 780px) {
+    background: ${(props) => `${props.theme.colors.white}`};
     padding-right: 1.5rem;
     width: 40vw;
     height: 45vh;

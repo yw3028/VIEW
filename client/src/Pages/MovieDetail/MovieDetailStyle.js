@@ -56,12 +56,12 @@ export const ActionButtonsPosition = styled.div`
 
   @media screen and (min-device-width: 780px) {
     display: flex;
-    height: auto;
+    max-height: 48px;
     width: 250px;
     background: transparent;
     box-shadow: none;
-    right: 10%;
-    top: 13%;
+    right: 14%;
+    top: 12%;
     z-index: 1;
   }
 `;
