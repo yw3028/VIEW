@@ -29,14 +29,21 @@ import logo from '../../assets/logo.png';
 
 
 const useStyles = makeStyles({
+  icon: {
+    background: 'white',
+    height: '30px',
+    width: '30px',
+    borderRadius: '50%',
+    margin: '2rem 2rem',
+    padding: '1rem',
+  },
   menu: {
     position: '-webkit-sticky',
     position: 'sticky',
     top: '-1px',
-    margin: '40px',
-    width: '100%',
-    background: 'white',
-    zIndex: 1,
+    margin: '0 1rem',
+    left: '10px',
+    zIndex: 100,
   },
   list: {
     width: 300,
@@ -203,7 +210,7 @@ export default ({ user, setIsAuth }) => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon fontSize="large" />
+          <MenuIcon fontSize="large" className={classes.icon} />
         </Button>
         <SwipeableDrawer
           anchor="left"

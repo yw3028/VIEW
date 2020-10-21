@@ -22,6 +22,7 @@ export const ActionButton = styled.button`
   border: none;
   color: ${(props) => props.color};
   background-color: transparent;
+  cursor: pointer;
 
   @media screen and (min-device-width: 780px) {
     display: flex;
