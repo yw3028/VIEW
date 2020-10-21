@@ -27,7 +27,6 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 // import jhim from '../../assets/Jhim.png';
 import logo from '../../assets/logo.png';
 
-
 const useStyles = makeStyles({
   menu: {
     position: '-webkit-sticky',
@@ -41,14 +40,14 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: 'lightGray',
-    height: '100%'
+    height: '100%',
   },
   user: {
     padding: '1rem 4rem',
     textAlign: 'right',
     display: 'flex',
-    flexDirection:'column',
-    alignItems: 'center'
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   listItems: {
     padding: '1rem 2rem',
@@ -66,8 +65,19 @@ const useStyles = makeStyles({
     position: 'absolute',
     bottom: '2rem',
     alignSelf: 'center',
-    borderRadius: '5px'
-  }
+    borderRadius: '5px',
+  },
+
+  footer: {
+    fontSize: '8px',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: '1rem',
+  },
+
+  emoji: {
+    color: 'red',
+  },
 });
 
 export default ({ user, setIsAuth }) => {
@@ -95,7 +105,11 @@ export default ({ user, setIsAuth }) => {
     >
       <div className={classes.user}>
         {user.image ? (
-          <Avatar alt={user.name} src={user.image} style={{height: '4rem', width: '4rem'}}/>
+          <Avatar
+            alt={user.name}
+            src={user.image}
+            style={{ height: '4rem', width: '4rem' }}
+          />
         ) : (
           <AccountCircleIcon color="action" fontSize="large" />
         )}
@@ -196,6 +210,9 @@ export default ({ user, setIsAuth }) => {
         </ListItem>
       </List>
       <img className={classes.logo} src={logo} alt="logo" />
+      <p className={classes.footer}>
+        Made with <span className={classes.emoji}>❤</span> in Barcelona
+      </p>
     </div>
   );
 
@@ -203,7 +220,7 @@ export default ({ user, setIsAuth }) => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon fontSize="large"/>
+          <MenuIcon fontSize="large" />
         </Button>
         <SwipeableDrawer
           anchor="left"

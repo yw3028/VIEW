@@ -21,8 +21,8 @@ const theme = {
     white: '#ffffff',
   },
   fonts: {
-    header: 'Roboto',
-    body: 'sans-serif',
+    header: "'Bebas Neue', cursive",
+    body: "'Poppins', sans-serif",
   },
   fontSize: {
     small: '0.9rem',
