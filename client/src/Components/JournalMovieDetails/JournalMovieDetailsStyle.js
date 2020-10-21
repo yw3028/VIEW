@@ -3,8 +3,8 @@ import styled from 'styled-components/macro';
 export const JournalMovieDetails = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-family: ${(props) => `${props.theme.fonts.header}`};
+  font-weight: ${(props) => `${props.theme.fontWeight.light}`};
 
   @media screen and (min-device-width: 780px) {
     align-items: center;
@@ -53,17 +53,17 @@ export const TextBox = styled.div`
 `;
 
 export const MovieTitle = styled.p`
-  font-weight: 400;
-  font-size: 1.2rem;
+  font-size: ${(props) => `${props.theme.fontSize.medium}`};
+  font-weight: ${(props) => `${props.theme.fontWeight.regular}`};
   line-height: 1.4rem;
   text-align: center;
   margin-bottom: 1rem;
 `;
 
 export const MovieInfo = styled.p`
-  font-size: 0.8rem;
+  font-size: ${(props) => `${props.theme.fontSize.small}`};
   text-align: center;
-  color: #797979;
+  color: ${(props) => `${props.theme.colors.mediumGrey}`};
   margin: 0.4rem 0;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
@@ -74,7 +74,7 @@ export const MovieInfo = styled.p`
   }
 
   @media screen and (min-device-width: 1200px) {
-    font-size: 1.1rem;
+    font-size: ${(props) => `${props.theme.fontSize.medium}`};
     margin: 0.8rem 0;
   }
 `;
