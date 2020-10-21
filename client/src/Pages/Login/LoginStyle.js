@@ -6,12 +6,12 @@ export const Login = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: url('https://www.ppt-backgrounds.net/uploads/lines-black-and-white-photo-templates.jpeg') no-repeat center center fixed; 
+  background: url('https://www.ppt-backgrounds.net/uploads/lines-black-and-white-photo-templates.jpeg')
+    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
 
   .container {
     display: flex;
@@ -20,14 +20,11 @@ export const Login = styled.div`
   .signup {
     font-family: 'Roboto';
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     /* height: 100vh; */
     padding: 2rem;
-  }
-
-  * {
-    font-family: "'Bebas Neue', cursive";
   }
 
   ul {
@@ -36,9 +33,12 @@ export const Login = styled.div`
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: 700;
+    letter-spacing: 4px;
     margin-bottom: 1rem;
+    font-family: 'Bebas Neue', cursive;
+    & 
   }
 
   li {
@@ -83,7 +83,7 @@ export const Login = styled.div`
       0 100px 80px rgba(0, 0, 0, 0.12);
     height: 250px;
     width: 300px;
-    background: linear-gradient(270deg, white 0%, rgba(240,240,240,1) 100%);
+    background: linear-gradient(270deg, white 0%, rgba(240, 240, 240, 1) 100%);
     border-radius: 10px;
   }
 `;
