@@ -20,7 +20,7 @@ export const TopIcons = styled.div`
 
   @media screen and (min-device-width: 780px) {
     position: static;
-    margin-top: 2vh;
+    margin-top: 10vh;
   }
 `;
 

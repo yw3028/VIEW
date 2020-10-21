@@ -33,6 +33,8 @@ export const ActionButton = styled.button`
 export const Icon = styled.div``;
 
 export const IconText = styled.div`
+  color: ${(props) => `${props.theme.colors.textBody}`};
+  font-size: ${(props) => `${props.theme.fontSize.small}`};
   font-size: 0.8rem;
   margin-top: 0.2rem;
   @media screen and (min-device-width: 780px) {
