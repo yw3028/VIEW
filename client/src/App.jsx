@@ -147,7 +147,7 @@ const App = () => {
 
     <Theme>
       <MovieContext.Provider
-        value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
+        value={{ updateMovieStatusInList, updateState, movies, lists, user, setIsAuth }}
       >
         <S.App>
           <GlobalStyle primaryColor />
