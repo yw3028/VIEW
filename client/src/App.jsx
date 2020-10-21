@@ -144,6 +144,7 @@ const App = () => {
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
+
     <Theme>
       <MovieContext.Provider
         value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
@@ -188,6 +189,7 @@ const App = () => {
         </S.App>
       </MovieContext.Provider>
     </Theme>
+
   );
 };
 

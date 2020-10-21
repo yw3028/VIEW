@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import MovieRating from '../MovieRating/MovieRating';
 import * as S from './MovieDetailsStyle';
 
 const imageUrlPath = 'https://image.tmdb.org/t/p/w300/';
@@ -31,6 +32,8 @@ const MovieDetails = ({ movie }) => {
           {movie.runTime} min
         </S.MovieInfo> */}
         <S.MoviePlot>{movie.overview}</S.MoviePlot>
+        <S.DesktopLabels>Rating </S.DesktopLabels>
+        <MovieRating rating={movie.vote_average}/>
       </S.TextBox>
     </S.MovieDetails>
   );

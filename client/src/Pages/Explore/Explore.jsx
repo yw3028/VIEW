@@ -9,7 +9,7 @@ import MoviedApi from '../../Services/moviedApiClient';
 import * as S from './ExploreStyle';
 
 const Explore = () => {
-  const { updateMovieStatusInList, updateState, movies, lists } = useContext(
+  const { updateMovieStatusInList, updateState, movies, lists, user, setIsAuth } = useContext(
     MovieContext
   );
 
@@ -33,7 +33,7 @@ const Explore = () => {
 
   return (
     <>
-      <Menu />
+      <Menu user={user} setIsAuth={setIsAuth} />
       <S.ExploreContainer>
         {categories.map((category) => {
           return (
