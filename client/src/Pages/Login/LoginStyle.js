@@ -32,15 +32,28 @@ export const Login = styled.div`
     padding: 0;
   }
 
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
   li {
     margin: 0.5rem;
     font-size: 1.3rem;
+    line-height: 2rem;
+  }
+
+  h4 {
+    margin: 1rem;
+    font-size: 1.5rem;
   }
 
   img {
     height: 100px;
     width: auto;
     border-radius: 10px;
+    margin: 0.5rem
   }
 
   .left,
@@ -68,6 +81,6 @@ export const Login = styled.div`
     height: 250px;
     width: 300px;
     background: white;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 `;

@@ -142,13 +142,23 @@ const App = () => {
   // console.log('wishlist: ', wishlist);
 
   return !isAuth ? (
-    <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
+    <>
+      <GlobalStyle />
+      <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
+    </>
   ) : !loaded ? (
     <div>Loading</div>
   ) : (
     <Fade>
       <MovieContext.Provider
-        value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
+        value={{
+          updateMovieStatusInList,
+          updateState,
+          movies,
+          lists,
+          user,
+          setIsAuth,
+        }}
       >
         <S.App>
           <GlobalStyle />

@@ -24,9 +24,13 @@ export const Slider = styled.div`
 
   .item {
     position: relative;
+    width: 150px;
+    height: 280px;
     display: block;
+    margin: 5px;
     /* padding: 0.7rem; */
     transition: transform 500ms;
+    }
   }
 
   .list_scroll .item,

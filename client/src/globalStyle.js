@@ -112,6 +112,8 @@ section {
 }
 body {
   line-height: 1;
+  background: rgb(235,235,235);
+background: linear-gradient(270deg, rgba(235,235,235,1) 0%, rgba(240,240,240,1) 100%);
 }
 ol,
 ul, li {

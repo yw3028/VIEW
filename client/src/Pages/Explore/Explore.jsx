@@ -19,6 +19,7 @@ const Explore = () => {
   } = useContext(MovieContext);
 
   const [categories, setCategories] = useState([]);
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
     MoviedApi.getCategories()
@@ -27,16 +28,18 @@ const Explore = () => {
         return categories;
       })
       .then((categories) => {
-        console.log('WatchedList -> categories', categories);
         categories.forEach((category) => {
           MoviedApi.getMoviesFromCategory(category.id).then((fetchedMovies) => {
             updateState(category.name, fetchedMovies);
           });
         });
+        setPageLoaded(true);
       });
   }, []);
 
-  return (
+  return !pageLoaded ? (
+    <div>Loading</div>
+  ) : (
     <>
       <Menu user={user} setIsAuth={setIsAuth} />
       <S.ExploreContainer>
