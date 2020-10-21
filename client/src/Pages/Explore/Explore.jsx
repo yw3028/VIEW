@@ -9,7 +9,7 @@ import MoviedApi from '../../Services/moviedApiClient';
 import * as S from './ExploreStyle';
 
 const Explore = () => {
-  const { updateMovieStatusInList, updateState, movies, lists } = useContext(
+  const { updateState, movies, lists } = useContext(
     MovieContext
   );
 

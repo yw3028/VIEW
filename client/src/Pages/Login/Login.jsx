@@ -37,7 +37,6 @@ const Login = ({ successGoogle, errorGoogle }) => {
             </div>
             <div className="right box">
               <img src={viewImage} alt="view-img" />
-              <h4>Sign in to View</h4>
               <GoogleLogin
                 clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
                 buttonText="Sign in with Google"

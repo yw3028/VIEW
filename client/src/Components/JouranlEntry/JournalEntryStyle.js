@@ -40,6 +40,7 @@ export const JournalTitle = styled.textarea`
   background: ${(props) => `${props.theme.colors.background}`};
   outline: none;
 
+
   @media screen and (min-device-width: 780px) {
     padding-bottom: 1.5rem;
     border-bottom: 1px dotted lightgray;

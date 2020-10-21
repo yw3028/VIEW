@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 export const Slider = styled.div`
   .list_scroll {
     overflow-x: auto;
-    padding: 1.8rem 0rem;
+    padding-top: 1.8rem;
     display: flex;
     overflow-y: hidden;
     &:first-child {
@@ -15,8 +15,7 @@ export const Slider = styled.div`
     margin-left: 3rem;
     padding-left: 1rem;
     border-left: solid 8px #fcbf49;
-    margin-top: 3rem;
-    padding-left: 3rem;
+    margin-top: 1rem;
     font-size: ${(props) => `${props.theme.fontSize.large}`};
     font-weight: ${(props) => `${props.theme.fontWeight.title}`};
   }
@@ -31,10 +30,9 @@ export const Slider = styled.div`
     height: 280px;
     display: block;
     margin: 5px;
-    /* padding: 0.7rem; */
     transition: transform 500ms;
     &:first-child {
-      margin-left: 2.8rem;
+      margin-left: 3.2rem;
 
     }
   }
