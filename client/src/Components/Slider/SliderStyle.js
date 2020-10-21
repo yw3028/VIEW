@@ -4,7 +4,6 @@ export const Slider = styled.div`
   .list_scroll {
     overflow-x: auto;
     padding: 1.8rem 0rem;
-    /* margin: 0 0 0 2rem; */
     display: flex;
     overflow-y: hidden;
     &:first-child {
