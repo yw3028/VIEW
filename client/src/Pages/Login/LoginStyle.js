@@ -26,16 +26,6 @@ export const Login = styled.div`
     /* height: 100vh; */
     padding: 2rem;
   }
-  .poster {
-    height: 100vh;
-    width: 33vw;
-    /* margin: 0 3rem 4rem 3rem; */
-    padding: 0;
-    display: none;
-    /* @media screen and (min-device-width: 780px) {
-      display: block;
-    } */
-  }
 
   ul {
     list-style-type: none;

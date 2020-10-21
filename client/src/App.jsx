@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import Fade from 'react-reveal/Fade';
 
 import Home from './Pages/Home/Home';
@@ -145,7 +144,7 @@ const App = () => {
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : !loaded ? (
-    <SelfBuildingSquareSpinner />
+    <div>Loading</div>
   ) : (
     <Fade>
       <MovieContext.Provider
