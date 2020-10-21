@@ -26,6 +26,10 @@ export const Login = styled.div`
     padding: 2rem;
   }
 
+  * {
+    font-family: "'Bebas Neue', cursive";
+  }
+
   ul {
     list-style-type: none;
     padding: 0;

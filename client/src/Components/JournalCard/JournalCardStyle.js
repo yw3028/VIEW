@@ -10,7 +10,6 @@ export const JournalCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 `;
 
 export const JournalDate = styled.div`
@@ -36,7 +35,7 @@ export const JournalDate = styled.div`
 
 export const JournalPreview = styled.div`
   background-color: #fafafa;
-  padding: 30px;
+  padding: 34px;
   height: 50px;
 
   h4 {

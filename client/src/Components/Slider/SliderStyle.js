@@ -16,8 +16,11 @@ export const Slider = styled.div`
     padding-left: 1rem;
     border-left: solid 8px #fcbf49;
     margin-top: 1rem;
-    font-size: ${(props) => `${props.theme.fontSize.large}`};
+    font-size: ${(props) => `${props.theme.fontSize.extraLarge}`};
     font-weight: ${(props) => `${props.theme.fontWeight.title}`};
+    font-family: ${(props) => `${props.theme.fonts.header}`};
+    letter-spacing: 4px;
+    align-self: baseline;
   }
 
   ::-webkit-scrollbar {
@@ -33,7 +36,6 @@ export const Slider = styled.div`
     transition: transform 500ms;
     &:first-child {
       margin-left: 3.2rem;
-
     }
   }
 
