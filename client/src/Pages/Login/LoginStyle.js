@@ -6,13 +6,12 @@ export const Login = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid red;
   background: url('https://www.ppt-backgrounds.net/uploads/lines-black-and-white-photo-templates.jpeg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+
 
   .container {
     display: flex;
@@ -57,7 +56,7 @@ export const Login = styled.div`
     height: 100px;
     width: auto;
     border-radius: 10px;
-    margin: 0.5rem
+    margin-bottom: 2.5rem;
   }
 
   .left,
@@ -84,7 +83,7 @@ export const Login = styled.div`
       0 100px 80px rgba(0, 0, 0, 0.12);
     height: 250px;
     width: 300px;
-    background: white;
+    background: linear-gradient(270deg, white 0%, rgba(240,240,240,1) 100%);
     border-radius: 10px;
   }
 `;

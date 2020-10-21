@@ -11,12 +11,12 @@ export const HeadBar = styled.div`
   top: -1px;
   z-index: 100;
   box-shadow: ${(props) => `${props.theme.boxShadow.strong}`};
-  background-color: ${(props) => `${props.theme.colors.primaryColor}`};
+  background-color: rgba(240,240,240,1);
 `;
 
 export const Logo = styled.p`
   font-family: 'Monoton', cursive;
   font-size: 36px;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
   margin-left: 10rem;
 `;

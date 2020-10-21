@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
+import React from 'react';
 import { deleteJournalEntry } from '../../Services/apiClient';
 import { useHistory } from 'react-router-dom';
 
@@ -9,13 +8,9 @@ const PopupAlert = ({ displayPopup, setDisplayPopup, journalId }) => {
   const history = useHistory();
 
   const handleClick = (event) => {
-    console.log('handleClick -> event', event);
-    console.log('handleClick -> event.target', event.target);
-    console.log('handleClick -> event.target.value', event.target.value);
     if (event.target.value === 'keep') {
       setDisplayPopup(!displayPopup);
     } else if (event.target.value === 'delete') {
-      console.log('delete clicked');
       deleteJournalEntry(Number(journalId)).then(() => {
         history.push('/journal/');
       });

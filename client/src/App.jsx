@@ -113,7 +113,7 @@ const App = () => {
               (acc, journal) => ({
                 ...acc,
                 [journal.Movie.apiId]: Object.assign(acc[journal.Movie.apiId], {
-                  hasJournal: journal.Movie.id,
+                  hasJournal: journal.id,
                 }),
               }),
               movies
@@ -132,16 +132,6 @@ const App = () => {
   const exploreList = lists.explore.map((apiId) => movies[apiId]);
   const wishlist = lists.inWishlist.map((apiId) => movies[apiId]);
   const watchlist = lists.hasWatched.map((apiId) => movies[apiId]);
-  // console.log('>>>>>> LOGS STARTS <<<<<<<');
-  // console.log('MOVIES: ', movies);
-  // console.log('LISTS : ', lists);
-  // console.log('LIST.explore: ', lists.explore);
-  // console.log('LIST.hasWatched: ', lists.hasWatched);
-  // console.log('LIST.inWishlist: ', lists.inWishlist);
-  // console.log('LIST.hasJournal: ', lists.hasJournal);
-  // console.log('exploreList: ', exploreList);
-  // console.log('watchlist: ', watchlist);
-  // console.log('wishlist: ', wishlist);
 
   return !isAuth ? (
     <>
