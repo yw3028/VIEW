@@ -40,6 +40,7 @@ const theme = {
     light: '0 0 5px lightgray',
     medium: '0 0 6px lightgray',
     strong: '0 0 7px darkgray',
+    button: '0px 8px 15px rgba(0, 0, 0, 0.1)',
   },
 };
 

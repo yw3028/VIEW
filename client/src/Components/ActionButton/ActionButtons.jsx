@@ -10,7 +10,15 @@ import {
   removeFromWishlist,
 } from '../../Services/apiClient';
 
-const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
+const ActionButtons = ({
+  text,
+  wish,
+  watched,
+  journal,
+  movie,
+  color,
+  circular,
+}) => {
   const { updateMovieStatusInList, movies, lists } = useContext(MovieContext);
 
   const history = useHistory();
@@ -64,11 +72,13 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
             color ? color : lists.inWishlist.includes(movieId) ? 'red' : 'black'
           }
         >
-          <span class="material-icons" onClick={handleClickWishlist}>
-            {lists.inWishlist.includes(movieId)
-              ? 'favorite'
-              : 'favorite_border'}
-          </span>
+          <S.IconShape circular={circular}>
+            <span class="material-icons" onClick={handleClickWishlist}>
+              {lists.inWishlist.includes(movieId)
+                ? 'favorite'
+                : 'favorite_border'}
+            </span>
+          </S.IconShape>
           {text && <S.IconText>Wishlist</S.IconText>}
         </S.ActionButton>
       )}
@@ -82,19 +92,23 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
               : 'black'
           }
         >
-          <span class="material-icons" onClick={handleClickWatchedlist}>
-            {lists.hasWatched.includes(movieId)
-              ? 'done_outline'
-              : 'visibility_off'}
-          </span>
+          <S.IconShape circular={circular}>
+            <span class="material-icons" onClick={handleClickWatchedlist}>
+              {lists.hasWatched.includes(movieId)
+                ? 'done_outline'
+                : 'visibility_off'}
+            </span>
+          </S.IconShape>
           {text && <S.IconText>Watched</S.IconText>}
         </S.ActionButton>
       )}
       {journal && (
         <S.ActionButton color={color}>
-          <span class="material-icons" onClick={createOrReadJournal}>
-            {movies[movieId]['hasJournal'] ? 'book' : 'create'}
-          </span>
+          <S.IconShape circular={circular}>
+            <span class="material-icons" onClick={createOrReadJournal}>
+              {movies[movieId]['hasJournal'] ? 'book' : 'create'}
+            </span>
+          </S.IconShape>
           {text && <S.IconText>Journal</S.IconText>}
         </S.ActionButton>
       )}
