@@ -17,6 +17,7 @@ export const Popup = styled.div`
   background-color: white;
   width: 300px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 4px;
 `;
 
 export const PopupTitle = styled.p`
@@ -29,8 +30,8 @@ export const PopupTitle = styled.p`
 export const ButtonsDiv = styled.div`
   display: flex;
   margin-top: 1.2rem;
-  justify-content: space-between;
-  width: 50%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`
@@ -38,10 +39,13 @@ export const Button = styled.button`
   font-family: 'Roboto';
   width: 4rem;
   padding: 0.4rem 0.4rem;
+  margin: 0 1.5rem;
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 0 0 4px #999;
   outline: none;
+  border-radius: 4px;
+
 
   &:hover {
     background: ${(props) =>
