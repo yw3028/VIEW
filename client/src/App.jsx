@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import axios from 'axios';
 import Cookies from 'js-cookie';
+import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
@@ -25,6 +25,7 @@ import {
 export const MovieContext = React.createContext(null);
 
 const App = () => {
+  const [loaded, setLoaded] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
   const [searchMovies, setSearchMovies] = useState([]);
@@ -120,6 +121,7 @@ const App = () => {
             ...lists,
             hasJournal: journals.map((journal) => journal.Movie.apiId),
           }));
+          setLoaded(true);
         });
       });
     }
@@ -138,9 +140,11 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
-  
+
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
+  ) : !loaded ? (
+    <SelfBuildingSquareSpinner />
   ) : (
     <MovieContext.Provider
       value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}

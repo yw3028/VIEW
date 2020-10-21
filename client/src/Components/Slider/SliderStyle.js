@@ -13,7 +13,9 @@ export const Slider = styled.div`
     font-size: 2.5rem;
     font-weight: 700;
     margin-top: 1rem;
-    padding-left: 3rem;
+    margin-left: 3rem;
+    padding-left: 1rem;
+    border-left: solid 8px #fcbf49;
   }
 
   ::-webkit-scrollbar {
