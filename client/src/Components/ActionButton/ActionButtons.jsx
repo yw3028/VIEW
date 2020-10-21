@@ -61,7 +61,7 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
       {wish && (
         <S.ActionButton
           color={
-            color ? color : lists.inWishlist.includes(movieId) ? 'red' : 'black'
+            color ? color : lists.inWishlist.includes(movieId) ? '#ba274a' : 'black'
           }
         >
           <span class="material-icons" onClick={handleClickWishlist}>
@@ -78,7 +78,7 @@ const ActionButtons = ({ text, wish, watched, journal, movie, color }) => {
             color
               ? color
               : lists.hasWatched.includes(movieId)
-              ? 'green'
+              ? '#5eae85'
               : 'black'
           }
         >
