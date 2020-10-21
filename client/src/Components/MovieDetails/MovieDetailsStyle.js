@@ -4,6 +4,7 @@ export const MovieDetails = styled.div`
   display: flex;
   flex-direction: column;
   font-weight: 300;
+  align-items: flex-start;
 
   @media screen and (min-device-width: 780px) {
     flex-direction: row;
@@ -43,7 +44,7 @@ export const DesktopPoster = styled.img`
 `;
 
 export const TextBox = styled.div`
-  padding: 1.5rem;
+  padding: 0 1.5rem;
 `;
 
 export const MovieTitle = styled.p`
@@ -55,8 +56,12 @@ export const MovieTitle = styled.p`
   @media screen and (min-device-width: 1200px) {
     font-size: ${(props) => `${props.theme.fontSize.extraLarge}`};
     line-height: 3.6rem;
-    margin: 1rem 0;
   }
+`;
+
+export const Rating = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const MovieInfo = styled.p`

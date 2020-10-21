@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import moment from 'moment';
 import JournalList from '../../Components/JournalList/JournalList';
-import Menu from '../../Components/Menu';
-import { MovieContext } from '../../App';
+import HeadBar from '../../Components/HeadBar/HeadBar';
 
 import * as S from './JournalStyle';
 
 import { getJournals } from '../../Services/apiClient';
-import JournalEntry from '../../Components/JouranlEntry/JournalEntry';
 
 const groupByMonths = (journals, date) => {
   return journals.reduce((result, journal) => {
@@ -32,10 +30,9 @@ const Journal = () => {
   useEffect(() => {
     journals.length && setLists(groupByMonths(journals, 'date'));
   }, [journals]);
-  const { user, setIsAuth } = useContext(MovieContext);
   return (
     <>
-      <Menu user={user} setIsAuth={setIsAuth} />
+      <HeadBar />
       <S.JournalPage>
         {Object.keys(lists).map((month, index) => (
           <div key={index}>

@@ -69,7 +69,7 @@ const ActionButtons = ({
       {wish && (
         <S.ActionButton
           color={
-            color ? color : lists.inWishlist.includes(movieId) ? 'red' : 'black'
+            color ? color : lists.inWishlist.includes(movieId) ? '#ba274a' : 'black'
           }
         >
           <S.IconShape circular={circular}>
@@ -88,7 +88,7 @@ const ActionButtons = ({
             color
               ? color
               : lists.hasWatched.includes(movieId)
-              ? 'green'
+              ? '#5eae85'
               : 'black'
           }
         >

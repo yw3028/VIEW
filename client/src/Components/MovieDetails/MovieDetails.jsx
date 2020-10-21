@@ -16,12 +16,20 @@ const MovieDetails = ({ movie }) => {
       <S.TextBox>
         <S.MovieTitle className={'detail-page-title'}>
           {movie.title}
+
         </S.MovieTitle>
         <S.MovieInfo>
+        <S.Rating>
+            <S.DesktopLabels className={'detail-page-label'}>
+              Rating: &nbsp;
+            </S.DesktopLabels>
+            <MovieRating rating={movie.vote_average} />
+          </S.Rating>
           <S.DesktopLabels className={'detail-page-label'}>
-            Released Date:{' '}
+            Released Date: &nbsp;
           </S.DesktopLabels>
           {moment(movie.release_date).format('D MMMM YYYY')}
+          
         </S.MovieInfo>
         {/* <S.MovieInfo>
           <S.DesktopLabels>Genre: </S.DesktopLabels>
@@ -32,8 +40,6 @@ const MovieDetails = ({ movie }) => {
           {movie.runTime} min
         </S.MovieInfo> */}
         <S.MoviePlot>{movie.overview}</S.MoviePlot>
-        <S.DesktopLabels>Rating </S.DesktopLabels>
-        <MovieRating rating={movie.vote_average}/>
       </S.TextBox>
     </S.MovieDetails>
   );

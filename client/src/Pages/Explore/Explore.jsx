@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import Menu from '../../Components/Menu';
+import HeadBar from '../../Components/HeadBar/HeadBar';
 import Slider from '../../Components/Slider/Slider';
 
 import { MovieContext } from '../../App';
@@ -9,7 +9,7 @@ import MoviedApi from '../../Services/moviedApiClient';
 import * as S from './ExploreStyle';
 
 const Explore = () => {
-  const { updateMovieStatusInList, updateState, movies, lists, user, setIsAuth } = useContext(
+  const { updateMovieStatusInList, updateState, movies, lists } = useContext(
     MovieContext
   );
 
@@ -36,7 +36,7 @@ const Explore = () => {
     <div>Loading</div>
   ) : (
     <>
-      <Menu user={user} setIsAuth={setIsAuth} />
+      <HeadBar />
       <S.ExploreContainer>
         {categories.map((category) => {
           return (

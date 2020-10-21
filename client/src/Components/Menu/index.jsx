@@ -24,25 +24,15 @@ import GroupIcon from '@material-ui/icons/Group';
 import CreateIcon from '@material-ui/icons/Create';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
-import jhim from '../../assets/Jhim.png';
+// import jhim from '../../assets/Jhim.png';
 import logo from '../../assets/logo.png';
 
 
 const useStyles = makeStyles({
-  icon: {
-    background: 'white',
-    height: '30px',
-    width: '30px',
-    borderRadius: '50%',
-    margin: '2rem 2rem',
-    padding: '1rem',
-  },
   menu: {
     position: '-webkit-sticky',
     position: 'sticky',
     top: '-1px',
-    margin: '0 1rem',
-    left: '10px',
     zIndex: 100,
   },
   list: {
@@ -50,6 +40,8 @@ const useStyles = makeStyles({
     padding: '1rem 0',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: 'lightGray',
+    height: '100%'
   },
   user: {
     padding: '1rem 4rem',
@@ -61,19 +53,20 @@ const useStyles = makeStyles({
   listItems: {
     padding: '1rem 2rem',
   },
-  jhim: {
-    height: 'auto',
-    maxHeight: '10rem',
-    position: 'absolute',
-    bottom: '1rem',
-    alignSelf: 'center',
-  },
+  // jhim: {
+  //   height: 'auto',
+  //   maxHeight: '10rem',
+  //   position: 'absolute',
+  //   bottom: '1rem',
+  //   alignSelf: 'center',
+  // },
   logo: {
     height: 'auto',
     maxHeight: '5rem',
     position: 'absolute',
     bottom: '2rem',
     alignSelf: 'center',
+    borderRadius: '5px'
   }
 });
 
@@ -102,7 +95,7 @@ export default ({ user, setIsAuth }) => {
     >
       <div className={classes.user}>
         {user.image ? (
-          <Avatar alt={user.name} src={user.image} style={{height: '4rem', width: 'auto'}}/>
+          <Avatar alt={user.name} src={user.image} style={{height: '4rem', width: '4rem'}}/>
         ) : (
           <AccountCircleIcon color="action" fontSize="large" />
         )}
@@ -210,7 +203,7 @@ export default ({ user, setIsAuth }) => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon fontSize="large" className={classes.icon} />
+          <MenuIcon fontSize="large"/>
         </Button>
         <SwipeableDrawer
           anchor="left"
