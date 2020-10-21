@@ -6,7 +6,8 @@ export const JournalPage = styled.div`
   h2 {
     font-size: ${(props) => `${props.theme.fontSize.large}`};
     font-weight: ${(props) => `${props.theme.fontWeight.title}`};
-    margin: 1rem;
-    padding-left: 2rem;
+    margin: 3rem;
+    padding-left: 1rem;
+    border-left: solid 8px #fcbf49;
   }
 `;
