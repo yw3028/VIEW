@@ -11,6 +11,8 @@ import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
 import MovieDetail from './Pages/MovieDetail/MovieDetail';
 
+import Theme from './Theme';
+import styled from 'styled-components';
 import GlobalStyle from './globalStyle';
 import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
@@ -138,52 +140,54 @@ const App = () => {
   // console.log('exploreList: ', exploreList);
   // console.log('watchlist: ', watchlist);
   // console.log('wishlist: ', wishlist);
-  
+
   return !isAuth ? (
     <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
   ) : (
-    <MovieContext.Provider
-      value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
-    >
-      <S.App>
-        <GlobalStyle />
-        <Route
-          exact
-          path="/"
-          render={(routeProps) =>
-            lists.inWishlist && (
-              <Home
-                {...routeProps}
-                explore={exploreList}
-                wishlist={wishlist}
-                watched={watchlist}
+    <Theme>
+      <MovieContext.Provider
+        value={{ updateMovieStatusInList, movies, lists, user, setIsAuth }}
+      >
+        <S.App>
+          <GlobalStyle primaryColor />
+          <Route
+            exact
+            path="/"
+            render={(routeProps) =>
+              lists.inWishlist && (
+                <Home
+                  {...routeProps}
+                  explore={exploreList}
+                  wishlist={wishlist}
+                  watched={watchlist}
+                />
+              )
+            }
+          ></Route>
+          <Route path="/wishlist" component={Wishlist}></Route>
+          <Route path="/watched" component={WatchedList}></Route>
+          <Route
+            path="/movie/:id"
+            render={(props) => <MovieDetail {...props} movies={movies} />}
+          ></Route>
+          <Route exact path="/journal" component={Journal}></Route>
+          <Route
+            path="/explore"
+            render={(props) => (
+              <Explore
+                {...props}
+                searchMovies={searchMovies}
+                setSearchMovies={setSearchMovies}
               />
-            )
-          }
-        ></Route>
-        <Route path="/wishlist" component={Wishlist}></Route>
-        <Route path="/watched" component={WatchedList}></Route>
-        <Route
-          path="/movie/:id"
-          render={(props) => <MovieDetail {...props} movies={movies} />}
-        ></Route>
-        <Route exact path="/journal" component={Journal}></Route>
-        <Route
-          path="/explore"
-          render={(props) => (
-            <Explore
-              {...props}
-              searchMovies={searchMovies}
-              setSearchMovies={setSearchMovies}
-            />
-          )}
-        ></Route>
-        <Route
-          path="/journal/:id"
-          render={(props) => <JournalDetail {...props} />}
-        ></Route>
-      </S.App>
-    </MovieContext.Provider>
+            )}
+          ></Route>
+          <Route
+            path="/journal/:id"
+            render={(props) => <JournalDetail {...props} />}
+          ></Route>
+        </S.App>
+      </MovieContext.Provider>
+    </Theme>
   );
 };
 

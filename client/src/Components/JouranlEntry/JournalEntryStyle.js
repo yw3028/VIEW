@@ -1,30 +1,24 @@
 import styled from 'styled-components/macro';
 
 export const JournalEntryContainer = styled.div`
-  /* border: 1px solid blue; */
   padding-left: 1.5rem;
-  font-family: 'Roboto';
   line-height: 1.5rem;
   height: 60vh;
-  /* float: right; */
-  background-color: white;
   padding: 0 1.5rem;
+  font-family: ${(props) => `${props.theme.fonts.body}`};
 `;
 
 export const DateWeatherContainer = styled.div`
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: ${(props) => `${props.theme.fontSize.small}`};
 
   @media screen and (max-device-width: 340px) {
     flex-direction: column;
-    /* align-content: flex-end; */
   }
 
   @media screen and (min-device-width: 780px) {
     flex-direction: column;
-    /* align-content: flex-end; */
   }
 `;
 
@@ -35,10 +29,10 @@ export const MobileLabel = styled.div`
 `;
 
 export const JournalTitle = styled.textarea`
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-family: ${(props) => `${props.theme.fonts.header}`};
+  font-weight: ${(props) => `${props.theme.fontWeight.title}`};
+  font-size: ${(props) => `${props.theme.fontSize.large}`};
   border: none;
-  font-family: 'Roboto', sans-serif;
   width: 100%;
   margin-top: 1.5rem;
   resize: none;
@@ -50,11 +44,12 @@ export const JournalTitle = styled.textarea`
 `;
 
 export const JournalContent = styled.textarea`
-  font-size: 1rem;
+  font-family: ${(props) => `${props.theme.fonts.body}`};
+  font-weight: ${(props) => `${props.theme.fontWeight.extraLight}`};
+  font-size: ${(props) => `${props.theme.fontSize.medium}`};
   line-height: 1.5rem;
-  font-weight: 300;
+  margin-top: 1.5rem;
   border: none;
-  font-family: 'Roboto', sans-serif;
   width: 100%;
   height: 100%;
   resize: none;

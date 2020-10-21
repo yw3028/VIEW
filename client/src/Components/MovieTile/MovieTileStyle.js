@@ -1,8 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Buttons = styled.div`
-  color: white;
-`;
+export const Buttons = styled.div``;
 
 export const MovieTile = styled.div`
   display: flex;
@@ -15,12 +13,11 @@ export const MovieTile = styled.div`
   }
 
   &:hover .movie_img {
-    /* opacity: 0.8; */
     filter: brightness(70%);
-    }
+  }
 
   .movie_img {
-    width: 150px;    
+    width: 150px;
     @media screen and (min-device-width: 780px) {
       width: 200px;
     }
@@ -31,7 +28,7 @@ export const MovieTile = styled.div`
     position: absolute;
     opacity: 0;
     display: flex;
-    align-self:center;
+    align-self: center;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;

@@ -13,9 +13,13 @@ const MovieDetails = ({ movie }) => {
       />
       <S.Backdrop bgImage={imageUrlPath + movie.backdrop_path}></S.Backdrop>
       <S.TextBox>
-        <S.MovieTitle>{movie.title}</S.MovieTitle>
+        <S.MovieTitle className={'detail-page-title'}>
+          {movie.title}
+        </S.MovieTitle>
         <S.MovieInfo>
-          <S.DesktopLabels>Released Date: </S.DesktopLabels>
+          <S.DesktopLabels className={'detail-page-label'}>
+            Released Date:{' '}
+          </S.DesktopLabels>
           {moment(movie.release_date).format('D MMMM YYYY')}
         </S.MovieInfo>
         {/* <S.MovieInfo>
