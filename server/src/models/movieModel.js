@@ -38,7 +38,7 @@ module.exports = (sequelize, type) => {
     runTime: {
       type: type.INTEGER,
     },
-    avgRating: {
+    vote_average: {
       type: type.FLOAT,
     },
   });
