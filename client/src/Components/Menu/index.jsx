@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     padding: '1rem 0',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'lightGray',
+    backgroundColor: 'rgba(240,240,240,1)',
     height: '100%',
   },
   user: {

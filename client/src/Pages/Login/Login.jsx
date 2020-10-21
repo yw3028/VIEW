@@ -36,7 +36,28 @@ const Login = ({ successGoogle, errorGoogle }) => {
         <div className="container">
           <div className="signup">
             <div className="left">
-              <h1>A new way to enjoy movies:</h1>
+              <h1>
+                A new way to{' '}
+                <Typical
+                  steps={[
+                    'watch',
+                    1000,
+                    'share',
+                    1000,
+                    'enjoy',
+                    1000,
+                    'track',
+                    1000,
+                    'Journal about',
+                    1000,
+                    'view',
+                    1000,
+                  ]}
+                  // loop={Infinity}
+                  wrapper="p"
+                />
+                movies
+              </h1>
               <Typical steps={steps} loop={Infinity} wrapper="p" />
               {/* <ul>
                 <li>Track what you watch</li>
