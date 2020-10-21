@@ -17,6 +17,7 @@ export const Popup = styled.div`
   padding: 1rem;
   background-color: white;
   width: 300px;
+  border-radius: 4px;
   box-shadow: ${(props) => `${props.theme.boxShadow.light}`};
 `;
 
@@ -30,17 +31,20 @@ export const PopupTitle = styled.p`
 export const ButtonsDiv = styled.div`
   display: flex;
   margin-top: 1.2rem;
-  justify-content: space-between;
-  width: 50%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`
   border: none;
   width: 4rem;
   padding: 0.4rem 0.4rem;
+  margin: 0 1.5rem;
   text-transform: uppercase;
   box-shadow: ${(props) => `${props.theme.boxShadow.strong}`};
   outline: none;
+  border-radius: 4px;
+
 
   &:hover {
     background: ${(props) =>
