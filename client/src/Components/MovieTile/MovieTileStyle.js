@@ -1,8 +1,6 @@
 import styled from 'styled-components/macro';
 
-export const Buttons = styled.div`
-  color: white;
-`;
+export const Buttons = styled.div``;
 
 export const MovieTile = styled.div`
   display: flex;
@@ -15,15 +13,12 @@ export const MovieTile = styled.div`
   }
 
   &:hover .movie_img {
-    /* opacity: 0.8; */
     filter: brightness(70%);
   }
 
   .movie_img {
-    border-radius: 30px;
+    border-radius: 5px;
     width: 150px;
-    @media screen and (min-device-width: 780px) {
-      width: 200px;
     }
   }
 

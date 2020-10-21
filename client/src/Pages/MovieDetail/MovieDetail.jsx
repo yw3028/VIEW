@@ -5,6 +5,7 @@ import ActionButtons from '../../Components/ActionButton/ActionButtons';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Theme from '../../Theme';
 
 import * as S from './MovieDetailStyle';
 
@@ -26,7 +27,7 @@ const MoviePage = (props) => {
   const movieDetail = props.movies[movieId] || null; // Call hk, useEffect as good pracite and make async;
 
   return (
-    <S.PageContainer>
+    <S.PageContainer primaryColor>
       <S.TopLeftIcon className={classes.root}>
         <IconButton aria-label="go back">
           <ArrowBackIcon onClick={props.history.goBack} />
