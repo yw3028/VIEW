@@ -3,19 +3,22 @@ import styled from 'styled-components/macro';
 export const Slider = styled.div`
   .list_scroll {
     overflow-x: auto;
-    padding: 1.8rem 1rem;
-    margin: 0 2rem;
+    padding: 1.8rem 0rem;
     display: flex;
     overflow-y: hidden;
+    &:first-child {
+      margin-left: 2rem;
+    }
   }
 
   .list_title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-top: 1rem;
     margin-left: 3rem;
     padding-left: 1rem;
     border-left: solid 8px #fcbf49;
+    margin-top: 3rem;
+    padding-left: 3rem;
+    font-size: ${(props) => `${props.theme.fontSize.large}`};
+    font-weight: ${(props) => `${props.theme.fontWeight.title}`};
   }
 
   ::-webkit-scrollbar {
@@ -30,6 +33,9 @@ export const Slider = styled.div`
     margin: 5px;
     /* padding: 0.7rem; */
     transition: transform 500ms;
+    &:first-child {
+      margin-left: 2.8rem;
+
     }
   }
 

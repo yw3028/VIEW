@@ -9,14 +9,9 @@ import MoviedApi from '../../Services/moviedApiClient';
 import * as S from './ExploreStyle';
 
 const Explore = () => {
-  const {
-    updateMovieStatusInList,
-    updateState,
-    movies,
-    lists,
-    user,
-    setIsAuth,
-  } = useContext(MovieContext);
+  const { updateMovieStatusInList, updateState, movies, lists, user, setIsAuth } = useContext(
+    MovieContext
+  );
 
   const [categories, setCategories] = useState([]);
   const [pageLoaded, setPageLoaded] = useState(false);

@@ -11,6 +11,8 @@ import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
 import MovieDetail from './Pages/MovieDetail/MovieDetail';
 
+import Theme from './Theme';
+import styled from 'styled-components';
 import GlobalStyle from './globalStyle';
 import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
@@ -149,19 +151,14 @@ const App = () => {
   ) : !loaded ? (
     <div>Loading</div>
   ) : (
-    <Fade>
+<Fade>
+    <Theme>
       <MovieContext.Provider
-        value={{
-          updateMovieStatusInList,
-          updateState,
-          movies,
-          lists,
-          user,
-          setIsAuth,
-        }}
+        value={{ updateMovieStatusInList, updateState, movies, lists, user, setIsAuth }}
       >
         <S.App>
-          <GlobalStyle />
+          <GlobalStyle primaryColor />
+
           <Route
             exact
             path="/"
@@ -199,7 +196,9 @@ const App = () => {
           ></Route>
         </S.App>
       </MovieContext.Provider>
-    </Fade>
+    </Theme>
+   </Fade>
+
   );
 };
 

@@ -10,43 +10,46 @@ export const ShowPopup = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  font-family: ${(props) => `${props.theme.fonts.header}`};
 `;
 
 export const Popup = styled.div`
   padding: 1rem;
   background-color: white;
   width: 300px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 4px;
+  box-shadow: ${(props) => `${props.theme.boxShadow.light}`};
 `;
 
 export const PopupTitle = styled.p`
   margin-top: 0.4rem;
-  font-size: 1.2rem;
   line-height: 1.8rem;
-  font-weight: 300;
+  font-size: ${(props) => `${props.theme.fontSize.medium}`};
+  font-weight: ${(props) => `${props.theme.fontWeight.light}`};
 `;
 
 export const ButtonsDiv = styled.div`
   display: flex;
   margin-top: 1.2rem;
-  justify-content: space-between;
-  width: 50%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`
   border: none;
-  font-family: 'Roboto';
   width: 4rem;
   padding: 0.4rem 0.4rem;
+  margin: 0 1.5rem;
   text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 0 4px #999;
+  box-shadow: ${(props) => `${props.theme.boxShadow.strong}`};
   outline: none;
+  border-radius: 4px;
+
 
   &:hover {
     background: ${(props) =>
-        (props.value === 'delete' && '#ff6057') ||
-        (props.value === 'keep' && '#3CB043')}
+        (props.value === 'delete' && `${props.theme.colors.danger}`) ||
+        (props.value === 'keep' && `${props.theme.colors.confirm}`)}
       radial-gradient(circle, transparent 1%, #919191 1%) center/15000%;
   }
 `;
