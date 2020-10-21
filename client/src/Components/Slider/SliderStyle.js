@@ -20,7 +20,8 @@ export const Slider = styled.div`
     font-weight: ${(props) => `${props.theme.fontWeight.title}`};
     font-family: ${(props) => `${props.theme.fonts.header}`};
     letter-spacing: 4px;
-    align-self: baseline;
+    line-height: 2.8rem;
+  
   }
 
   ::-webkit-scrollbar {
