@@ -40,7 +40,6 @@ export const MovieDetailsContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 70vh;
   }
 `;
