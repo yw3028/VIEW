@@ -16,9 +16,11 @@ const JournalEntry = ({ journalEntry, setJournalEntry }) => {
       <S.DateWeatherContainer>
         <p>{moment(journalEntry.date).format('MMMM Do YYYY, h:mm')}</p>
         <S.MobileLabel>&nbsp;·&nbsp;</S.MobileLabel>
-        <p>
-          {journalEntry.location} · {journalEntry.weatherTemperature}ºC
-        </p>
+        {journalEntry.weatherTemperature && (
+          <p>
+            {journalEntry.location} · {journalEntry.weatherTemperature}ºC
+          </p>
+        )}
       </S.DateWeatherContainer>
       <S.JournalTitle
         name="title"

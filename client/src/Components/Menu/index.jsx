@@ -25,17 +25,25 @@ import CreateIcon from '@material-ui/icons/Create';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 import jhim from '../../assets/Jhim.png';
-import zIndex from '@material-ui/core/styles/zIndex';
+import logo from '../../assets/logo.png';
+
 
 const useStyles = makeStyles({
+  icon: {
+    background: 'white',
+    height: '30px',
+    width: '30px',
+    borderRadius: '50%',
+    margin: '2rem 2rem',
+    padding: '1rem',
+  },
   menu: {
     position: '-webkit-sticky',
     position: 'sticky',
     top: '-1px',
-    margin: '40px',
-    width: '100%',
-    background: 'white',
-    zIndex: 1,
+    margin: '0 1rem',
+    left: '10px',
+    zIndex: 100,
   },
   list: {
     width: 300,
@@ -44,7 +52,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
   },
   user: {
-    padding: '1rem 2rem',
+    padding: '1rem 4rem',
+    textAlign: 'right',
+    display: 'flex',
+    flexDirection:'column',
+    alignItems: 'center'
   },
   listItems: {
     padding: '1rem 2rem',
@@ -56,6 +68,13 @@ const useStyles = makeStyles({
     bottom: '1rem',
     alignSelf: 'center',
   },
+  logo: {
+    height: 'auto',
+    maxHeight: '5rem',
+    position: 'absolute',
+    bottom: '2rem',
+    alignSelf: 'center',
+  }
 });
 
 export default ({ user, setIsAuth }) => {
@@ -83,7 +102,7 @@ export default ({ user, setIsAuth }) => {
     >
       <div className={classes.user}>
         {user.image ? (
-          <Avatar alt={user.name} src={user.image} />
+          <Avatar alt={user.name} src={user.image} style={{height: '4rem', width: 'auto'}}/>
         ) : (
           <AccountCircleIcon color="action" fontSize="large" />
         )}
@@ -183,7 +202,7 @@ export default ({ user, setIsAuth }) => {
           ></GoogleLogout>
         </ListItem>
       </List>
-      <img className={classes.jhim} src={jhim} alt="jhim" />
+      <img className={classes.logo} src={logo} alt="logo" />
     </div>
   );
 
@@ -191,7 +210,7 @@ export default ({ user, setIsAuth }) => {
     <div className={classes.menu}>
       <React.Fragment key="left">
         <Button onClick={toggleDrawer(true)}>
-          <MenuIcon fontSize="large" />
+          <MenuIcon fontSize="large" className={classes.icon} />
         </Button>
         <SwipeableDrawer
           anchor="left"

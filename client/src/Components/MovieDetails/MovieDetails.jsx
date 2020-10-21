@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import MovieRating from '../MovieRating/MovieRating';
 import * as S from './MovieDetailsStyle';
 
 const imageUrlPath = 'https://image.tmdb.org/t/p/w300/';
@@ -13,9 +14,13 @@ const MovieDetails = ({ movie }) => {
       />
       <S.Backdrop bgImage={imageUrlPath + movie.backdrop_path}></S.Backdrop>
       <S.TextBox>
-        <S.MovieTitle>{movie.title}</S.MovieTitle>
+        <S.MovieTitle className={'detail-page-title'}>
+          {movie.title}
+        </S.MovieTitle>
         <S.MovieInfo>
-          <S.DesktopLabels>Released Date: </S.DesktopLabels>
+          <S.DesktopLabels className={'detail-page-label'}>
+            Released Date:{' '}
+          </S.DesktopLabels>
           {moment(movie.release_date).format('D MMMM YYYY')}
         </S.MovieInfo>
         {/* <S.MovieInfo>
@@ -27,6 +32,8 @@ const MovieDetails = ({ movie }) => {
           {movie.runTime} min
         </S.MovieInfo> */}
         <S.MoviePlot>{movie.overview}</S.MoviePlot>
+        <S.DesktopLabels>Rating </S.DesktopLabels>
+        <MovieRating rating={movie.vote_average}/>
       </S.TextBox>
     </S.MovieDetails>
   );
