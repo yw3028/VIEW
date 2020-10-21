@@ -5,7 +5,7 @@ export const HeadBar = styled.div`
   justify-content: space-between;
   padding: 0 2rem;
   align-items: center;
-  height: 45px;
+  height: 55px;
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
