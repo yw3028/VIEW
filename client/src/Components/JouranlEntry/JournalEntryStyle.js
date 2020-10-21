@@ -42,11 +42,10 @@ export const JournalTitle = styled.textarea`
 
 
   @media screen and (min-device-width: 780px) {
-    padding-bottom: 1.5rem;
     border-bottom: 1px dotted lightgray;
     background: ${(props) => `${props.theme.colors.white}`};
     padding-right: 1.5rem;
-    height: 2rem;
+    height: 3rem;
   }
 `;
 
