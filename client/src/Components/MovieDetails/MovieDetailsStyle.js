@@ -47,34 +47,35 @@ export const TextBox = styled.div`
 `;
 
 export const MovieTitle = styled.p`
-  font-weight: 600;
-  font-size: 2rem;
+  font-family: ${(props) => `${props.theme.fonts.header}`};
+  font-weight: ${(props) => `${props.theme.fontWeight.title}`};
+  font-size: ${(props) => `${props.theme.fontSize.large}`};
   line-height: 2.4rem;
   margin-bottom: 1rem;
   @media screen and (min-device-width: 1200px) {
-    font-size: 3rem;
+    font-size: ${(props) => `${props.theme.fontSize.extraLarge}`};
     line-height: 3.6rem;
     margin: 1rem 0;
   }
 `;
 
 export const MovieInfo = styled.p`
-  font-size: 0.9rem;
+  font-size: ${(props) => `${props.theme.fontSize.small}`};
   margin: 0.4rem 0;
 
   @media screen and (min-device-width: 1200px) {
-    font-size: 1.1rem;
+    font-size: ${(props) => `${props.theme.fontSize.medium}`};
     margin: 0.8rem 0;
   }
 `;
 
 export const MoviePlot = styled.p`
-  font-size: 1.1rem;
+  font-size: ${(props) => `${props.theme.fontSize.medium}`};
   margin: 0.6rem 0;
   line-height: 1.4rem;
 
   @media screen and (min-device-width: 1200px) {
-    font-size: 1.2rem;
+    font-size: ${(props) => `${props.theme.fontSize.medium}`};
     margin: 1.5rem 0;
     line-height: 1.8rem;
   }
@@ -85,6 +86,6 @@ export const DesktopLabels = styled.span`
 
   @media screen and (min-device-width: 1200px) {
     display: inline;
-    font-weight: 500;
+    font-weight: ${(props) => `${props.theme.fontWeight.regular}`};
   }
 `;

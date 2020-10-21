@@ -10,10 +10,10 @@ export const Slider = styled.div`
   }
 
   .list_title {
-    font-size: 2.5rem;
-    font-weight: 700;
     margin-top: 1rem;
     padding-left: 3rem;
+    font-size: ${(props) => `${props.theme.fontSize.large}`};
+    font-weight: ${(props) => `${props.theme.fontWeight.title}`};
   }
 
   ::-webkit-scrollbar {
