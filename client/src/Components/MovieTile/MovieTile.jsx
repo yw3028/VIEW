@@ -13,6 +13,7 @@ export default ({ movie }) => {
         <div>
           <img
             className="movie_img"
+            loading="lazy"
             alt="movie cover"
             src={'https://image.tmdb.org/t/p/w300/' + movie.poster_path}
           />

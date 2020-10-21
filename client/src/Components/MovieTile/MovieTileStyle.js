@@ -33,6 +33,7 @@ export const MovieTile = styled.div`
     box-sizing: border-box;
     transition: all 0.4s ease;
     border-radius: 10px;
+    cursor: pointer;
   }
 
   .movie_overlay_btn,
@@ -45,7 +46,7 @@ export const MovieTile = styled.div`
     border-radius: 50%;
     height: 50px;
     width: 50px;
-    margin: 1rem 1rem;
+    margin: 0.5rem;
     display: none;
     justify-content: center;
     align-items: center;

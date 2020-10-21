@@ -5,7 +5,9 @@ import ActionButtons from '../../Components/ActionButton/ActionButtons';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Fade from 'react-reveal/Fade';
 import Theme from '../../Theme';
+
 
 import * as S from './MovieDetailStyle';
 
@@ -31,6 +33,7 @@ const MoviePage = (props) => {
   const movieDetail = props.movies[movieId] || null; // Call hk, useEffect as good pracite and make async;
 
   return (
+        <Fade>
     <S.PageContainer primaryColor>
       <S.TopLeftIcon className={classes.root}>
         <IconButton aria-label="go back">
@@ -61,6 +64,8 @@ const MoviePage = (props) => {
         ></ActionButtons>
       </S.ActionButtonsPosition>
     </S.PageContainer>
+      </Fade>
+
   );
 };
 

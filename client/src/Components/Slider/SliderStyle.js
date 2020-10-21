@@ -12,6 +12,9 @@ export const Slider = styled.div`
   }
 
   .list_title {
+    margin-left: 3rem;
+    padding-left: 1rem;
+    border-left: solid 8px #fcbf49;
     margin-top: 3rem;
     padding-left: 3rem;
     font-size: ${(props) => `${props.theme.fontSize.large}`};
@@ -24,12 +27,15 @@ export const Slider = styled.div`
 
   .item {
     position: relative;
+    width: 150px;
+    height: 280px;
     display: block;
-    padding: 0.7rem;
+    margin: 5px;
+    /* padding: 0.7rem; */
     transition: transform 500ms;
-
     &:first-child {
       margin-left: 2.8rem;
+
     }
   }
 

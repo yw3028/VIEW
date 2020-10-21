@@ -112,10 +112,10 @@ section {
 }
 body {
   line-height: 1;
-  background-color: #efede1;
+background: linear-gradient(270deg, rgba(235,235,235,1) 0%, rgba(240,240,240,1) 100%);
 }
 ol,
-ul {
+ul, li {
   list-style: none;
 }
 blockquote,
