@@ -17,13 +17,11 @@ export const MovieTile = styled.div`
   &:hover .movie_img {
     /* opacity: 0.8; */
     filter: brightness(70%);
-    }
+  }
 
   .movie_img {
-    width: 150px;    
-    @media screen and (min-device-width: 780px) {
-      width: 200px;
-    }
+    width: 150px;
+    border-radius: 5px;
   }
 
   .movie_overlay {
@@ -31,7 +29,7 @@ export const MovieTile = styled.div`
     position: absolute;
     opacity: 0;
     display: flex;
-    align-self:center;
+    align-self: center;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;

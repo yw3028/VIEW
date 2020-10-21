@@ -8,7 +8,7 @@ export default ({ list, title }) => {
   return (
     <S.Slider>
       <div className="list_title">{title}</div>
-      <Fade right cascade>
+      <Fade>
         <div className="list_scroll">
           {list &&
             list.map((movie) => {

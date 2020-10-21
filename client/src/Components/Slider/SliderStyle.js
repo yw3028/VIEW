@@ -25,7 +25,7 @@ export const Slider = styled.div`
   .item {
     position: relative;
     display: block;
-    padding: 0.7rem;
+    /* padding: 0.7rem; */
     transition: transform 500ms;
   }
 
