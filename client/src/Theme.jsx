@@ -17,6 +17,8 @@ const theme = {
     confirm: '#00C851',
     danger: '#ff4444',
     warning: '#ffbb33',
+    background: 'red',
+    white: '#ffffff',
   },
   fonts: {
     header: 'Roboto',
@@ -38,8 +40,8 @@ const theme = {
   backgroundColor: 'ligthgrey',
   boxShadow: {
     light: '0 0 5px lightgray',
-    medium: '0 0 6px lightgray',
-    strong: '0 0 7px darkgray',
+    medium: '0 0 8px lightgray',
+    strong: '0 0 12px darkgray',
     button: '0px 8px 15px rgba(0, 0, 0, 0.1)',
   },
 };

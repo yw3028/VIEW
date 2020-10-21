@@ -143,4 +143,8 @@ button {
 ::-webkit-scrollbar {
   display: none;
 }
+
+body {
+  background: linear-gradient(270deg, rgba(235,235,235,1) 0%, rgba(240,240,240,1) 100%);
+}
 `;

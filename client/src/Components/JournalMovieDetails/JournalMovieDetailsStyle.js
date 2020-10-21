@@ -8,13 +8,11 @@ export const JournalMovieDetails = styled.div`
 
   @media screen and (min-device-width: 780px) {
     align-items: center;
-    width: 80%;
+    width: 100%;
     margin: auto;
-    padding-right: 1.5rem;
     border-right: 2px solid lightgray;
   }
   @media screen and (min-device-width: 1200px) {
-    padding-right: 2rem;
   }
 `;
 
@@ -38,12 +36,12 @@ export const DesktopPoster = styled.img`
     width: auto;
     height: 40vh;
     object-fit: contain;
-    margin-right: 1.5rem;
+    margin: 0 6rem;
   }
 
   @media screen and (min-device-width: 1200px) {
     width: auto;
-    height: 50vh;
+    height: 40vh;
     object-fit: contain;
   }
 `;
