@@ -41,7 +41,6 @@ const App = () => {
 
   const successGoogle = (response) => {
     const tokenId = response.tokenId;
-    console.log(response);
     sendTokenToServer({ tokenId })
       .then((response) => {
         Cookies.set('token', response.token, {
