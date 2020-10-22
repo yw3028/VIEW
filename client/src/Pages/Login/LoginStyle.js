@@ -12,16 +12,29 @@ export const Login = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-right: 3rem;
   padding-bottom: 3.5rem;
 
   h1 {
     flex: 1;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 700;
     letter-spacing: 4px;
     font-family: 'Bebas Neue', cursive;
     text-align: right;
+    padding-bottom: 3.5rem;
+
+    p {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      font-family: 'Bebas Neue', cursive;
+      text-align: right;
+      margin-right: -20px;
+      color: #ffffff;
+      background-color:black;
+      width: 50%;
+      margin-left: 50%;
+    }
   }
 `;
 
@@ -31,7 +44,7 @@ export const Right = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 30rem;
+  padding-right: 20%;
 
   img {
     height: 100px;

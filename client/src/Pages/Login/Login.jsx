@@ -17,7 +17,7 @@ const steps = [
   1000,
   'track',
   1000,
-  'Journal about',
+  'Journal',
   1000,
   'view',
   1000,
@@ -38,9 +38,9 @@ const Login = ({ successGoogle, errorGoogle }) => {
 
   return (
     <Fade>
-      <S.Login>
+      <S.Login steps={steps}>
         <h1>
-          A new way to <Typical steps={steps} wrapper="h1" />
+          A new way to <Typical steps={steps} wrapper="p" />
           movies
         </h1>
         <S.Right>
