@@ -51,9 +51,9 @@ export const IconText = styled.div`
   font-size: 0.8rem;
   margin-top: 0.3rem;
   @media screen and (min-device-width: 780px) {
-    display: none;
+    opacity: 0;
     ${ActionButton}:hover & {
-      display: inline;
+      opacity: 1;
     }
   }
 `;
