@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Fade from 'react-reveal/Fade';
+import { LoopingRhombusesSpinner } from 'react-epic-spinners';
 
 import Home from './Pages/Home/Home';
 import Journal from './Pages/Journal/Journal';
@@ -10,9 +11,9 @@ import Wishlist from './Pages/Wishlist/Wishlist';
 import WatchedList from './Pages/WatchedList/WatchedList';
 import JournalDetail from './Pages/JournalDetail/JournalDetail';
 import MovieDetail from './Pages/MovieDetail/MovieDetail';
+import Loader from './Components/Loader/Loader';
 
 import Theme from './Theme';
-import styled from 'styled-components';
 import GlobalStyle from './globalStyle';
 import * as S from './AppStyle';
 import MoviedApi from './Services/moviedApiClient';
@@ -138,7 +139,7 @@ const App = () => {
       <Login successGoogle={successGoogle} errorGoogle={errorGoogle} />
     </>
   ) : !loaded ? (
-    <div>Loading</div>
+    <Loader />
   ) : (
     <Fade>
       <Theme>

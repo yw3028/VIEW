@@ -1,6 +1,4 @@
-import styled from 'styled-components/macro';
-
-export const App = styled.div``;
+import styled from 'styled-components';
 
 export const Loader = styled.div`
   height: 700px;
