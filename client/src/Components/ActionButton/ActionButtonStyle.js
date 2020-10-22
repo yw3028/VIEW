@@ -16,8 +16,8 @@ export const ActionButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   border: none;
   color: ${(props) => props.color};
@@ -28,6 +28,7 @@ export const ActionButton = styled.button`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 `;
 

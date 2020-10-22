@@ -4,6 +4,8 @@ export const Buttons = styled.div``;
 
 export const MovieTile = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
   position: relative;
   overflow-y: visible;
@@ -19,7 +21,6 @@ export const MovieTile = styled.div`
   .movie_img {
     border-radius: 5px;
     width: 150px;
-    }
   }
 
   .movie_overlay {
@@ -39,7 +40,7 @@ export const MovieTile = styled.div`
   .movie_overlay_btn,
   .movie_overlay_btn:hover,
   .movie_overlay_btn:focus {
-    background: none;
+    background-color: transparent;
     color: white;
     outline: none;
     border: 4px solid white;
