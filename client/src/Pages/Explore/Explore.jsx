@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import HeadBar from '../../Components/HeadBar/HeadBar';
 import Slider from '../../Components/Slider/Slider';
+import Loader from '../../Components/Loader/Loader';
 
 import { MovieContext } from '../../App';
 
@@ -9,9 +10,7 @@ import MoviedApi from '../../Services/moviedApiClient';
 import * as S from './ExploreStyle';
 
 const Explore = () => {
-  const { updateState, movies, lists } = useContext(
-    MovieContext
-  );
+  const { updateState, movies, lists } = useContext(MovieContext);
 
   const [categories, setCategories] = useState([]);
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -33,7 +32,7 @@ const Explore = () => {
   }, []);
 
   return !pageLoaded ? (
-    <div>Loading</div>
+    <Loader />
   ) : (
     <>
       <HeadBar />
