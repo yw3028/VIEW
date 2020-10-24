@@ -48,7 +48,9 @@ const Login = ({ successGoogle, errorGoogle }) => {
           <GoogleLogin
             className="google"
             clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
-            buttonText="Sign in with Google"
+            buttonText={
+              window.screen.width > 780 ? 'Sign in with Google' : 'Sign in'
+            }
             onSuccess={(response) => successGoogle(response)}
             onFailure={(response) => errorGoogle(response)}
             cookiePolicy={'single_host_origin'}
