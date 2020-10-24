@@ -1,21 +1,56 @@
 # VIEW
-As a movie lover and a diary keeper, I have always wanted to have a personal app to keep track of the movies that I have watched and want to watch, which also allows me to scrawl or doodle something or write down some of my thoughts after watching the movie, like a diary book. Not like most of the movie apps, this app is absolutely personal, which means that no one can see any of the content that you put down unless you want to share them. 
+
+<p align="center">
+  <img width="100px" src="client/public/favicon.png" />
+</p>
+
+VIEW is a responsive movie app with the nature of a diary book. Simply log in with your Google account, start the journey to explore, track and journal your movies. With VIEW, you can discover the latest releases, browse through different genres of movies and add them to your wish or watched lists. On top of that, you can create journal entries based on a particular movie that you have watched. 
 
 ## Screenshots
 
-## Features
-* Browse through the popular movies at present
-* Search for a particular movie
-* Add movie to the movie list that you have watched
-* Add movie to the wish list
-* Write a journal after watching a particular movie
-* Be able to rate the movie multiple times
-* Mark how many times you have watched the movie
-* Two users can check what's in common in their wish list
-* PWA: you can add the app to your desktop
-
 ## Getting Started
-_description_
+1. Clone the repo
+
+```
+git clone https://github.com/yw3028/VIEW.git
+cd VIEW
+```
+
+2. Install dependencies in the root and in both client and server folders
+```
+npm install
+cd client && npm install
+cd server && npm install
+```
+
+3. Create the database with postgres
+
+4. Create `.env` file in `server/src` containing the following information (make sure that `DB_NAME` is the one from `step 3`)
+```
+HOST=
+PORT=
+DB_HOST=
+DB_PORT=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+NODE_ENV=
+API_BASE_URL=http://movied.herokuapp.com
+GOOGLE_CLIENT_ID=
+JWT_SECRET=
+JWT_EXPIRES_IN=
+JWT_COOKIE_EXPIRES_IN=
+```
+
+5. Start back-end server
+```
+cd server/src && node index.js
+```
+
+6. Start development server
+```
+cd client && npm start
+```
 
 ## Tech Stack
 ### Frontend
@@ -28,6 +63,14 @@ _description_
 * Postgres
 * Sequelize
 
+### Special Ingredients
+* Love ❤️
+* Willingness to learn 🤓
+* Team work 🙌
 
+## Developers
+* Jaume Fàbrega - [GitHub](https://github.com/jaumefapa) - [LinkedIn](https://www.linkedin.com/in/jaume-fabrega/)
+* Jorge Macia - [GitHub](https://github.com/jmaciaa) - [LinkedIn](https://www.linkedin.com/in/jmaciasalord/)
+* Yu Wang - [GitHub](https://github.com/yw3028) - [LinkedIn](https://www.linkedin.com/in/wang-y/)
 
 
