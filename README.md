@@ -4,6 +4,7 @@
   <img width="100px" src="client/public/favicon.png" />
 </p>
 
+
 VIEW is a responsive movie app with the nature of a diary book. Simply log in with your Google account, start the journey to explore, track and journal your movies. With VIEW, you can discover the latest releases, browse through different genres of movies and add them to your wish or watched lists. On top of that, you can create journal entries based on a particular movie that you have watched. 
 
 ## Screenshots
