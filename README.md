@@ -50,9 +50,14 @@ PORT=3001
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=movie_journal
-DB_USER=myusername
-DB_PASSWORD=password
+DB_USER=postgres
+DB_PASSWORD=secretpassword
 NODE_ENV=development
+API_BASE_URL=http://movied.herokuapp.com
+GOOGLE_CLIENT_ID=1023662076394-95opn7n5ukghrte51fmi7hdopd47bqio.apps.googleusercontent.com
+JWT_SECRET=mysupersecretpassword4564789
+JWT_EXPIRES_IN=90d
+JWT_COOKIE_EXPIRES_IN=90
 ```
 
 5. Start back-end server
