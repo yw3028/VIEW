@@ -15,9 +15,9 @@ VIEW is a responsive movie app with the nature of a diary book. Simply log in wi
 
 ### Desktop Preview
 
-<p align="center">
+<div align="center">
     <img width="600px" src="client/public/desktop.gif"/>
-</p>
+</div>
 
 ## Getting Started
 
