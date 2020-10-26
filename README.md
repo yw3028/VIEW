@@ -8,10 +8,13 @@ VIEW is a responsive movie app with the nature of a diary book. Simply log in wi
 
 ## Screenshots
 
-<p align="center">
+<div align="center">
   <img width="600px" src="client/public/mocks_iphone_8_v2.jpg"/>
+</div>
+
+<p align="center">
+    <img width="600px" src="https://media.giphy.com/media/aSPAd49VM9SepILAPR/giphy.gif"/>
 </p>
-![Desktop Preview](https://media.giphy.com/media/aSPAd49VM9SepILAPR/giphy.gif)
 
 ## Getting Started
 
