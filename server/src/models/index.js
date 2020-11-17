@@ -9,9 +9,18 @@ const { config } = require('dotenv');
 
 config();
 
-const dbName = process.env.POSTGRES_DB;
-const dbUser = process.env.POSTGRES_USER;
-const dbPassword = process.env.POSTGRES_PASSWORD;
+let dbName;
+let dbUser;
+let dbPassword;
+if (process.env.DOCKER) {
+  dbName = process.env.POSTGRES_DB;
+  dbUser = process.env.POSTGRES_USER;
+  dbPassword = process.env.POSTGRES_PASSWORD;
+} else {
+  dbName = process.env.DB_NAME;
+  dbUser = process.env.DB_USER;
+  dbPassword = process.env.DB_PASSWORD;
+}
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   port: Number(process.env.DB_PORT),
