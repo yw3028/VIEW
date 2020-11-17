@@ -23,6 +23,7 @@ import {
   getWishlist,
   getJournals,
   sendTokenToServer,
+  sendToken
 } from './Services/apiClient';
 
 export const MovieContext = React.createContext(null);
@@ -41,6 +42,7 @@ const App = () => {
   });
 
   const successGoogle = (response) => {
+    console.log('Succes logging with Google', response)
     const tokenId = response.tokenId;
     sendTokenToServer({ tokenId })
       .then((response) => {
@@ -57,7 +59,7 @@ const App = () => {
   };
 
   const errorGoogle = (response) => {
-    console.log(response);
+    console.log('Something went wrong logging with Google', response);
   };
 
   const updateMovieStatusInList = (movieId, list) => {
@@ -94,6 +96,14 @@ const App = () => {
       [name]: apiMovies.map((movie) => (movie.apiId ? movie.apiId : movie.id)),
     }));
   };
+
+  useEffect(() => {
+    const tokenId = Cookies.get('token');
+    if (tokenId) sendToken({tokenId}).then(res => {
+      setUser(res);
+      setIsAuth(true)})
+      .catch(error => console.log(error))
+  }, [])
 
   useEffect(() => {
     if (isAuth) {

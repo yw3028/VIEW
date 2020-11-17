@@ -77,3 +77,26 @@ exports.protect = async (req, res, next) => {
     next();
   }
 };
+
+exports.whoAmI = async (req, res) => {
+  let token;
+  const authHeader = req.headers.authorization;
+
+  if (authHeader && authHeader.startsWith('Bearer')) {
+    token = authHeader.split(' ')[1];
+
+    try {
+      const decoded = await promisify(jwt.verify)(token, JWT_SECRET);
+      const user = await User.findOne({
+        where: { id: decoded.id },
+      });
+
+      req.user = user;
+      res.send(user);
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    next();
+  }
+};

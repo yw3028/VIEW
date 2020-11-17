@@ -59,11 +59,16 @@ export const deleteJournalEntry = (id) =>
 
 // Auth
 export const sendTokenToServer = (data) =>
-  fetchApiRequest('googleLogin', {
+  fetchApiRequest('googlelogin', {
     method: 'POST',
-    url: 'http://localhost:3001/googlelogin',
     data,
   });
+
+export const sendToken = (data) => 
+  fetchApiRequest('googlelogin/whoami', {
+    method: 'GET',
+    data
+  })
 
 // Helper fetch function
 const fetchApiRequest = (url, options = {}) => {
