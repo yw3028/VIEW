@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://view-movie-journal.herokuapp.com';
+const BASE_URL =  process.env.REACT_APP_ENV_MODE === 'development' ? process.env.REACT_APP_DEV_HOST : process.env.REACT_APP_PRO_HOST;
 
 // Watchedlists
 // get
