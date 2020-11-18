@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://view-movie-journal.herokuapp.com';
+const BASE_URL =  process.env.REACT_APP_ENV_MODE === 'development' ? process.env.REACT_APP_DEV_HOST : process.env.REACT_APP_PRO_HOST;
 
 // Watchedlists
 // get
@@ -59,11 +59,16 @@ export const deleteJournalEntry = (id) =>
 
 // Auth
 export const sendTokenToServer = (data) =>
-  fetchApiRequest('googleLogin', {
+  fetchApiRequest('googlelogin', {
     method: 'POST',
-    url: 'http://localhost:3001/googlelogin',
     data,
   });
+
+export const sendToken = (data) => 
+  fetchApiRequest('googlelogin/whoami', {
+    method: 'GET',
+    data
+  })
 
 // Helper fetch function
 const fetchApiRequest = (url, options = {}) => {
