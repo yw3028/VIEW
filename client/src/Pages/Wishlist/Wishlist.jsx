@@ -16,11 +16,11 @@ const Wishlist = () => {
     });
   }, []);
 
-  const { user, setIsAuth } = useContext(MovieContext);
+  const { user, signOff } = useContext(MovieContext);
 
   return (
     <>
-      <Menu user={user} setIsAuth={setIsAuth} />
+      <Menu user={user} signOff={signOff} />
       <S.Wishlist>
         {wishlist.map((wish) => (
           <MovieTile movie={wish} />
