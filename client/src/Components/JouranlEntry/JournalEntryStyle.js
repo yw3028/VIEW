@@ -37,9 +37,7 @@ export const JournalTitle = styled.textarea`
   width: 80%;
   margin-top: 1.5rem;
   resize: none;
-  background: ${(props) => `${props.theme.colors.background}`};
   outline: none;
-
 
   @media screen and (min-device-width: 780px) {
     border-bottom: 1px dotted lightgray;
@@ -59,7 +57,6 @@ export const JournalContent = styled.textarea`
   width: 100%;
   height: 100%;
   resize: none;
-  background: ${(props) => `${props.theme.colors.background}`};
   outline: none;
 
   @media screen and (min-device-width: 780px) {

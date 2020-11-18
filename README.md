@@ -7,6 +7,7 @@
 VIEW is a responsive movie app with the nature of a diary book. Simply log in with your Google account, start the journey to explore, track and journal your movies. With VIEW, you can discover the latest releases, browse through different genres of movies and add them to your wish or watched lists. On top of that, you can create journal entries based on a particular movie that you have watched.
 
 ## Screenshots
+
 ### Mobile Preview
 
 <div align="center">
@@ -45,9 +46,13 @@ HOST=
 PORT=
 DB_HOST=
 DB_PORT=
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
 DB_NAME=
 DB_USER=
 DB_PASSWORD=
+DOCKER=
 NODE_ENV=
 API_BASE_URL=http://movied.herokuapp.com
 GOOGLE_CLIENT_ID=
@@ -63,9 +68,13 @@ HOST=localhost
 PORT=3001
 DB_HOST=localhost
 DB_PORT=5432
+POSTGRES_DB=movie_journal
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=secretpassword
 DB_NAME=movie_journal
 DB_USER=postgres
 DB_PASSWORD=secretpassword
+DOCKER=false
 NODE_ENV=development
 API_BASE_URL=http://movied.herokuapp.com
 GOOGLE_CLIENT_ID=1023662076394-95opn7n5ukghrte51fmi7hdopd47bqio.apps.googleusercontent.com
@@ -74,13 +83,19 @@ JWT_EXPIRES_IN=90d
 JWT_COOKIE_EXPIRES_IN=90
 ```
 
-5. Start back-end server
+5. Start DB with docker
+
+```
+npm run start:db
+```
+
+6. Start back-end server
 
 ```
 cd server/src && node index.js
 ```
 
-6. Start development server
+7. Start development server
 
 ```
 cd client && npm start
