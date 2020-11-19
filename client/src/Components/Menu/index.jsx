@@ -80,7 +80,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default ({ user, setIsAuth }) => {
+export default ({ user, signOff }) => {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -176,7 +176,7 @@ export default ({ user, setIsAuth }) => {
       </List>
       <Divider />
       <List className={classes.listItems}>
-        <ListItem button key="Sign-off">
+        <ListItem button key="Sign-off" onClick={signOff}>
           <ListItemIcon>
             <PowerSettingsNewIcon />
           </ListItemIcon>
@@ -204,7 +204,7 @@ export default ({ user, setIsAuth }) => {
             )}
             clientId="1023662076394-95opn7n5ukgfqoe51fmi7hdidd47bqio.apps.googleusercontent.com"
             onLogoutSuccess={() => {
-              setIsAuth(false);
+              signOff();
             }}
           ></GoogleLogout>
         </ListItem>

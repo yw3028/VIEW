@@ -16,11 +16,11 @@ const WatchedList = () => {
     });
   }, []);
 
-  const { user, setIsAuth } = useContext(MovieContext);
+  const { signOff, user } = useContext(MovieContext);
 
   return (
     <>
-      <Menu user={user} setIsAuth={setIsAuth} />
+      <Menu signOff={signOff} user={user}/>
       <S.Wishlist>
         {watchedList.map((watchedMovie) => (
           <MovieTile movie={watchedMovie} />

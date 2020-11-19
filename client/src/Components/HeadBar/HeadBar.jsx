@@ -5,10 +5,10 @@ import * as S from './HeadBarStyle';
 import { MovieContext } from '../../App';
 
 const HeadBar = () => {
-  const { user, setIsAuth } = useContext(MovieContext);
+  const { user, signOff } = useContext(MovieContext);
   return (
     <S.HeadBar>
-      <Menu user={user} setIsAuth={setIsAuth}/>
+      <Menu user={user} signOff={signOff}/>
       <S.Logo>
         VIEW
       </S.Logo>

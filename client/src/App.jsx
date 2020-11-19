@@ -62,6 +62,13 @@ const App = () => {
     console.log('Something went wrong logging with Google', response);
   };
 
+  const signOff = () => {
+    Cookies.remove('token');
+    setUser(null);
+    setIsAuth(false);
+    console.log('Signed off');
+  }
+
   const updateMovieStatusInList = (movieId, list) => {
     setLists((lists) => ({
       ...lists,
@@ -161,6 +168,7 @@ const App = () => {
             lists,
             user,
             setIsAuth,
+            signOff
           }}
         >
           <S.App>
