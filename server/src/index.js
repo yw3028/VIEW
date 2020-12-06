@@ -25,11 +25,6 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cors());
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//   console.log(req.headers);
-//   next();
-// });
-
 app.use(protect);
 
 app.use('/googlelogin', authRouter);
