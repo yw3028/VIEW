@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 
-const { config } = require('dotenv');
+require('dotenv').config({ path: '../.env' });
 const cors = require('cors');
 
 const { sequelize } = require('./models');
@@ -14,7 +14,6 @@ const authRouter = require('./routes/authRouter');
 const mockDbDev = require('./utils/mockDbDev');
 const { protect } = require('./controllers/authController');
 
-config();
 const { PORT } = process.env;
 
 const app = express();
@@ -39,8 +38,8 @@ app.use('/wishlist', wishlistRouter);
 app.use('/watched', watchedlistRouter);
 app.use('/journal', journalRouter);
 
-app.all('*', (req, res, next) => {
-  console.error(`${req.url} not found in this server`);
+app.all('*', (req, res) => {
+  console.error(`${req.url} not found in this server`); // eslint-disable-line no-console
   res.sendStatus(404);
 });
 
