@@ -18,7 +18,7 @@ services:
       - db
     volumes:
       - ./server:/home/node/server/
-      - nodemodules-server:/home/node/server/node_modules
+      - /home/node/server/node_modules
   view-client:
     build: client
     command: npm start
@@ -29,12 +29,9 @@ services:
       - view-server
     volumes:
       - ./client:/home/node/client
-      - nodemodules-client:/home/node/client/node_modules
+      - /home/node/client/node_modules
     networks:
       - view
 networks:
   view:
     driver: bridge
-volumes:
-  nodemodules-server: {}
-  nodemodules-client: {}
