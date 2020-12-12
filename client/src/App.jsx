@@ -23,7 +23,7 @@ import {
   getWishlist,
   getJournals,
   sendTokenToServer,
-  sendToken
+  sendToken,
 } from './Services/apiClient';
 
 export const MovieContext = React.createContext(null);
@@ -42,7 +42,7 @@ const App = () => {
   });
 
   const successGoogle = (response) => {
-    console.log('Succes logging with Google', response)
+    console.log('Succes logging with Google', response);
     const tokenId = response.tokenId;
     sendTokenToServer({ tokenId })
       .then((response) => {
@@ -67,7 +67,7 @@ const App = () => {
     setUser(null);
     setIsAuth(false);
     console.log('Signed off');
-  }
+  };
 
   const updateMovieStatusInList = (movieId, list) => {
     setLists((lists) => ({
@@ -106,11 +106,14 @@ const App = () => {
 
   useEffect(() => {
     const tokenId = Cookies.get('token');
-    if (tokenId) sendToken({tokenId}).then(res => {
-      setUser(res);
-      setIsAuth(true)})
-      .catch(error => console.log(error))
-  }, [])
+    if (tokenId)
+      sendToken({ tokenId })
+        .then((res) => {
+          setUser(res);
+          setIsAuth(true);
+        })
+        .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     if (isAuth) {
@@ -168,7 +171,7 @@ const App = () => {
             lists,
             user,
             setIsAuth,
-            signOff
+            signOff,
           }}
         >
           <S.App>
