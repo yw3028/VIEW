@@ -29,12 +29,10 @@ git clone https://github.com/yw3028/VIEW.git
 cd VIEW
 ```
 
-2. Install dependencies in the root and in both client and server folders
+1. Install dependencies in the root and in both client and server folders.
 
 ```
 npm install
-cd client && npm install
-cd server && npm install
 ```
 
 3. Create the database with postgres
@@ -92,13 +90,13 @@ npm run start:db
 6. Start back-end server
 
 ```
-cd server/src && node index.js
+npm run start:server
 ```
 
 7. Start development server
 
 ```
-cd client && npm start
+npm run start:client
 ```
 
 ## Tech Stack
