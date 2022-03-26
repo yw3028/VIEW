@@ -6,13 +6,12 @@ import Hero from '../../Components/Hero/Hero';
 import Slider from '../../Components/Slider/Slider';
 
 import * as S from './HomeStyle';
-import { MovieContext } from '../../App';
 
-export default ({ explore, wishlist, watched, status }) => {
+export default ({ explore, wishlist, watched }) => {
   // const { user, setUser, setIsAuth } = useContext(MovieContext);
   return (
     <>
-      <HeadBar  />
+      <HeadBar />
       <S.Home>
         <Hero />
         <Fade>
